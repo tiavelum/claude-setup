@@ -46,8 +46,11 @@ To confirm it worked, run `/context` in a Claude Code session and look for
 
 ## Changing the instructions
 
-1. Edit `user-instructions.md` and commit.
-2. Paste the full new text into the claude.ai personal preferences field. Changes
+1. Edit `user-instructions.md` and commit. Keep it plain text: one rule per
+   paragraph, separated by blank lines, and no tables, `#` headings, bullets or angle
+   brackets. The claude.ai preferences field takes only text, and this way the raw
+   file and the rendered GitHub page copy as the same text.
+2. Replace the whole claude.ai personal preferences field with the new text. Changes
    there apply to new conversations only.
 
 ## Known limits
