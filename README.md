@@ -11,8 +11,11 @@ user-instructions.md  ──symlink──▶  ~/.claude/CLAUDE.md   (Claude Code
         └──── pasted by hand ───▶  claude.ai Settings > Profile > personal preferences
 ```
 
-`user-instructions.md` is the master. Claude Code picks up every change immediately
-through the symlink. claude.ai has no way to read a file, so after each change the
+`user-instructions.md` is the master. Claude Code reads it from the local clone
+through the symlink, so it sees whatever version that clone holds: an edit made in
+`~/vc/claude-setup` applies at the next session, while a change committed elsewhere
+(on GitHub, or by a session through the GitHub connector) applies only after the
+clone has been pulled. claude.ai has no way to read a file, so after each change the
 text is pasted into the personal preferences field by hand.
 
 The file holds only general rules. Rules for a single project live in that project's
@@ -50,7 +53,10 @@ To confirm it worked, run `/context` in a Claude Code session and look for
    paragraph, separated by blank lines, and no tables, `#` headings, bullets or angle
    brackets. The claude.ai preferences field takes only text, and this way the raw
    file and the rendered GitHub page copy as the same text.
-2. Replace the whole claude.ai personal preferences field with the new text. Changes
+2. If the change was committed anywhere but the local clone, pull it on the Mac:
+   `git -C ~/vc/claude-setup pull`. Until then, Claude Code keeps reading the old
+   version.
+3. Replace the whole claude.ai personal preferences field with the new text. Changes
    there apply to new conversations only.
 
 ## Known limits
