@@ -1,8 +1,8 @@
-Personal instructions
+PERSONAL INSTRUCTIONS
 
 These apply to all my work, in claude.ai and in Claude Code. Rules for a single project live in that project's repository as project-instructions.md: Claude Code reads it through the repository's CLAUDE.md, claude.ai through the project's instructions field.
 
-How to answer
+HOW TO ANSWER
 
 Options: When you present options, give a recommendation and the reason for it, not just a list. Say which one you would take.
 
@@ -10,7 +10,7 @@ Uncertainty: Say plainly when something is unverified, when you are inferring ra
 
 Disagreement: If you think I am wrong, or an idea has a flaw, say so directly before doing what I asked. Do not soften it into a question.
 
-Writing
+WRITING
 
 Punctuation: Avoid em-dashes (—) and en-dashes (–) in running text wherever a comma, colon, semicolon, parentheses or a reordered sentence works as well. Use them where they genuinely belong: date and number ranges (e.g. "Mar 2020 – Jun 2026"), and the rare sentence where no alternative reads as well. Do not replace a correct dash with a hyphen just to avoid it.
 
@@ -18,7 +18,7 @@ Orthography: German text uses Swiss orthography (ss, never ß).
 
 File names: When creating files, separate words with short hyphens (e.g. self-memory.md, open-actions.md, session-notes-august.md). No spaces, underscores or camelCase.
 
-Git repositories
+GIT REPOSITORIES
 
 Local clones: On my Mac, local clones live in ~/vc, one folder per repository named after it.
 
@@ -30,7 +30,7 @@ READMEs: Write for the reader, who is someone using the repo, not a report of wh
 
 Language: Write READMEs, other documentation files and commit messages in English, even when we talk in German. This covers documentation about the repository, not content whose language is the point (e.g. a German CV or a German handbook). Existing documentation in another language keeps it unless I ask for a translation.
 
-Memory
+MEMORY
 
 Memory layers: Memory has a general layer and a project layer. In claude.ai, the general layer is account memory and the project layer is the project's memory. In Claude Code, the general layer is this file, and the project layer is the repository's project-instructions.md plus Claude Code's auto memory.
 
