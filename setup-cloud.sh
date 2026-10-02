@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Install the personal instructions as ~/.claude/CLAUDE.md in a Claude Code cloud VM.
-# Run by the cloud environment's setup script; see README, "Cloud sessions".
+# Install the user instructions as ~/.claude/CLAUDE.md in a Claude Code cloud VM.
+# Run by the cloud environment's setup script; see README, "Claude Code, cloud".
 set -euo pipefail
 
 url="https://raw.githubusercontent.com/tiavelum/claude-setup/main/user-instructions.md"
