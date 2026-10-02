@@ -100,6 +100,8 @@ account; usually there is just one, called "Default".
 | `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
 | `CLAUDE.md` | Imports `project-instructions.md`, then rules for Claude Code only |
 
+The instruction files hold directives only; explanations live in this README.
+
 `user-instructions.md` is plain text: one rule per paragraph, blank lines between, no
 tables, `#` headings, bullets or angle brackets. The preferences field takes only
 text, and the raw file and the rendered GitHub page then copy as the same text.
@@ -125,17 +127,6 @@ Other files need nothing.
 ³ Open the setup script as in Setup, "Claude Code, cloud", steps 1 to 3, change the
 comment line (for example the date) and save. Otherwise the change arrives when the
 cached environment expires, after roughly seven days.
-
-## Design principles
-
-- Instruction files hold directives only. Explanations live in this README.
-- Rules in `user-instructions.md` and `project-instructions.md` hold for both the
-  Claude app and Claude Code. Content only Claude Code can use goes into `CLAUDE.md`,
-  below the import.
-- Rules are short and checkable, and state the behaviour wanted rather than how a
-  product works, so a product change does not break them.
-- Reliability comes from structure (which file holds what, the import, the symlink,
-  the setup script), not from prose about how Claude works.
 
 ## Setting up a project repository
 

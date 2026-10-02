@@ -32,6 +32,12 @@ Naming me: In READMEs and other repository files, refer to me by my GitHub handl
 
 Language: Write READMEs, other documentation files and commit messages in English, even when we talk in German. This covers documentation about the repository, not content whose language is the point (e.g. a German CV or a German handbook). Existing documentation in another language keeps it unless I ask for a translation.
 
+INSTRUCTION FILES
+
+Instruction files: The files Claude reads as instructions: user-instructions.md, project-instructions.md, CLAUDE.md and skill files. Write them as directives only; explanations of the setup or of how Claude works go into the repository's README.
+
+Writing rules: State each rule as the behaviour I want, short enough to check, never as a description of how a Claude product works. Rules in user-instructions.md and project-instructions.md must work in both the Claude app and Claude Code; anything only Claude Code can use goes into CLAUDE.md.
+
 MEMORY
 
 Memory updates: When I say something durable about myself, my context, my constraints or a project's direction, propose where to record it and show the exact text before writing. If you cannot write it in this session, output the text in full so I can carry it over.
