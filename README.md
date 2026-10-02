@@ -156,9 +156,8 @@ Other files need nothing.
 comment line (for example the date) and save. Otherwise the change arrives when the
 cached environment expires, after roughly seven days.
 
-⁴ Package and upload as in Setup, "Skills". Claude Code picks up the new version on
-its own. Whether the upload replaces the existing skill or the old one has to be
-deleted first is not yet known.
+⁴ Package and upload as in Setup, "Skills"; the upload replaces the existing
+version. Claude Code picks up the new version on its own.
 
 ## Setting up a project repository
 
