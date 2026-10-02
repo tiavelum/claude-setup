@@ -18,10 +18,13 @@ Which setup applies depends on what runs, not on the window you open:
 
 | You open | Claude app | Claude Code, local | Claude Code, cloud |
 |---|---|---|---|
-| Browser | claude.ai | | claude.ai/code |
-| Mobile app | Chat | | Code |
-| Desktop app | Chat | Code, "Local" | Code, cloud environment |
-| Terminal, IDE | | `claude` | `claude --cloud` |
+| Browser | claude.ai | –¹ | claude.ai/code |
+| Mobile | Chat | –¹ | Code |
+| Desktop | Chat | Code, "Local" | Code, cloud environment |
+| Terminal, IDE | – | `claude` | `claude --cloud` |
+
+¹ A local session can be operated from the browser or phone via Remote Control; it
+uses the local setup.
 
 ### Claude app
 
