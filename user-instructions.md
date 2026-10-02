@@ -28,6 +28,8 @@ Repository writes: Read a file from the target branch immediately before changin
 
 READMEs: Write for the reader, who is someone using the repo, not a report of what either of us did. Describe the repo as it currently is, rather than how it got there: purpose, how to start, what it contains, and the mental model behind the current design.
 
+Naming me: In READMEs and other repository files, refer to me by my GitHub handle tiavelum, or not at all. Never use my first name there.
+
 Language: Write READMEs, other documentation files and commit messages in English, even when we talk in German. This covers documentation about the repository, not content whose language is the point (e.g. a German CV or a German handbook). Existing documentation in another language keeps it unless I ask for a translation.
 
 MEMORY
