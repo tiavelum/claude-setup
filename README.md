@@ -94,10 +94,10 @@ account; usually there is just one, called "Default".
 | File | Purpose |
 |---|---|
 | `user-instructions.md` | Personal instructions for all work, everywhere. The master. Project rules never go here |
-| `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
-| `CLAUDE.md` | Imports `project-instructions.md`, then rules for Claude Code only |
 | `setup-local.sh` | Links `~/.claude/CLAUDE.md` to `user-instructions.md` on your own machine |
 | `setup-cloud.sh` | Writes `user-instructions.md` to `~/.claude/CLAUDE.md` in a cloud VM |
+| `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
+| `CLAUDE.md` | Imports `project-instructions.md`, then rules for Claude Code only |
 
 `user-instructions.md` is plain text: one rule per paragraph, blank lines between, no
 tables, `#` headings, bullets or angle brackets. The preferences field takes only
@@ -110,10 +110,10 @@ Commit, then:
 | Changed file | Claude app | Claude Code, local | Claude Code, cloud |
 |---|---|---|---|
 | `user-instructions.md` | Paste into preferences¹ | Pull² | Rebuild³ |
-| `project-instructions.md` | Paste into project instructions¹ | Pull² | – |
-| `CLAUDE.md` | – | Pull² | – |
 | `setup-local.sh` | – | Pull², then rerun the script | – |
 | `setup-cloud.sh` | – | – | Rebuild³ |
+| `project-instructions.md` | Paste into project instructions¹ | Pull² | – |
+| `CLAUDE.md` | – | Pull² | – |
 
 Other files need nothing.
 
