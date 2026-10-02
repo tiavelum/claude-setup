@@ -130,28 +130,21 @@ cached environment expires, after roughly seven days.
 
 ## Setting up a project repository
 
-| File | Read by | Holds |
-|---|---|---|
-| `project-instructions.md` | Claude Code through the import; the Claude app pasted into the project's instructions field | The project's rules, valid for both. The master |
-| `CLAUDE.md` | Claude Code only, locally and in cloud sessions, which clone the repository | The import on its first line, then only what needs Claude Code: build and test commands, file paths |
+Every repository used with Claude gets two files:
 
-```markdown
-@project-instructions.md
+1. `project-instructions.md` with the project's rules. Paste it into the claude.ai
+   project's instructions field, and again after every change.
+2. `CLAUDE.md`, which imports those rules for Claude Code. Start from this template
+   and add below the import only what Claude Code alone needs:
 
-## Claude Code only
+   ```markdown
+   @project-instructions.md
 
-- Build: ...
-- Test: ...
-```
+   ## Claude Code only
 
-- Import with `@`. A sentence asking Claude to read the file works only if Claude
-  decides to open it.
-- `/init` on an existing `CLAUDE.md` suggests improvements instead of overwriting.
-  Code-only suggestions go below the import, the rest into `project-instructions.md`.
-- After changing `project-instructions.md`, paste it into the claude.ai project's
-  instructions field.
-- Reference material lives in the repository, where Claude Code reads it on demand;
-  in the Claude app, add it to the project's knowledge.
+   - Build: ...
+   - Test: ...
+   ```
 
 ## Memory
 
