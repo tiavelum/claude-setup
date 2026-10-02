@@ -26,7 +26,7 @@ Git note: After creating a repository, or committing or pushing to one, open the
 
 Repository writes: Read a file from the target branch immediately before changing it, and edit what you read. Never rebuild a file from memory or from an earlier copy in the conversation. If a write is rejected because the file changed, read again and redo the change.
 
-READMEs: Write for the reader, who is someone using the repo, not a report of what either of us did. Describe the repo as it currently is, rather than how it got there: purpose, how to start, what it contains, and the mental model behind the current design.
+READMEs: Write for the reader, who is someone using the repo, not a report of what either of us did. Describe the repo as it currently is, rather than how it got there. Order it as: purpose in one or two sentences, how to start, then what it contains and the mental model behind the current design. The first screen should be enough to get started.
 
 Naming me: In READMEs and other repository files, refer to me by my GitHub handle tiavelum, or not at all. Never use my first name there.
 
