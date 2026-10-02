@@ -6,52 +6,6 @@ pattern every project repository follows.
 **Keep this repository public.** Cloud sessions download `user-instructions.md` and
 `setup-cloud.sh` from it without credentials, so nothing private belongs here.
 
-## How it works
-
-```
-user-instructions.md  ──symlink──▶  ~/.claude/CLAUDE.md   (Claude Code on the Mac)
-        │
-        ├──── downloaded by ────▶  ~/.claude/CLAUDE.md   (Claude Code cloud sessions)
-        │     setup-cloud.sh
-        │
-        └──── pasted by hand ───▶  claude.ai Settings > Profile > personal preferences
-```
-
-| Where Claude runs | Reads | Personal instructions arrive |
-|---|---|---|
-| Chat: claude.ai, mobile app, desktop app's Chat mode | Account settings | Pasted into the preferences field |
-| Claude Code on the Mac: terminal, IDE, desktop app's Code tab | `CLAUDE.md` files | Through the symlink, at the next session; a change committed elsewhere needs a pull first |
-| Claude Code in the cloud: claude.ai/code, cloud sessions from the desktop or mobile app, routines | `CLAUDE.md` files | As a copy from `main`, taken when the environment is built |
-| Cowork on the Mac | `CLAUDE.md` files | No, see Known limits |
-
-What a session reads decides the surface, not the app: the desktop app hosts both.
-Project instructions reach claude.ai through the project's instructions field and
-Claude Code through the repository's `CLAUDE.md`, cloud sessions included.
-
-## Files
-
-| File | Purpose |
-|---|---|
-| `user-instructions.md` | Personal instructions for all work, on every surface. The master. Project rules never go here |
-| `setup-mac.sh` | Links `~/.claude/CLAUDE.md` to `user-instructions.md` |
-| `setup-cloud.sh` | Writes `user-instructions.md` to `~/.claude/CLAUDE.md` in a cloud VM |
-| `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
-| `CLAUDE.md` | Imports `project-instructions.md`, then rules for Claude Code only |
-
-`user-instructions.md` is plain text: one rule per paragraph, blank lines between, no
-tables, `#` headings, bullets or angle brackets. The claude.ai field takes only text,
-and the raw file and the rendered GitHub page then copy as the same text.
-
-## Design principles
-
-- Instruction files hold directives only. Explanations live in this README.
-- Rules in `user-instructions.md` and `project-instructions.md` hold on both surfaces.
-  Content only Claude Code can use goes into `CLAUDE.md`, below the import.
-- Rules are short and checkable, and state the behaviour wanted rather than how a
-  product works, so a product change does not break them.
-- Reliability comes from structure (which file holds what, the import, the symlink,
-  the setup script), not from prose about how Claude works.
-
 ## Install
 
 ### Mac
@@ -109,6 +63,52 @@ the local clone. Claude Code on the Mac picks up the change at the next session.
 ² In each cloud environment, open the setup script (steps 1 to 3 under "Cloud
 sessions"), change the comment line (for example the date) and save. Without this,
 the change arrives only when the cached environment expires, after roughly seven days.
+
+## How it works
+
+```
+user-instructions.md  ──symlink──▶  ~/.claude/CLAUDE.md   (Claude Code on the Mac)
+        │
+        ├──── downloaded by ────▶  ~/.claude/CLAUDE.md   (Claude Code cloud sessions)
+        │     setup-cloud.sh
+        │
+        └──── pasted by hand ───▶  claude.ai Settings > Profile > personal preferences
+```
+
+| Where Claude runs | Reads | Personal instructions arrive |
+|---|---|---|
+| Chat: claude.ai, mobile app, desktop app's Chat mode | Account settings | Pasted into the preferences field |
+| Claude Code on the Mac: terminal, IDE, desktop app's Code tab | `CLAUDE.md` files | Through the symlink, at the next session; a change committed elsewhere needs a pull first |
+| Claude Code in the cloud: claude.ai/code, cloud sessions from the desktop or mobile app, routines | `CLAUDE.md` files | As a copy from `main`, taken when the environment is built |
+| Cowork on the Mac | `CLAUDE.md` files | No, see Known limits |
+
+What a session reads decides the surface, not the app: the desktop app hosts both.
+Project instructions reach claude.ai through the project's instructions field and
+Claude Code through the repository's `CLAUDE.md`, cloud sessions included.
+
+## Files
+
+| File | Purpose |
+|---|---|
+| `user-instructions.md` | Personal instructions for all work, on every surface. The master. Project rules never go here |
+| `setup-mac.sh` | Links `~/.claude/CLAUDE.md` to `user-instructions.md` |
+| `setup-cloud.sh` | Writes `user-instructions.md` to `~/.claude/CLAUDE.md` in a cloud VM |
+| `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
+| `CLAUDE.md` | Imports `project-instructions.md`, then rules for Claude Code only |
+
+`user-instructions.md` is plain text: one rule per paragraph, blank lines between, no
+tables, `#` headings, bullets or angle brackets. The claude.ai field takes only text,
+and the raw file and the rendered GitHub page then copy as the same text.
+
+## Design principles
+
+- Instruction files hold directives only. Explanations live in this README.
+- Rules in `user-instructions.md` and `project-instructions.md` hold on both surfaces.
+  Content only Claude Code can use goes into `CLAUDE.md`, below the import.
+- Rules are short and checkable, and state the behaviour wanted rather than how a
+  product works, so a product change does not break them.
+- Reliability comes from structure (which file holds what, the import, the symlink,
+  the setup script), not from prose about how Claude works.
 
 ## Setting up a project repository
 
