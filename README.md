@@ -111,24 +111,6 @@ Other files need nothing.
 comment line (for example the date) and save. Otherwise the change arrives when the
 cached environment expires, after roughly seven days.
 
-## How it works
-
-```
-user-instructions.md  ──symlink──▶  ~/.claude/CLAUDE.md   (Claude Code, local)
-        │
-        ├──── downloaded by ────▶  ~/.claude/CLAUDE.md   (Claude Code, cloud)
-        │     setup-cloud.sh
-        │
-        └──── pasted by hand ───▶  claude.ai Settings > Profile > personal preferences
-```
-
-The Claude app reads your account settings; Claude Code reads `CLAUDE.md` files. On
-your own machine the symlink makes an edit in the clone apply at the next session; a
-change committed elsewhere needs a pull first. A cloud session gets a copy from
-`main`, taken when its environment is built. Project instructions reach the Claude
-app through the project's instructions field and Claude Code through the repository's
-`CLAUDE.md`, cloud sessions included.
-
 ## Files
 
 | File | Purpose |
@@ -159,7 +141,7 @@ text, and the raw file and the rendered GitHub page then copy as the same text.
 | File | Read by | Holds |
 |---|---|---|
 | `project-instructions.md` | Claude Code through the import; the Claude app pasted into the project's instructions field | The project's rules, valid for both. The master |
-| `CLAUDE.md` | Claude Code only | The import on its first line, then only what needs Claude Code: build and test commands, file paths |
+| `CLAUDE.md` | Claude Code only, locally and in cloud sessions, which clone the repository | The import on its first line, then only what needs Claude Code: build and test commands, file paths |
 
 ```markdown
 @project-instructions.md
