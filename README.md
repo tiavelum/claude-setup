@@ -90,14 +90,25 @@ The script runs before Claude Code starts in a new VM and writes to the same pat
 `setup-mac.sh` links on the Mac. `|| true` lets the session start, without personal
 instructions, if the download fails. The comment line exists only to force rebuilds.
 
-## Changing the instructions
+## After changing a file
 
-1. Edit `user-instructions.md` and commit, keeping it plain text.
-2. Mac: if committed anywhere but the clone, `git -C ~/vc/claude-setup pull`.
-3. claude.ai: replace the whole preferences field. Applies to new conversations.
-4. Cloud: in each environment, open the setup script (steps 1 to 3 above), update the
-   date and save. This forces a rebuild; otherwise the change arrives when the cache
-   expires, after roughly seven days.
+Commit first. Then do what the row says:
+
+| Changed file | Mac | claude.ai | Cloud sessions |
+|---|---|---|---|
+| `user-instructions.md` | Pull the clone¹ | Replace the whole personal preferences field (Settings > Profile); applies to new conversations | Force a rebuild² |
+| `project-instructions.md` | Pull the clone¹ | Replace this project's instructions field | Nothing; each session clones the repository |
+| `CLAUDE.md` | Pull the clone¹ | Nothing | Nothing; each session clones the repository |
+| `setup-mac.sh` | Pull the clone¹, then run `bash ~/vc/claude-setup/setup-mac.sh` | Nothing | Nothing |
+| `setup-cloud.sh` | Nothing | Nothing | Force a rebuild² |
+| `README.md` | Nothing | Nothing | Nothing |
+
+¹ `git -C ~/vc/claude-setup pull`, needed only when the commit was made anywhere but
+the local clone. Claude Code on the Mac picks up the change at the next session.
+
+² In each cloud environment, open the setup script (steps 1 to 3 under "Cloud
+sessions"), change the comment line (for example the date) and save. Without this,
+the change arrives only when the cached environment expires, after roughly seven days.
 
 ## Setting up a project repository
 
@@ -140,7 +151,7 @@ Claude Code's auto memory keeps its own notes in
 - Cowork skips a `~/.claude/CLAUDE.md` that is a symlink. The terminal and the Code
   tab are not affected.
 - Cloud sessions lag behind `main` until their environment is rebuilt, up to about a
-  week (see "Changing the instructions", step 4).
+  week (see "After changing a file").
 - Anthropic's documentation does not describe loading a `~/.claude/CLAUDE.md` written
   by a setup script. Verified on 2026-10-02; if cloud sessions stop showing the
   personal instructions, repeat the check in step 5 under "Cloud sessions".
