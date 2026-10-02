@@ -11,17 +11,22 @@ belongs here.
 
 ### Local machine
 
-Written and tested on a Mac; the script uses nothing Mac-specific.
+1. Clone the repository and link the instructions:
 
-```bash
-git clone git@github.com:tiavelum/claude-setup.git ~/vc/claude-setup
-bash ~/vc/claude-setup/setup-local.sh
-```
+   ```bash
+   git clone git@github.com:tiavelum/claude-setup.git ~/vc/claude-setup
+   bash ~/vc/claude-setup/setup-local.sh
+   ```
 
-An existing `~/.claude/CLAUDE.md` is first moved to
-`~/.claude/CLAUDE.md.backup-<timestamp>`; carry over anything worth keeping. Safe to
-run again. Check: `/context` in a Claude Code session lists `~/.claude/CLAUDE.md` under
-Memory files.
+   `~/.claude/CLAUDE.md` now points to `user-instructions.md` in the clone.
+
+2. Verify: start Claude Code and run
+
+   ```
+   /context
+   ```
+
+   Memory files must list `~/.claude/CLAUDE.md`.
 
 ### Cloud sessions
 
