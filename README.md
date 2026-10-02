@@ -99,6 +99,7 @@ account; usually there is just one, called "Default".
 | `setup-cloud.sh` | Writes `user-instructions.md` to `~/.claude/CLAUDE.md` in a cloud VM |
 | `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
 | `CLAUDE.md` | Imports `project-instructions.md`, then rules for Claude Code only |
+| `skills/project-instructions/SKILL.md` | Guided creation and review of a repository's `project-instructions.md` |
 
 The instruction files hold directives only; explanations live in this README.
 
@@ -132,8 +133,9 @@ cached environment expires, after roughly seven days.
 
 Every repository used with Claude gets two files:
 
-1. `project-instructions.md` with the project's rules. Paste it into the claude.ai
-   project's instructions field, and again after every change.
+1. `project-instructions.md` with the project's rules. Paste the whole file into the
+   claude.ai project's instructions field, and again after every change. Leave the
+   project's description field empty or minimal; Claude does not read it.
 2. `CLAUDE.md`, which imports those rules for Claude Code. Start from this template
    and add below the import only what Claude Code alone needs:
 
@@ -145,6 +147,23 @@ Every repository used with Claude gets two files:
    - Build: ...
    - Test: ...
    ```
+
+To write or review a project's instructions, use the `project-instructions` skill.
+
+### What project-instructions.md contains
+
+In this order, usually one screen in total:
+
+1. **Anchor:** the repository (`tiavelum/<name>`), its local clone (`~/vc/<name>`),
+   and the rule to read `README.md` before working in it and follow it.
+2. **Purpose:** one or two sentences on what the project is for.
+3. **Rules:** only what holds for this project: invariants, when a change counts as
+   done, approval steps, and constraints that protect data.
+
+The file points to knowledge; it does not hold it. What the README or the
+repository says stays there, and what `user-instructions.md` says already applies
+everywhere. A rule earns its place when Claude would otherwise get it wrong,
+typically the second time you correct the same thing.
 
 ## Memory
 
