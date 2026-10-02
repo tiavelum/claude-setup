@@ -1,10 +1,11 @@
 # claude-setup
 
-Personal instructions for Claude: one text for claude.ai and Claude Code, plus the
-pattern every project repository follows.
+Personal instructions for Claude, kept in a single file, `user-instructions.md`, and
+delivered from there to claude.ai, Claude Code on the Mac and Claude Code in the
+cloud. Also the instruction pattern every project repository follows.
 
-**Keep this repository public.** Cloud sessions download `user-instructions.md` and
-`setup-cloud.sh` from it without credentials, so nothing private belongs here.
+**Keep this repository public.** Cloud sessions download from it, so nothing private
+belongs here.
 
 ## Install
 
