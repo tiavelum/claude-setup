@@ -89,6 +89,20 @@ account; usually there is just one, called "Default".
 
    Memory files must list `/root/.claude/CLAUDE.md`.
 
+## Files
+
+| File | Purpose |
+|---|---|
+| `user-instructions.md` | Personal instructions for all work, everywhere. The master. Project rules never go here |
+| `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
+| `CLAUDE.md` | Imports `project-instructions.md`, then rules for Claude Code only |
+| `setup-local.sh` | Links `~/.claude/CLAUDE.md` to `user-instructions.md` on your own machine |
+| `setup-cloud.sh` | Writes `user-instructions.md` to `~/.claude/CLAUDE.md` in a cloud VM |
+
+`user-instructions.md` is plain text: one rule per paragraph, blank lines between, no
+tables, `#` headings, bullets or angle brackets. The preferences field takes only
+text, and the raw file and the rendered GitHub page then copy as the same text.
+
 ## After changing a file
 
 Commit, then:
@@ -110,20 +124,6 @@ Other files need nothing.
 ³ Open the setup script as in Setup, "Claude Code, cloud", steps 1 to 3, change the
 comment line (for example the date) and save. Otherwise the change arrives when the
 cached environment expires, after roughly seven days.
-
-## Files
-
-| File | Purpose |
-|---|---|
-| `user-instructions.md` | Personal instructions for all work, everywhere. The master. Project rules never go here |
-| `setup-local.sh` | Links `~/.claude/CLAUDE.md` to `user-instructions.md` on your own machine |
-| `setup-cloud.sh` | Writes `user-instructions.md` to `~/.claude/CLAUDE.md` in a cloud VM |
-| `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
-| `CLAUDE.md` | Imports `project-instructions.md`, then rules for Claude Code only |
-
-`user-instructions.md` is plain text: one rule per paragraph, blank lines between, no
-tables, `#` headings, bullets or angle brackets. The preferences field takes only
-text, and the raw file and the rendered GitHub page then copy as the same text.
 
 ## Design principles
 
