@@ -73,22 +73,34 @@ To confirm it worked, run `/context` in a Claude Code session and look for
 
 ### For cloud sessions
 
-At claude.ai/code, open the environment selector, edit each cloud environment you
-use, and put this in its **Setup script** field:
+Cloud sessions read nothing from the Mac, so this is a setting in the claude.ai
+account, made once per cloud environment. Most accounts have a single environment
+called "Default". It works only while this repository is public.
 
-```bash
-# rebuilt 2026-10-02
-curl -fsSL https://raw.githubusercontent.com/tiavelum/claude-setup/main/setup-cloud.sh | bash || true
-```
+1. Open any Claude Code session at claude.ai/code. The badge next to the session title
+   at the top left shows the environment and repository, for example
+   "Default · claude-setup".
+2. Click the session title (cloud icon and name, with a down arrow) to open the
+   session menu, and choose **Edit cloud environment**.
+3. In the dialog "Edit cloud environment", leave **Network access** at **Trusted**,
+   which allows downloads from GitHub. Put this in **Setup script**, with the `curl`
+   command as a single line (the field may wrap it on screen):
+
+   ```bash
+   # rebuilt 2026-10-02
+   curl -fsSL https://raw.githubusercontent.com/tiavelum/claude-setup/main/setup-cloud.sh | bash || true
+   ```
+
+4. Click **Save changes**. As the dialog says, changes apply to new sessions only.
+5. Start a new session with **New** in the sidebar, run `/context`, and check that
+   Memory files lists `/root/.claude/CLAUDE.md` in addition to the repository's
+   `CLAUDE.md` and `project-instructions.md`.
 
 The setup script runs before Claude Code starts in a new cloud VM. `setup-cloud.sh`
 downloads `user-instructions.md` from `main` and writes it to `~/.claude/CLAUDE.md`,
 the same path `setup-mac.sh` links on the Mac. `|| true` keeps a failed download from
 stopping the session; it then starts without the personal instructions. The comment
 line exists only to force a rebuild (see "Changing the instructions").
-
-To confirm it worked, start a cloud session, run `/context`, and look for
-`~/.claude/CLAUDE.md` under Memory files.
 
 ## Contents
 
@@ -121,10 +133,12 @@ repository, following the same pattern every project repository uses (see
    version.
 3. Replace the whole claude.ai personal preferences field with the new text. Changes
    there apply to new conversations only.
-4. For cloud sessions, update the date in the comment line of each cloud environment's
-   setup script. Changing the script makes the environment rebuild, so the next new
-   cloud session downloads the new text. Without this step, cloud sessions pick up the
-   change only when the cached environment expires, after roughly seven days.
+4. For cloud sessions, open **Edit cloud environment** as in steps 1 and 2 under "For
+   cloud sessions", update the date in the comment line of the setup script, and save.
+   Changing the script makes the environment rebuild, so the next new cloud session
+   downloads the new text. Without this step, cloud sessions pick up the change only
+   when the cached environment expires, after roughly seven days. Repeat for each
+   cloud environment.
 
 ## Setting up a project repository
 
@@ -175,6 +189,7 @@ Claude Code's auto memory writes its own notes to
 - Cloud sessions see `user-instructions.md` as it was when their environment was last
   built, which can lag behind `main` by up to about a week unless the rebuild in
   "Changing the instructions" is triggered.
-- Anthropic's documentation does not state that Claude Code loads a
-  `~/.claude/CLAUDE.md` written by a setup script; it is the standard user-level path,
-  and the `/context` check under "For cloud sessions" confirms it per environment.
+- Loading a `~/.claude/CLAUDE.md` written by a setup script is not described in
+  Anthropic's documentation. It was verified on 2026-10-02 with `/context`; repeat the
+  check in step 5 under "For cloud sessions" if cloud sessions stop showing the
+  personal instructions.
