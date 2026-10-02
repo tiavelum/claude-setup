@@ -1,7 +1,7 @@
 # claude-setup
 
-Andi's personal instructions for Claude: one text for claude.ai and Claude Code, plus
-the pattern every project repository follows.
+Personal instructions for Claude: one text for claude.ai and Claude Code, plus the
+pattern every project repository follows.
 
 **Keep this repository public.** Cloud sessions download `user-instructions.md` and
 `setup-cloud.sh` from it without credentials, so nothing private belongs here.
