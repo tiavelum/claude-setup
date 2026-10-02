@@ -148,22 +148,25 @@ Every repository used with Claude gets two files:
 
 ## Memory
 
-Besides the instruction files, Claude keeps memory in two layers:
+Memory is what Claude records itself, as opposed to the instructions you write:
 
 | Layer | Claude app | Claude Code |
 |---|---|---|
-| General, used everywhere | Account memory | `~/.claude/CLAUDE.md`, i.e. `user-instructions.md` |
-| Project, used only within that project | The claude.ai project's memory | The repository's `CLAUDE.md` and `project-instructions.md`, plus auto memory |
+| General, used everywhere | Account memory | – |
+| Project, used only within that project | The claude.ai project's memory | Auto memory of that repository |
 
-In Claude Code a project is a repository: its files load whenever a session works in
-it. `~/.claude` is Claude Code's own folder on the machine where it runs; the Claude
-app does not use it.
+When Claude should record something durable, the memory rules in
+`user-instructions.md` apply: it proposes where, and shows the exact text before
+writing. Claude Code has no account memory, so there the place is an instruction file:
+`user-instructions.md` for general facts, the repository's `project-instructions.md`
+for project facts.
 
-The memory rules in `user-instructions.md` govern what Claude records at your request
-or proposes to record: it shows the exact text before writing. Both products also save
-memory on their own, outside those rules: the Claude app from your chat history, and
-Claude Code as auto memory, notes kept per repository in
-`~/.claude/projects/<project>/memory/`.
+Both products also record memory automatically, outside those rules. The Claude app
+does so in your account. Claude Code keeps auto memory as files on the machine where
+it runs, under `~/.claude/projects/<repository>/memory/`.
+
+`/context` in Claude Code lists `CLAUDE.md` files under "Memory files"; in this README
+they count as instructions.
 
 ## Known limits
 
