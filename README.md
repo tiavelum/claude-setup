@@ -91,23 +91,23 @@ account; usually there is just one, called "Default".
 
 ## After changing a file
 
-Commit first. Then do what the row says:
+Commit, then:
 
 | Changed file | Claude app | Claude Code, local | Claude Code, cloud |
 |---|---|---|---|
-| `user-instructions.md` | Replace the whole personal preferences field (Settings > Profile); applies to new chats | Pull the clone¹ | Force a rebuild² |
-| `project-instructions.md` | Replace this project's instructions field | Pull the clone¹ | Nothing; each session clones the repository |
-| `CLAUDE.md` | Nothing | Pull the clone¹ | Nothing; each session clones the repository |
-| `setup-local.sh` | Nothing | Pull the clone¹, then run `bash ~/vc/claude-setup/setup-local.sh` | Nothing |
-| `setup-cloud.sh` | Nothing | Nothing | Force a rebuild² |
-| `README.md` | Nothing | Nothing | Nothing |
+| `user-instructions.md` | Paste into preferences¹ | Pull² | Rebuild³ |
+| `project-instructions.md` | Paste into project instructions¹ | Pull² | – |
+| `CLAUDE.md` | – | Pull² | – |
+| `setup-local.sh` | – | Pull², then rerun the script | – |
+| `setup-cloud.sh` | – | – | Rebuild³ |
 
-¹ `git -C ~/vc/claude-setup pull`, needed only when the commit was made anywhere but
-the local clone. Claude Code picks up the change at the next session.
+Other files need nothing.
 
-² In each cloud environment, open the setup script (steps 1 to 3 under "Claude Code,
-cloud"), change the comment line (for example the date) and save. Without this, the
-change arrives only when the cached environment expires, after roughly seven days.
+¹ Replace the whole field, as in Setup, "Claude app". Applies to new chats.
+² `git -C ~/vc/claude-setup pull`, only if the commit was made outside the local clone.
+³ Open the setup script as in Setup, "Claude Code, cloud", steps 1 to 3, change the
+comment line (for example the date) and save. Otherwise the change arrives when the
+cached environment expires, after roughly seven days.
 
 ## How it works
 
