@@ -104,7 +104,9 @@ Commit, then:
 Other files need nothing.
 
 ¹ Replace the whole field, as in Setup, "Claude app". Applies to new chats.
+
 ² `git -C ~/vc/claude-setup pull`, only if the commit was made outside the local clone.
+
 ³ Open the setup script as in Setup, "Claude Code, cloud", steps 1 to 3, change the
 comment line (for example the date) and save. Otherwise the change arrives when the
 cached environment expires, after roughly seven days.
