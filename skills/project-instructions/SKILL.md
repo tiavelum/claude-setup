@@ -5,7 +5,7 @@ description: Create or review a repository's project-instructions.md and CLAUDE.
 
 # Project instructions
 
-Apply the INSTRUCTION FILES rules of the user instructions throughout.
+If the repository has no project-instructions.md, follow "Create a new file". If it has one, follow "Review an existing file". Apply the INSTRUCTION FILES rules of the user instructions throughout.
 
 ## Anatomy
 
@@ -17,7 +17,7 @@ project-instructions.md has three parts, in this order:
 
 CLAUDE.md starts with the line `@project-instructions.md`. Add below it only what Claude Code alone can use.
 
-## Create
+## Create a new file
 
 1. Read the repository's README and list its top-level files. If there is no README, say so before drafting.
 2. Ask in one round only what the repository cannot answer: the project's purpose, what Claude has got wrong or must never do, when a change counts as done, and what data must stay private.
@@ -26,13 +26,13 @@ CLAUDE.md starts with the line `@project-instructions.md`. Add below it only wha
 5. Show both files in full and commit only after approval.
 6. After the commit, tell me to paste the whole of project-instructions.md into the claude.ai project's instructions field, and to create the project if it does not exist.
 
-## Review
+## Review an existing file
 
 1. Read project-instructions.md, CLAUDE.md and the README from the target branch. If this session runs in a claude.ai project, compare its instructions field with the file.
 2. Run the checks below and report each finding with a proposed fix, most important first.
 3. Migrate older layouts: fold project-description.md into the purpose and delete it, move claude/project-instructions.md to the repository root, remove headers and copy markers, and update the CLAUDE.md imports.
 4. Show the revised file in full and commit only after approval.
-5. After the commit, give the same paste reminder as in Create.
+5. After the commit, give the same paste reminder as in "Create a new file".
 
 ## Checks
 
@@ -40,7 +40,7 @@ CLAUDE.md starts with the line `@project-instructions.md`. Add below it only wha
 - No rule repeats the user instructions or restates the README.
 - No content the repository already holds, such as file lists, structure or procedures; point to it instead.
 - Each rule is checkable. A reason is at most one clause and only where the purpose is not self-evident.
-- Each rule works in both the Claude app and Claude Code, or sits in CLAUDE.md.
+- Each rule works in both the Claude app and Claude Code. A rule only Claude Code can use goes into CLAUDE.md instead.
 - No contradictions with the README or the user instructions.
 - No notes about the file itself, no first name, no capitals or "CRITICAL" for emphasis.
 - The file fits on one screen. If it does not, name what could move to the README or a skill.
