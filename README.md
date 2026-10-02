@@ -1,19 +1,21 @@
 # claude-setup
 
 Personal instructions for Claude, kept in a single file, `user-instructions.md`, and
-delivered from there to claude.ai, Claude Code on the Mac and Claude Code in the
-cloud. Also the instruction pattern every project repository follows.
+delivered from there to claude.ai, Claude Code on your own machine and Claude Code in
+the cloud. Also the instruction pattern every project repository follows.
 
 **Keep this repository public.** Cloud sessions download from it, so nothing private
 belongs here.
 
 ## Install
 
-### Mac
+### Local machine
+
+Written and tested on a Mac; the script uses nothing Mac-specific.
 
 ```bash
 git clone git@github.com:tiavelum/claude-setup.git ~/vc/claude-setup
-bash ~/vc/claude-setup/setup-mac.sh
+bash ~/vc/claude-setup/setup-local.sh
 ```
 
 An existing `~/.claude/CLAUDE.md` is first moved to
@@ -42,24 +44,25 @@ An account setting, made once per cloud environment (usually just "Default"):
    `/root/.claude/CLAUDE.md` next to the repository's files.
 
 The script runs before Claude Code starts in a new VM and writes to the same path
-`setup-mac.sh` links on the Mac. `|| true` lets the session start, without personal
-instructions, if the download fails. The comment line exists only to force rebuilds.
+`setup-local.sh` links on your own machine. `|| true` lets the session start, without
+personal instructions, if the download fails. The comment line exists only to force
+rebuilds.
 
 ## After changing a file
 
 Commit first. Then do what the row says:
 
-| Changed file | Mac | claude.ai | Cloud sessions |
+| Changed file | Local machine | claude.ai | Cloud sessions |
 |---|---|---|---|
 | `user-instructions.md` | Pull the clone¹ | Replace the whole personal preferences field (Settings > Profile); applies to new conversations | Force a rebuild² |
 | `project-instructions.md` | Pull the clone¹ | Replace this project's instructions field | Nothing; each session clones the repository |
 | `CLAUDE.md` | Pull the clone¹ | Nothing | Nothing; each session clones the repository |
-| `setup-mac.sh` | Pull the clone¹, then run `bash ~/vc/claude-setup/setup-mac.sh` | Nothing | Nothing |
+| `setup-local.sh` | Pull the clone¹, then run `bash ~/vc/claude-setup/setup-local.sh` | Nothing | Nothing |
 | `setup-cloud.sh` | Nothing | Nothing | Force a rebuild² |
 | `README.md` | Nothing | Nothing | Nothing |
 
 ¹ `git -C ~/vc/claude-setup pull`, needed only when the commit was made anywhere but
-the local clone. Claude Code on the Mac picks up the change at the next session.
+the local clone. Claude Code picks up the change at the next session.
 
 ² In each cloud environment, open the setup script (steps 1 to 3 under "Cloud
 sessions"), change the comment line (for example the date) and save. Without this,
@@ -68,7 +71,7 @@ the change arrives only when the cached environment expires, after roughly seven
 ## How it works
 
 ```
-user-instructions.md  ──symlink──▶  ~/.claude/CLAUDE.md   (Claude Code on the Mac)
+user-instructions.md  ──symlink──▶  ~/.claude/CLAUDE.md   (Claude Code, local machine)
         │
         ├──── downloaded by ────▶  ~/.claude/CLAUDE.md   (Claude Code cloud sessions)
         │     setup-cloud.sh
@@ -79,9 +82,9 @@ user-instructions.md  ──symlink──▶  ~/.claude/CLAUDE.md   (Claude Code
 | Where Claude runs | Reads | Personal instructions arrive |
 |---|---|---|
 | Chat: claude.ai, mobile app, desktop app's Chat mode | Account settings | Pasted into the preferences field |
-| Claude Code on the Mac: terminal, IDE, desktop app's Code tab | `CLAUDE.md` files | Through the symlink, at the next session; a change committed elsewhere needs a pull first |
+| Claude Code on your own machine: terminal, IDE, desktop app's Code tab | `CLAUDE.md` files | Through the symlink, at the next session; a change committed elsewhere needs a pull first |
 | Claude Code in the cloud: claude.ai/code, cloud sessions from the desktop or mobile app, routines | `CLAUDE.md` files | As a copy from `main`, taken when the environment is built |
-| Cowork on the Mac | `CLAUDE.md` files | No, see Known limits |
+| Cowork in the desktop app | `CLAUDE.md` files | No, see Known limits |
 
 What a session reads decides the surface, not the app: the desktop app hosts both.
 Project instructions reach claude.ai through the project's instructions field and
@@ -92,7 +95,7 @@ Claude Code through the repository's `CLAUDE.md`, cloud sessions included.
 | File | Purpose |
 |---|---|
 | `user-instructions.md` | Personal instructions for all work, on every surface. The master. Project rules never go here |
-| `setup-mac.sh` | Links `~/.claude/CLAUDE.md` to `user-instructions.md` |
+| `setup-local.sh` | Links `~/.claude/CLAUDE.md` to `user-instructions.md` on your own machine |
 | `setup-cloud.sh` | Writes `user-instructions.md` to `~/.claude/CLAUDE.md` in a cloud VM |
 | `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
 | `CLAUDE.md` | Imports `project-instructions.md`, then rules for Claude Code only |
