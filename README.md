@@ -1,15 +1,16 @@
 # claude-setup
 
-Personal instructions for Claude, kept in a single file, `user-instructions.md`, and
-delivered from there to the Claude app and to Claude Code, locally and in the cloud.
-Also the instruction pattern every project repository follows.
+User instructions for Claude, the rules for all your work, kept in a single file,
+`user-instructions.md`, and delivered from there to the Claude app and to Claude Code,
+locally and in the cloud. Also the instruction pattern every project repository
+follows.
 
 **Keep this repository public.** Cloud sessions download from it, so nothing private
 belongs here.
 
 ## Setup
 
-Setup puts the same personal instructions in front of Claude everywhere you use it.
+Setup puts the same user instructions in front of Claude everywhere you use it.
 The Claude app reads them from your account. Claude Code reads them from
 `~/.claude/CLAUDE.md`, a file that has to be put in place separately on your own
 machine and in each cloud environment.
@@ -93,7 +94,7 @@ account; usually there is just one, called "Default".
 
 | File | Purpose |
 |---|---|
-| `user-instructions.md` | Personal instructions for all work, everywhere. The master. Project rules never go here |
+| `user-instructions.md` | User instructions for all work, everywhere. The master. Project rules never go here |
 | `setup-local.sh` | Links `~/.claude/CLAUDE.md` to `user-instructions.md` on your own machine |
 | `setup-cloud.sh` | Writes `user-instructions.md` to `~/.claude/CLAUDE.md` in a cloud VM |
 | `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
@@ -181,4 +182,4 @@ Claude Code's auto memory keeps its own notes in
   week (see "After changing a file").
 - Anthropic's documentation does not describe loading a `~/.claude/CLAUDE.md` written
   by a setup script. Verified on 2026-10-02; if cloud sessions stop showing the
-  personal instructions, repeat the check in step 5 under "Claude Code, cloud".
+  user instructions, repeat the check in step 5 under "Claude Code, cloud".

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Link ~/.claude/CLAUDE.md to user-instructions.md in this repository,
-# so Claude Code reads the personal instructions in every session.
+# so Claude Code reads the user instructions in every session.
 # Written and tested on a Mac; nothing in it is Mac-specific.
 set -euo pipefail
 
