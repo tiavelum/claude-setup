@@ -30,28 +30,40 @@ belongs here.
 
 ### Cloud sessions
 
-An account setting, made once per cloud environment (usually just "Default"):
+Cloud sessions are configured in your claude.ai account, once per cloud environment
+(usually there is just one, called "Default").
 
-1. Open any Claude Code session at claude.ai/code. The badge next to the session title
-   shows environment and repository, e.g. "Default · claude-setup".
-2. Click the session title and choose **Edit cloud environment**.
-3. Keep **Network access** at **Trusted** (it allows GitHub downloads). Set **Setup
-   script** to the following, with the `curl` command on one line (the field may wrap
-   it on screen):
+1. In a browser, log in to claude.ai and open Claude Code:
+
+   ```
+   https://claude.ai/code
+   ```
+
+2. Open any session, or start one with **New**. Click the session title at the top
+   left and choose **Edit cloud environment**.
+
+3. In **Setup script**, enter:
 
    ```bash
    # rebuilt 2026-10-02
    curl -fsSL https://raw.githubusercontent.com/tiavelum/claude-setup/main/setup-cloud.sh | bash || true
    ```
 
-4. **Save changes.** They apply to new sessions only.
-5. Start a session with **New** and run `/context`: Memory files must list
-   `/root/.claude/CLAUDE.md` next to the repository's files.
+   Keep the `curl` command on one line; the field may wrap it on screen.
 
-The script runs before Claude Code starts in a new VM and writes to the same path
-`setup-local.sh` links on your own machine. `|| true` lets the session start, without
-personal instructions, if the download fails. The comment line exists only to force
-rebuilds.
+4. Click **Save changes**. Changes apply to new sessions only.
+
+5. Verify: start a new session with **New** and run
+
+   ```
+   /context
+   ```
+
+   Memory files must list `/root/.claude/CLAUDE.md`.
+
+If the download fails, `|| true` lets the session start without the personal
+instructions. The comment line only serves to force a rebuild (see "After changing a
+file").
 
 ## After changing a file
 
