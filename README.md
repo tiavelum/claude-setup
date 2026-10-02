@@ -1,7 +1,7 @@
 # claude-setup
 
-Andi's personal instructions for Claude, kept as one text that both claude.ai and
-Claude Code use.
+Andi's personal instructions for Claude, kept as one text that claude.ai, the desktop
+app and Claude Code all use, and the pattern every project repository follows.
 
 ## How it fits together
 
@@ -18,10 +18,16 @@ through the symlink, so it sees whatever version that clone holds: an edit made 
 clone has been pulled. claude.ai has no way to read a file, so after each change the
 text is pasted into the personal preferences field by hand.
 
-The file holds only general rules. Rules for a single project live in that project's
-repository as `project-instructions.md`, imported by its `CLAUDE.md` and pasted into
-the claude.ai project's instructions field. This repository follows the same pattern
-for its own work.
+## Design principles
+
+- Instruction files (`user-instructions.md`, `project-instructions.md`, `CLAUDE.md`)
+  hold directives only. Explanations, like this one, live in the README.
+- Rules in `user-instructions.md` and `project-instructions.md` hold unchanged on both
+  surfaces. Content only Claude Code can use goes into `CLAUDE.md`, below the import.
+- Every rule is short and checkable, and states the behaviour wanted rather than how a
+  Claude product works. A product change then does not break it.
+- The setup is made reliable by structure: which file holds what, the import and the
+  symlink, not by prose describing how Claude works.
 
 ## Install on a Mac
 
@@ -44,26 +50,74 @@ To confirm it worked, run `/context` in a Claude Code session and look for
 |---|---|
 | `user-instructions.md` | The personal instructions, master copy for both surfaces |
 | `install.sh` | Links `~/.claude/CLAUDE.md` to `user-instructions.md` |
-| `project-instructions.md` | How Claude works on this repository; master of the claude.ai project's instructions field |
-| `CLAUDE.md` | Imports `project-instructions.md` for Claude Code sessions in this repository |
+| `project-instructions.md` | Rules for working on this repository; master of the claude.ai project's instructions field |
+| `CLAUDE.md` | Imports `project-instructions.md` and adds rules for Claude Code sessions in this repository |
+
+## The files
+
+`user-instructions.md` applies to all of Andi's work, on every surface. Rules for a
+single project never go here; they live in that project's `project-instructions.md`.
+The file is plain text: one rule per paragraph, separated by blank lines, and no
+tables, `#` headings, bullets or angle brackets. The claude.ai preferences field takes
+only text, and this way the raw file and the rendered GitHub page copy as the same
+text.
+
+`project-instructions.md` and `CLAUDE.md` here govern how Claude works on this
+repository, following the same pattern every project repository uses (see
+"Setting up a project repository").
 
 ## Changing the instructions
 
-1. Edit `user-instructions.md` and commit. Keep it plain text: one rule per
-   paragraph, separated by blank lines, and no tables, `#` headings, bullets or angle
-   brackets. The claude.ai preferences field takes only text, and this way the raw
-   file and the rendered GitHub page copy as the same text.
+1. Edit `user-instructions.md` and commit, keeping it plain text as described above.
 2. If the change was committed anywhere but the local clone, pull it on the Mac:
    `git -C ~/vc/claude-setup pull`. Until then, Claude Code keeps reading the old
    version.
 3. Replace the whole claude.ai personal preferences field with the new text. Changes
    there apply to new conversations only.
 
+## Setting up a project repository
+
+A repository that is also a claude.ai project gets two files:
+
+| File | Read by | Holds |
+|---|---|---|
+| `project-instructions.md` | Claude Code through the import; claude.ai pasted into the project's instructions field | The project's rules, valid on both surfaces. This is the master. |
+| `CLAUDE.md` | Claude Code only | The import on its first line, then only what needs Claude Code: build and test commands, file paths |
+
+Start `CLAUDE.md` from this template:
+
+```markdown
+@project-instructions.md
+
+## Claude Code only
+
+- Build: ...
+- Test: ...
+```
+
+- Import with `@`. A sentence telling Claude to read the file loads it only if Claude
+  decides to open it.
+- `/init` on a repository that already has a `CLAUDE.md` suggests improvements instead
+  of overwriting it. Put Code-only suggestions below the import and move anything that
+  holds on both surfaces into `project-instructions.md`.
+- After changing `project-instructions.md`, paste it into the claude.ai project's
+  instructions field.
+- Reference material lives in the repository. Claude Code reads it on demand; in
+  claude.ai, add it to the project's knowledge.
+
+## How memory maps onto the surfaces
+
+| Layer | claude.ai | Claude Code |
+|---|---|---|
+| General | Account memory | `user-instructions.md`, through `~/.claude/CLAUDE.md` |
+| Project | The project's memory | `project-instructions.md` and `CLAUDE.md`, plus auto memory |
+
+The memory rules in `user-instructions.md` cover what Claude writes deliberately.
+Claude Code's auto memory writes its own notes to
+`~/.claude/projects/<project>/memory/`, outside this repository.
+
 ## Known limits
 
-- In Cowork sessions on the desktop, Claude Code skips a `~/.claude/CLAUDE.md` that
-  is a symlink, so those sessions do not see these instructions. The terminal and
-  the Code tab of the desktop app are not affected.
-- Claude Code's auto memory stays on and writes its own notes to
-  `~/.claude/projects/<project>/memory/`, outside this repository. The memory rules in
-  `user-instructions.md` cover only what Claude writes deliberately.
+- In Cowork sessions on the desktop, Claude Code skips a `~/.claude/CLAUDE.md` that is
+  a symlink, so those sessions do not see these instructions. The terminal and the Code
+  tab of the desktop app are not affected.

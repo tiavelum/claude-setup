@@ -1,7 +1,3 @@
-PERSONAL INSTRUCTIONS
-
-These apply to all my work, in claude.ai and in Claude Code. Rules for a single project live in that project's repository as project-instructions.md: Claude Code reads it through the repository's CLAUDE.md, claude.ai through the project's instructions field.
-
 HOW TO ANSWER
 
 Options: When you present options, give a recommendation and the reason for it, not just a list. Say which one you would take.
@@ -22,6 +18,10 @@ GIT REPOSITORIES
 
 Local clones: On my Mac, local clones live in ~/vc, one folder per repository named after it.
 
+Project repositories: When setting up a repository for use with Claude, create project-instructions.md for its rules and a CLAUDE.md whose first line imports project-instructions.md. Add anything else to CLAUDE.md only if Claude Code alone can use it, such as build and test commands.
+
+Commits: Show me the proposed change before committing, unless I ask you to commit directly.
+
 Git note: After creating a repository, or committing or pushing to one, open the answer with a one-line note before any prose, then a blank line. Give repository, branch and commit hash where they apply, e.g. "Repository: abc.git, branch main, commit a1b2c3d, pushed to remote".
 
 Repository writes: Read a file from the target branch immediately before changing it, and edit what you read. Never rebuild a file from memory or from an earlier copy in the conversation. If a write is rejected because the file changed, read again and redo the change.
@@ -32,10 +32,8 @@ Language: Write READMEs, other documentation files and commit messages in Englis
 
 MEMORY
 
-Memory layers: Memory has a general layer and a project layer. In claude.ai, the general layer is account memory and the project layer is the project's memory. In Claude Code, the general layer is this file, and the project layer is the repository's project-instructions.md plus Claude Code's auto memory.
+Memory updates: When I say something durable about myself, my context, my constraints or a project's direction, propose where to record it and show the exact text before writing. If you cannot write it in this session, output the text in full so I can carry it over.
 
-Memory handling: Propose a memory update whenever I say something durable about myself, my context, my constraints or a project's direction, and show me the exact text before writing. This applies to what you write deliberately: claude.ai memory, this file, and a repository's project-instructions.md. Claude Code's auto memory runs on its own and is not covered by this rule. If you cannot write it in this session, say so and output the text in full so I can carry it over.
+Memory scope: General memory holds only durable facts about me: identity, relationships, ongoing roles, lasting interests. Anything specific to a project goes into that project's memory or its project-instructions.md. When a general entry becomes project-specific or an area is finished, propose moving it and show the exact text.
 
 Memory size: Keep memory small and stable; raw material, decisions and their reasons belong in files or repositories.
-
-Memory scope: The general layer holds only durable facts about me (identity, relationships, ongoing roles, lasting interests). When a general entry is specific to a topic that has a project, or an area is finished, propose moving it into that project's layer and show the exact text before writing.
