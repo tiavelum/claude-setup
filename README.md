@@ -7,18 +7,32 @@ the cloud. Also the instruction pattern every project repository follows.
 **Keep this repository public.** Cloud sessions download from it, so nothing private
 belongs here.
 
-## Install
+## Setup
+
+Setup puts the same personal instructions in front of Claude everywhere you use it:
+in claude.ai through your account, on your own machine and in the cloud through the
+file Claude Code reads at the start of every session, `~/.claude/CLAUDE.md`.
+
+### claude.ai
+
+Copies the instructions into your account, where every new chat reads them.
+
+1. Open **Settings > Profile** and paste the whole of `user-instructions.md` into the
+   personal preferences field.
+2. If you use a claude.ai project for this repository, paste `project-instructions.md`
+   into that project's instructions field.
 
 ### Local machine
 
-1. Clone the repository and link the instructions:
+Links `~/.claude/CLAUDE.md` to `user-instructions.md` in a local clone, so edits there
+apply from the next session.
+
+1. Clone the repository and run the setup script:
 
    ```bash
    git clone git@github.com:tiavelum/claude-setup.git ~/vc/claude-setup
    bash ~/vc/claude-setup/setup-local.sh
    ```
-
-   `~/.claude/CLAUDE.md` now points to `user-instructions.md` in the clone.
 
 2. Verify: start Claude Code and run
 
@@ -30,8 +44,9 @@ belongs here.
 
 ### Cloud sessions
 
-Cloud sessions are configured in your claude.ai account, once per cloud environment
-(usually there is just one, called "Default").
+Adds a setup script to your cloud environment that downloads `user-instructions.md`
+into every new cloud session. Done once per cloud environment in your claude.ai
+account; usually there is just one, called "Default".
 
 1. In a browser, log in to claude.ai and open Claude Code:
 
@@ -60,10 +75,6 @@ Cloud sessions are configured in your claude.ai account, once per cloud environm
    ```
 
    Memory files must list `/root/.claude/CLAUDE.md`.
-
-If the download fails, `|| true` lets the session start without the personal
-instructions. The comment line only serves to force a rebuild (see "After changing a
-file").
 
 ## After changing a file
 
