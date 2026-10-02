@@ -4,7 +4,7 @@ Andi's personal instructions for Claude, kept as one text that claude.ai and Cla
 Code both use, and the pattern every project repository follows.
 
 This repository must stay public: Claude Code cloud sessions download
-`user-instructions.md` and `cloud-setup.sh` from it without credentials. Keep anything
+`user-instructions.md` and `setup-cloud.sh` from it without credentials. Keep anything
 private out of it.
 
 ## How it fits together
@@ -13,7 +13,7 @@ private out of it.
 user-instructions.md  ──symlink──▶  ~/.claude/CLAUDE.md   (Claude Code on the Mac)
         │
         ├──── downloaded by ────▶  ~/.claude/CLAUDE.md   (Claude Code cloud sessions)
-        │     cloud-setup.sh
+        │     setup-cloud.sh
         │
         └──── pasted by hand ───▶  claude.ai Settings > Profile > personal preferences
 ```
@@ -37,7 +37,7 @@ instructions field), Claude Code reads `CLAUDE.md` files. The desktop app hosts 
 | Chat on claude.ai, the mobile app, and the desktop app's Chat mode | claude.ai | Yes, through the preferences field |
 | Claude Code on the Mac: terminal, IDE, the desktop app's Code tab | Claude Code | Yes, through the symlink |
 | Cowork on the Mac | Claude Code | No, see Known limits |
-| Claude Code in the cloud: claude.ai/code, cloud sessions started from the desktop or mobile app, routines | Claude Code | Yes, through `cloud-setup.sh`, in the version current when the environment was built |
+| Claude Code in the cloud: claude.ai/code, cloud sessions started from the desktop or mobile app, routines | Claude Code | Yes, through `setup-cloud.sh`, in the version current when the environment was built |
 
 Project instructions reach claude.ai through the project's instructions field, and
 Claude Code through the repository's `CLAUDE.md` wherever a session works in the
@@ -60,10 +60,10 @@ repository, including cloud sessions, which clone it.
 
 ```bash
 git clone git@github.com:tiavelum/claude-setup.git ~/vc/claude-setup
-bash ~/vc/claude-setup/install.sh
+bash ~/vc/claude-setup/setup-mac.sh
 ```
 
-`install.sh` links `~/.claude/CLAUDE.md` to `user-instructions.md`. An existing
+`setup-mac.sh` links `~/.claude/CLAUDE.md` to `user-instructions.md`. An existing
 `~/.claude/CLAUDE.md` is first moved to `~/.claude/CLAUDE.md.backup-<timestamp>`;
 check it and carry anything worth keeping into `user-instructions.md`. Running the
 script again is safe.
@@ -78,12 +78,12 @@ use, and put this in its **Setup script** field:
 
 ```bash
 # rebuilt 2026-10-02
-curl -fsSL https://raw.githubusercontent.com/tiavelum/claude-setup/main/cloud-setup.sh | bash || true
+curl -fsSL https://raw.githubusercontent.com/tiavelum/claude-setup/main/setup-cloud.sh | bash || true
 ```
 
-The setup script runs before Claude Code starts in a new cloud VM. `cloud-setup.sh`
+The setup script runs before Claude Code starts in a new cloud VM. `setup-cloud.sh`
 downloads `user-instructions.md` from `main` and writes it to `~/.claude/CLAUDE.md`,
-the same path `install.sh` links on the Mac. `|| true` keeps a failed download from
+the same path `setup-mac.sh` links on the Mac. `|| true` keeps a failed download from
 stopping the session; it then starts without the personal instructions. The comment
 line exists only to force a rebuild (see "Changing the instructions").
 
@@ -95,8 +95,8 @@ To confirm it worked, start a cloud session, run `/context`, and look for
 | File | Purpose |
 |---|---|
 | `user-instructions.md` | The personal instructions, master copy for both surfaces |
-| `install.sh` | Links `~/.claude/CLAUDE.md` to `user-instructions.md` on the Mac |
-| `cloud-setup.sh` | Writes `user-instructions.md` to `~/.claude/CLAUDE.md` in a cloud VM; run by the environment's setup script |
+| `setup-mac.sh` | Links `~/.claude/CLAUDE.md` to `user-instructions.md` on the Mac |
+| `setup-cloud.sh` | Writes `user-instructions.md` to `~/.claude/CLAUDE.md` in a cloud VM; run by the environment's setup script |
 | `project-instructions.md` | Rules for working on this repository; master of the claude.ai project's instructions field |
 | `CLAUDE.md` | Imports `project-instructions.md` and adds rules for Claude Code sessions in this repository |
 
