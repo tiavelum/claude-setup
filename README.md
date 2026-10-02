@@ -152,7 +152,7 @@ Memory is what Claude records itself, as opposed to the instructions you write:
 
 | Layer | Claude app | Claude Code |
 |---|---|---|
-| General, used everywhere | Account memory | – |
+| General, used in chats outside projects | Account memory | – |
 | Project, used only within that project | The claude.ai project's memory | Auto memory of that repository |
 
 When Claude should record something durable, the memory rules in
