@@ -1,12 +1,12 @@
 # claude-setup
 
-Andi's personal instructions for Claude, kept as one text that claude.ai, the desktop
-app and Claude Code all use, and the pattern every project repository follows.
+Andi's personal instructions for Claude, kept as one text that claude.ai and Claude
+Code both use, and the pattern every project repository follows.
 
 ## How it fits together
 
 ```
-user-instructions.md  ──symlink──▶  ~/.claude/CLAUDE.md   (Claude Code, every session)
+user-instructions.md  ──symlink──▶  ~/.claude/CLAUDE.md   (Claude Code on the Mac)
         │
         └──── pasted by hand ───▶  claude.ai Settings > Profile > personal preferences
 ```
@@ -17,6 +17,23 @@ through the symlink, so it sees whatever version that clone holds: an edit made 
 (on GitHub, or by a session through the GitHub connector) applies only after the
 clone has been pulled. claude.ai has no way to read a file, so after each change the
 text is pasted into the personal preferences field by hand.
+
+## Surfaces
+
+The setup knows two surfaces, told apart by what a session reads at startup rather
+than by the app it runs in: claude.ai reads the account settings (preferences, project
+instructions field), Claude Code reads `CLAUDE.md` files. The desktop app hosts both.
+
+| Where Claude runs | Surface | Personal instructions arrive |
+|---|---|---|
+| Chat on claude.ai, the mobile app, and the desktop app's Chat mode | claude.ai | Yes, through the preferences field |
+| Claude Code on the Mac: terminal, IDE, the desktop app's Code tab | Claude Code | Yes, through the symlink |
+| Cowork on the Mac | Claude Code | No, see Known limits |
+| Claude Code in the cloud: claude.ai/code, cloud sessions started from the desktop or mobile app, routines | Claude Code | No, see Known limits |
+
+Project instructions reach claude.ai through the project's instructions field, and
+Claude Code through the repository's `CLAUDE.md` wherever a session works in the
+repository, including cloud sessions, which clone it.
 
 ## Design principles
 
@@ -121,3 +138,6 @@ Claude Code's auto memory writes its own notes to
 - In Cowork sessions on the desktop, Claude Code skips a `~/.claude/CLAUDE.md` that is
   a symlink, so those sessions do not see these instructions. The terminal and the Code
   tab of the desktop app are not affected.
+- Claude Code cloud sessions start from a fresh clone of the repository and do not read
+  `~/.claude/CLAUDE.md`, which exists only on the Mac. They see a repository's project
+  instructions but not these personal instructions.
