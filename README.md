@@ -3,7 +3,7 @@
 User instructions for Claude, the rules for all your work, kept in a single file,
 `user-instructions.md`, and delivered from there to the Claude app and to Claude Code,
 locally and in the cloud. Also the instruction pattern every project repository
-follows.
+follows, and skills that apply it.
 
 **Keep this repository public.** Cloud sessions download from it, so nothing private
 belongs here.
@@ -90,6 +90,29 @@ account; usually there is just one, called "Default".
 
    Memory files must list `/root/.claude/CLAUDE.md`.
 
+### Skills
+
+Uploads a skill from `skills/` to your claude.ai account. The Claude app, Claude
+Code in the cloud and Claude Code locally all load it from there; locally this
+requires signing in with `/login` rather than an API key. Done once per skill.
+
+1. Package the skill folder; the ZIP must contain the folder named after the skill:
+
+   ```bash
+   cd ~/vc/claude-setup/skills && zip -r ~/Downloads/<skill>.zip <skill>
+   ```
+
+2. In the Claude app, open **Customize > Skills**, click **+**, choose
+   **Create skill**, then **Upload a skill**, and select the ZIP.
+
+3. Verify: start Claude Code and run
+
+   ```
+   /skills
+   ```
+
+   The skill must be listed under "claude.ai sync".
+
 ## Files
 
 | File | Purpose |
@@ -102,6 +125,9 @@ account; usually there is just one, called "Default".
 | `skills/project-instructions/SKILL.md` | Guided creation and review of a repository's `project-instructions.md` |
 
 The instruction files hold directives only; explanations live in this README.
+
+Skill frontmatter uses only `name` and `description`. The upload rejects fields that
+only Claude Code understands.
 
 `user-instructions.md` is plain text: one rule per paragraph, blank lines between, no
 tables, `#` headings, bullets or angle brackets. The preferences field takes only
@@ -118,6 +144,7 @@ Commit, then:
 | `setup-cloud.sh` | – | – | Rebuild³ |
 | `project-instructions.md` | Paste into project instructions¹ | Pull² | – |
 | `CLAUDE.md` | – | Pull² | – |
+| `skills/<skill>/SKILL.md` | Re-upload⁴ | – | – |
 
 Other files need nothing.
 
@@ -128,6 +155,10 @@ Other files need nothing.
 ³ Open the setup script as in Setup, "Claude Code, cloud", steps 1 to 3, change the
 comment line (for example the date) and save. Otherwise the change arrives when the
 cached environment expires, after roughly seven days.
+
+⁴ Package and upload as in Setup, "Skills". Claude Code picks up the new version on
+its own. Whether the upload replaces the existing skill or the old one has to be
+deleted first is not yet known.
 
 ## Setting up a project repository
 
