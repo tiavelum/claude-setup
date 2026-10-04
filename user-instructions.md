@@ -22,6 +22,8 @@ Project repositories: When setting up a repository for use with Claude, create p
 
 Commits: Show me the proposed change before committing, unless I ask you to commit directly.
 
+Tags: Create and push a tag only when I ask for one, following the version scheme the repository documents; if it documents none, ask me.
+
 Git note: After creating a repository, or committing or pushing to one, open the answer with a one-line note before any prose, then a blank line. Give repository, branch and commit hash where they apply, e.g. "Repository: abc.git, branch main, commit a1b2c3d, pushed to remote".
 
 Repository writes: Read a file from the target branch immediately before changing it, and edit what you read. Never rebuild a file from memory or from an earlier copy in the conversation. If a write is rejected because the file changed, read again and redo the change.
