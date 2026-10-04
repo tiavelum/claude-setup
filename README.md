@@ -31,8 +31,8 @@ uses the local setup.
 
 Copies the instructions into your account, where every new chat reads them.
 
-1. Open **Settings > Profile** and paste the whole of `user-instructions.md` into the
-   personal preferences field.
+1. Open **Settings > Account > Instructions for Claude** and paste the whole of
+   `user-instructions.md` into that field.
 2. If you use a claude.ai project for this repository, paste `project-instructions.md`
    into that project's instructions field.
 
@@ -130,8 +130,9 @@ Skill frontmatter uses only `name` and `description`. The upload rejects fields 
 only Claude Code understands.
 
 `user-instructions.md` is plain text: one rule per paragraph, blank lines between, no
-tables, `#` headings, bullets or angle brackets. The preferences field takes only
-text, and the raw file and the rendered GitHub page then copy as the same text.
+tables, `#` headings, bullets or angle brackets. The Instructions for Claude field
+takes only text, and the raw file and the rendered GitHub page then copy as the same
+text.
 
 ## After changing a file
 
@@ -139,7 +140,7 @@ Commit, then:
 
 | Changed file | Claude app | Claude Code, local | Claude Code, cloud |
 |---|---|---|---|
-| `user-instructions.md` | Paste into preferences¹ | Pull² | Rebuild³ |
+| `user-instructions.md` | Paste into Instructions for Claude¹ | Pull² | Rebuild³ |
 | `setup-local.sh` | – | Pull², then rerun the script | – |
 | `setup-cloud.sh` | – | – | Rebuild³ |
 | `project-instructions.md` | Paste into project instructions¹ | Pull² | – |
@@ -219,9 +220,6 @@ they count as instructions.
 
 ## Known limits
 
-- Claude Code's documentation says Cowork sessions on the desktop skip a
-  `~/.claude/CLAUDE.md` that is a symlink. Whether this still applies is open in
-  issue #4.
 - Cloud sessions lag behind `main` until their environment is rebuilt, up to about a
   week (see "After changing a file").
 - Anthropic's documentation does not describe loading a `~/.claude/CLAUDE.md` written
