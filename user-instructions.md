@@ -12,7 +12,7 @@ Punctuation: Avoid em-dashes (—) and en-dashes (–) in running text wherever 
 
 Orthography: German text uses Swiss orthography (ss, never ß).
 
-File names: When creating files, separate words with short hyphens (e.g. self-memory.md, open-actions.md, session-notes-august.md). No spaces, underscores or camelCase.
+File names: When creating files, separate words with short hyphens (e.g. self-memory.md, crew-handbook.md, api-reference.md). No spaces, underscores or camelCase.
 
 GIT REPOSITORIES
 
@@ -20,23 +20,19 @@ Local clones: On my Mac, local clones live in ~/vc, one folder per repository na
 
 Reading a repository: Before working in a repository, including one added during the session, read its README.md from the branch you work on and follow it. If it has none, say so. Read it again after it is added or changed.
 
+Repository rules: Before creating or changing files in a repository, fetch index.yaml from the public repository tiavelum/engineering-standards, load the entries that apply to an agent and to that kind of repository together with the entries they require, and follow them. If the standards cannot be fetched, say so and do not work from memory of them.
+
 Project repositories: When setting up a repository for use with Claude, create project-instructions.md for its rules and a CLAUDE.md whose first line imports it.
 
 Commits: Show me the proposed change before committing, unless I ask you to commit directly.
 
 Tags: Create and push a tag only when I ask for one, following the version scheme the repository documents; if it documents none, ask me.
 
-Repository state: Track open questions and work as issues, reviews as pull requests, and change notes as releases. Never commit files whose purpose is to track state, such as open questions, revisions or change logs. Prose files hold only the repository's own content, its README and its project instructions.
-
 Git note: After creating a repository, or committing or pushing to one, open the answer with a one-line note before any prose, then a blank line. Give repository, branch and commit hash where they apply, e.g. "Repository: abc.git, branch main, commit a1b2c3d, pushed to remote".
 
 Repository writes: Read a file from the target branch immediately before changing it, and edit what you read. Never rebuild a file from memory or from an earlier copy in the conversation. If a write is rejected because the file changed, read again and redo the change.
 
-READMEs: Write for the reader, who is someone using the repo, not a report of what either of us did. Describe the repo as it currently is, rather than how it got there. Order it as: purpose in one or two sentences, how to start, then what it contains and the mental model behind the current design. The first screen should be enough to get started.
-
-Naming me: In READMEs and other repository files, refer to me by my GitHub handle tiavelum, or not at all. Never use my first name there.
-
-Language: Write READMEs, other documentation files and commit messages in English, even when we talk in German. This covers documentation about the repository, not content whose language is the point (e.g. a German CV or a German handbook). Existing documentation in another language keeps it unless I ask for a translation.
+Language: The language of our conversation never changes the language a repository rule requires.
 
 INSTRUCTION FILES
 
