@@ -15,6 +15,9 @@ The Claude app reads them from your account. Claude Code reads them from
 `~/.claude/CLAUDE.md`, a file that has to be put in place separately on your own
 machine and in each cloud environment.
 
+Prerequisites: a Claude account. For Claude Code on your own machine also git 2 or
+later and bash 3.2 or later.
+
 Which setup applies depends on what runs, not on the window you open:
 
 | You open | Claude app | Claude Code, local | Claude Code, cloud |
@@ -123,6 +126,10 @@ requires signing in with `/login` rather than an API key. Done once per skill.
 | `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
 | `CLAUDE.md` | Imports `project-instructions.md`, then rules for Claude Code only |
 | `skills/project-instructions/SKILL.md` | Guided creation and review of a repository's `project-instructions.md` |
+| `.github/workflows/check-scripts.yml` | Checks the setup scripts with shfmt and shellcheck on every pull request |
+| `.editorconfig`, `.shellcheckrc` | The formatting and lint rules that check applies |
+
+Start here: `user-instructions.md`, then "Setup" above for the place you use Claude.
 
 The instruction files hold directives only; explanations live in this README.
 
@@ -242,3 +249,7 @@ they count as instructions.
 - Anthropic's documentation does not describe loading a `~/.claude/CLAUDE.md` written
   by a setup script. Verified on 2026-10-02; if cloud sessions stop showing the
   user instructions, repeat the check in step 5 under "Claude Code, cloud".
+
+## License
+
+MIT. See [LICENSE](LICENSE).

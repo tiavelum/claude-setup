@@ -1,0 +1,3 @@
+# Linter configuration for the setup scripts.
+# The default checks apply; the scripts are bash, whatever runs the linter.
+shell=bash
