@@ -117,7 +117,7 @@ requires signing in with `/login` rather than an API key. Done once per skill.
 
 | File | Purpose |
 |---|---|
-| `user-instructions.md` | User instructions for all work, everywhere. The master. Project rules never go here |
+| `user-instructions.md` | User instructions for all work, everywhere. The master. Project rules and repository rules never go here |
 | `setup-local.sh` | Links `~/.claude/CLAUDE.md` to `user-instructions.md` on your own machine |
 | `setup-cloud.sh` | Writes `user-instructions.md` to `~/.claude/CLAUDE.md` in a cloud VM |
 | `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
@@ -167,6 +167,8 @@ Four principles decide where things go and keep the setup from drifting:
 1. **One home per kind of content.** Behaviour rules live in an instruction file at
    the narrowest scope that needs them, procedures in skills, explanations and
    operating steps in the repository's README, durable facts about you in memory.
+   Rules that hold for any repository, whoever works in it, live in
+   [tiavelum/engineering-standards](https://github.com/tiavelum/engineering-standards).
    Nothing is stated twice; a second place points to the first.
 2. **Source and runtime are distinct.** Every instruction artefact has one source in
    git and runtime copies that are snapshots of it: the Instructions for Claude
@@ -180,7 +182,7 @@ Four principles decide where things go and keep the setup from drifting:
    session start through each product's own mechanism, so they need deployment
    steps rather than a reading rule. Knowledge, above all a repository's README, is
    read on demand, so `user-instructions.md` says when to read it and when to read
-   it again.
+   it again. The repository rules are fetched on demand in the same way.
 4. **Scopes nest by addition.** User instructions, then project instructions, then
    `CLAUDE.md` for Claude Code only. A narrower scope adds what the wider one cannot
    know and never repeats it.
@@ -191,6 +193,7 @@ The layers, from a session with no parent outward:
 |---|---|---|---|
 | Session | `user-instructions.md` | Instructions for Claude field; `~/.claude/CLAUDE.md` locally and in the cloud | The products load it. It governs every layer below, including itself |
 | Repository | `README.md` | None; read on demand | The "Reading a repository" rule |
+| Repository rules | `tiavelum/engineering-standards` | None; fetched on demand | The "Repository rules" rule |
 | Repository used with Claude | `project-instructions.md`, `CLAUDE.md` | Claude Code imports `project-instructions.md` at session start | The "Project repositories" rule and the `project-instructions` skill |
 | claude.ai project | The same `project-instructions.md` | The project's instructions field | The paste step; the skill compares field and file |
 | Skills | `skills/<skill>/SKILL.md` | Your claude.ai account | The upload step |
@@ -198,8 +201,8 @@ The layers, from a session with no parent outward:
 Memory is the other cross-cutting layer; see "Memory" below.
 
 The regress of "what governs the file that governs the file" ends in
-`user-instructions.md`: its README rule governs this README, and its instruction-file
-rules govern itself. That fixed point is safe because of the second principle: the
+`user-instructions.md`: its "Repository rules" rule loads the standards that govern
+this README, and its instruction-file rules govern itself. That fixed point is safe because of the second principle: the
 version a session writes reaches other sessions only through deployment.
 
 ## Setting up a project repository
