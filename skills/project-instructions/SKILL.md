@@ -11,11 +11,20 @@ If the repository has no project-instructions.md, follow "Create a new file". If
 
 project-instructions.md has three parts, in this order:
 
-1. Anchor: "Repository tiavelum/<name>, local clone ~/vc/<name>. Read README.md before working in it and follow it."
+1. Anchor: "Repository tiavelum/<name>."
 2. Purpose: one or two sentences on what the project is for.
 3. Rules: invariants, done criteria, approval steps beyond the user instructions, and constraints that protect data.
 
-CLAUDE.md starts with the line `@project-instructions.md`. Add below it only what Claude Code alone can use.
+CLAUDE.md follows this template:
+
+```markdown
+@project-instructions.md
+
+## Claude Code only
+
+- Build: ...
+- Test: ...
+```
 
 Target layout: project-instructions.md and CLAUDE.md at the repository root, and no other file that holds instructions or a project description for Claude. Treat any other layout as older and migrate it.
 
