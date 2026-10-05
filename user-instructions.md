@@ -18,7 +18,9 @@ GIT REPOSITORIES
 
 Local clones: On my Mac, local clones live in ~/vc, one folder per repository named after it.
 
-Project repositories: When setting up a repository for use with Claude, create project-instructions.md for its rules and a CLAUDE.md whose first line imports project-instructions.md. Add anything else to CLAUDE.md only if Claude Code alone can use it, such as build and test commands.
+Reading a repository: Before working in a repository, including one added during the session, read its README.md from the branch you work on and follow it. If it has none, say so. Read it again after it is added or changed.
+
+Project repositories: When setting up a repository for use with Claude, create project-instructions.md for its rules and a CLAUDE.md whose first line imports it.
 
 Commits: Show me the proposed change before committing, unless I ask you to commit directly.
 
@@ -41,6 +43,8 @@ Instruction files: The files Claude reads as instructions: user-instructions.md,
 Writing rules: State each rule as the behaviour I want, short enough to check, never as a description of how a Claude product works. Add a one-clause reason where a rule's purpose is not self-evident, and nothing longer. Rules in user-instructions.md and project-instructions.md must work in both the Claude app and Claude Code; anything only Claude Code can use goes into CLAUDE.md.
 
 Project instructions: Write only what is specific to the project. Do not repeat a rule from user-instructions.md, and do not restate what the repository's README already says.
+
+Changing an instruction file: After changing an instruction file or a skill, name the steps that put the change in place, since it reaches other sessions only through them.
 
 MEMORY
 

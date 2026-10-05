@@ -160,41 +160,55 @@ cached environment expires, after roughly seven days.
 ⁴ Package and upload as in Setup, "Skills"; the upload replaces the existing
 version. Claude Code picks up the new version on its own.
 
+## Design
+
+Four principles decide where things go and keep the setup from drifting:
+
+1. **One home per kind of content.** Behaviour rules live in an instruction file at
+   the narrowest scope that needs them, procedures in skills, explanations and
+   operating steps in the repository's README, durable facts about you in memory.
+   Nothing is stated twice; a second place points to the first.
+2. **Source and runtime are distinct.** Every instruction artefact has one source in
+   git and runtime copies that are snapshots of it: the Instructions for Claude
+   field, `~/.claude/CLAUDE.md`, a project's instructions field, an uploaded skill.
+   A session starts from the snapshots, and a change travels from the source through
+   the steps in "After changing a file" to the next session. This is why a session
+   can edit `user-instructions.md` under the user instructions without a cycle: the
+   new version is written under the old one and reaches other sessions only through
+   deployment.
+3. **Instructions are loaded; knowledge is read.** Instruction files arrive at
+   session start through each product's own mechanism, so they need deployment
+   steps rather than a reading rule. Knowledge, above all a repository's README, is
+   read on demand, so `user-instructions.md` says when to read it and when to read
+   it again.
+4. **Scopes nest by addition.** User instructions, then project instructions, then
+   `CLAUDE.md` for Claude Code only. A narrower scope adds what the wider one cannot
+   know and never repeats it.
+
+The layers, from a session with no parent outward:
+
+| Layer | Source | Runtime copies | Bound by |
+|---|---|---|---|
+| Session | `user-instructions.md` | Instructions for Claude field; `~/.claude/CLAUDE.md` locally and in the cloud | The products load it. It governs every layer below, including itself |
+| Repository | `README.md` | None; read on demand | The "Reading a repository" rule |
+| Repository used with Claude | `project-instructions.md`, `CLAUDE.md` | Claude Code imports `project-instructions.md` at session start | The "Project repositories" rule and the `project-instructions` skill |
+| claude.ai project | The same `project-instructions.md` | The project's instructions field | The paste step; the skill compares field and file |
+| Skills | `skills/<skill>/SKILL.md` | Your claude.ai account | The upload step |
+
+Memory is the other cross-cutting layer; see "Memory" below.
+
+The regress of "what governs the file that governs the file" ends in
+`user-instructions.md`: its README rule governs this README, and its instruction-file
+rules govern itself. That fixed point is safe because of the second principle: the
+version a session writes reaches other sessions only through deployment.
+
 ## Setting up a project repository
 
-Every repository used with Claude gets two files:
-
-1. `project-instructions.md` with the project's rules. Paste the whole file into the
-   claude.ai project's instructions field, and again after every change. Leave the
-   project's description field empty or minimal; Claude does not read it.
-2. `CLAUDE.md`, which imports those rules for Claude Code. Start from this template
-   and add below the import only what Claude Code alone needs:
-
-   ```markdown
-   @project-instructions.md
-
-   ## Claude Code only
-
-   - Build: ...
-   - Test: ...
-   ```
-
-To write or review a project's instructions, use the `project-instructions` skill.
-
-### What project-instructions.md contains
-
-In this order, usually one screen in total:
-
-1. **Anchor:** the repository (`tiavelum/<name>`), its local clone (`~/vc/<name>`),
-   and the rule to read `README.md` before working in it and follow it.
-2. **Purpose:** one or two sentences on what the project is for.
-3. **Rules:** only what holds for this project: invariants, when a change counts as
-   done, approval steps, and constraints that protect data.
-
-The file points to knowledge; it does not hold it. What the README or the
-repository says stays there, and what `user-instructions.md` says already applies
-everywhere. A rule earns its place when Claude would otherwise get it wrong,
-typically the second time you correct the same thing.
+Every repository used with Claude gets a `project-instructions.md` with the project's
+rules and a `CLAUDE.md` that imports it for Claude Code. The `project-instructions`
+skill creates and reviews both files and defines their content; see
+`skills/project-instructions/SKILL.md`. Claude reads the project's instructions
+field, not its description.
 
 ## Memory
 
