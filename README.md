@@ -42,7 +42,9 @@ Copies the instructions into your account, where every new chat reads them.
 ### Claude Code, local
 
 Links `~/.claude/CLAUDE.md` to `user-instructions.md` in a local clone, so edits there
-apply from the next session.
+apply from the next session. Also sets `attribution.commit` to `false` in
+`~/.claude/settings.json`, so Claude Code adds no co-author line to commits; other
+keys in that file stay as they are, and a changed file is kept as a backup.
 
 1. Clone the repository and run the setup script:
 
@@ -50,6 +52,8 @@ apply from the next session.
    git clone git@github.com:tiavelum/claude-setup.git ~/vc/claude-setup
    bash ~/vc/claude-setup/setup-local.sh
    ```
+
+   On a second run the script reports `Already linked` and `Already set`.
 
 2. Verify: start Claude Code and run
 
@@ -121,7 +125,7 @@ requires signing in with `/login` rather than an API key. Done once per skill.
 | File | Purpose |
 |---|---|
 | `user-instructions.md` | User instructions for all work, everywhere. The master. Project rules and repository rules never go here |
-| `setup-local.sh` | Links `~/.claude/CLAUDE.md` to `user-instructions.md` on your own machine |
+| `setup-local.sh` | Links `~/.claude/CLAUDE.md` to `user-instructions.md` on your own machine and turns off the co-author line in `~/.claude/settings.json` |
 | `setup-cloud.sh` | Writes `user-instructions.md` to `~/.claude/CLAUDE.md` in a cloud VM |
 | `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
 | `CLAUDE.md` | Imports `project-instructions.md`, then rules for Claude Code only |
@@ -249,6 +253,11 @@ they count as instructions.
 - Anthropic's documentation does not describe loading a `~/.claude/CLAUDE.md` written
   by a setup script. Verified on 2026-10-02; if cloud sessions stop showing the
   user instructions, repeat the check in step 5 under "Claude Code, cloud".
+- In the Claude app and in Claude Code in the cloud, only the "Commit identity" rule
+  of `user-instructions.md` keeps the co-author line out of commits. The documentation
+  says cloud sessions do not read `~/.claude/settings.json`, and the cloud setup leaves
+  it alone, since `attribution.commit` set to `false` might also drop the line that
+  links the session.
 
 ## License
 
