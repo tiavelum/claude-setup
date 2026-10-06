@@ -130,6 +130,7 @@ requires signing in with `/login` rather than an API key. Done once per skill.
 | `session-usage.py` | Prints a session's steps and tokens, per session and agent; see "Session usage" |
 | `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
 | `CLAUDE.md` | Imports `project-instructions.md`, then rules for Claude Code only |
+| `skills/delegate-work/SKILL.md` | How Claude plans, briefs, starts and checks agents; see "Working with agents" |
 | `skills/project-instructions/SKILL.md` | Guided creation and review of a repository's `project-instructions.md` |
 | `.github/workflows/check-scripts.yml` | Checks the setup scripts with shfmt and shellcheck, and `session-usage.py` with ruff and a sample run, on every pull request |
 | `.editorconfig`, `.shellcheckrc`, `ruff.toml` | The formatting and lint rules that check applies |
@@ -225,6 +226,19 @@ rules and a `CLAUDE.md` that imports it for Claude Code. The `project-instructio
 skill creates and reviews both files and defines their content; see
 `skills/project-instructions/SKILL.md`. Claude reads the project's instructions
 field, not its description.
+
+## Working with agents
+
+The rule "Agents" in `user-instructions.md` makes Claude follow the `delegate-work`
+skill whenever it hands work to agents, so the skill has to be uploaded as in Setup,
+"Skills". In that procedure one session coordinates: it splits the work into pieces,
+starts every agent and handles the pull requests, and judges no content itself.
+Workers make the pieces on Opus; checkers, on Sonnet, check work they did not see
+being made. Before the start Claude names the agents, their models and the expected
+usage and asks for the amount to stop at; after the run it posts the effort map from
+`session-usage.py` on the tracking issue. The skill holds the sizes it starts from,
+such as the context per agent and the agents at a time; correct them there after a
+run shows better ones.
 
 ## Memory
 
