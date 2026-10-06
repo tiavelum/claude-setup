@@ -127,6 +127,7 @@ requires signing in with `/login` rather than an API key. Done once per skill.
 | `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
 | `CLAUDE.md` | Imports `project-instructions.md`, then rules for Claude Code only |
 | `skills/project-instructions/SKILL.md` | Guided creation and review of a repository's `project-instructions.md` |
+| `skills/hand-over-session/SKILL.md` | How Claude hands long work over to a new session; see "Handing over a session" |
 | `.github/workflows/check-scripts.yml` | Checks the setup scripts with shfmt and shellcheck, and `session-usage.py` with ruff and a sample run, on every pull request |
 | `.editorconfig`, `.shellcheckrc`, `ruff.toml` | The formatting and lint rules that check applies |
 
@@ -243,6 +244,16 @@ it runs, under `~/.claude/projects/<repository>/memory/`.
 
 `/context` in Claude Code lists `CLAUDE.md` files under "Memory files"; in this README
 they count as instructions.
+
+## Handing over a session
+
+The rule "Long work" in `user-instructions.md` keeps the plan and state of work that
+spans several pull requests in a tracking issue, and makes Claude hand over as the
+`hand-over-session` skill says; upload it as in Setup, "Skills". At the end of a phase,
+or once the conversation has grown to the context the skill names, Claude brings the
+tracking issue up to date, posts the session's token figures, and gives you a start
+prompt of a few lines. Paste it into a new session; the old one does no further work on
+the task.
 
 ## Session usage
 
