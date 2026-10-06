@@ -16,7 +16,7 @@ The Claude app reads them from your account. Claude Code reads them from
 machine and in each cloud environment.
 
 Prerequisites: a Claude account. For Claude Code on your own machine also git 2 or
-later and bash 3.2 or later.
+later and bash 3.2 or later; for `session-usage.py` Python 3.9 or later.
 
 Which setup applies depends on what runs, not on the window you open:
 
@@ -127,11 +127,12 @@ requires signing in with `/login` rather than an API key. Done once per skill.
 | `user-instructions.md` | User instructions for all work, everywhere. The master. Project rules and repository rules never go here |
 | `setup-local.sh` | Links `~/.claude/CLAUDE.md` to `user-instructions.md` on your own machine and turns off the co-author line in `~/.claude/settings.json` |
 | `setup-cloud.sh` | Writes `user-instructions.md` to `~/.claude/CLAUDE.md` in a cloud VM |
+| `session-usage.py` | Prints a session's steps and tokens, per session and agent; see "Session usage" |
 | `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
 | `CLAUDE.md` | Imports `project-instructions.md`, then rules for Claude Code only |
 | `skills/project-instructions/SKILL.md` | Guided creation and review of a repository's `project-instructions.md` |
-| `.github/workflows/check-scripts.yml` | Checks the setup scripts with shfmt and shellcheck on every pull request |
-| `.editorconfig`, `.shellcheckrc` | The formatting and lint rules that check applies |
+| `.github/workflows/check-scripts.yml` | Checks the setup scripts with shfmt and shellcheck, and `session-usage.py` with ruff and a sample run, on every pull request |
+| `.editorconfig`, `.shellcheckrc`, `ruff.toml` | The formatting and lint rules that check applies |
 
 Start here: `user-instructions.md`, then "Setup" above for the place you use Claude.
 
@@ -154,6 +155,7 @@ Commit, then:
 | `user-instructions.md` | Paste into Instructions for Claude¹ | Pull² | Rebuild³ |
 | `setup-local.sh` | – | Pull², then rerun the script | – |
 | `setup-cloud.sh` | – | – | Rebuild³ |
+| `session-usage.py` | – | Pull² | – |
 | `project-instructions.md` | Paste into project instructions¹ | Pull² | – |
 | `CLAUDE.md` | – | Pull² | – |
 | `skills/<skill>/SKILL.md` | Re-upload⁴ | – | – |
@@ -245,6 +247,38 @@ it runs, under `~/.claude/projects/<repository>/memory/`.
 
 `/context` in Claude Code lists `CLAUDE.md` files under "Memory files"; in this README
 they count as instructions.
+
+## Session usage
+
+`session-usage.py` reads the records Claude Code keeps of each session under
+`~/.claude/projects/` and prints, per session and per agent, the number of steps, the
+tokens by kind and the size of the context at the last step. Each step re-reads the
+whole context, so "cache read" grows with steps times context and is usually the
+largest figure. Run it on the machine where the session runs: a cloud session's records
+exist only in its VM. Where no clone of this repository is at hand, fetch the script
+from `main`:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/tiavelum/claude-setup/main/session-usage.py -o /tmp/session-usage.py
+python3 /tmp/session-usage.py
+```
+
+Without arguments it reads the newest session. Pass session files or project folders
+to read others, `--json` for machine-readable output, and `--prices <file>` to add a
+cost column. The price file maps a model id to dollars per million tokens for `input`,
+`cache_read`, `cache_write_5m`, `cache_write_1h` and `output`; the script holds no
+prices of its own.
+
+```
+Session dc5dc589-3731-57c9-ae3a-97b436e09649
+         steps  input  cache read  cache write  output  last context
+session     68    136  17,792,220      192,102  49,335       326,749
+total       68    136  17,792,220      192,102  49,335
+Models by steps: claude-opus-5-5 (68)
+```
+
+Each agent of the session adds a row named after its record file. The record format
+is not documented; the script reads the `usage` of each request once.
 
 ## Known limits
 
