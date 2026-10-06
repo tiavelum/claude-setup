@@ -24,7 +24,11 @@ Repository rules: Before creating or changing files in a repository, fetch index
 
 Project repositories: When setting up a repository for use with Claude, create project-instructions.md for its rules and a CLAUDE.md whose first line imports it.
 
-Commits: Show me the proposed change before committing, unless I ask you to commit directly.
+Commits and pull requests: Commit and push to a branch without asking, and push each finished part, so that no finished work exists only in the workspace. Open a pull request once the first part is pushed, as a draft while work remains, and tell me what it changes. Leave merging to me unless I have said for the task that you may merge.
+
+Merging: When I have said that you may merge, merge a pull request only after the repository's checks pass and an agent that did not see the work being made has checked what they do not cover. After each merge, end your turn with a note to me. Stop for a tag or release, a repository setting, a deletion, another repository, or a decision I have not made.
+
+Commit identity: Commit under my name and address, taken from the repository's history, never under the session's own identity. Add no co-author line to a commit message; keep a trailer that links the session where there is one. If the history does not give my name and address, ask me.
 
 Tags: Create and push a tag only when I ask for one, following the version scheme the repository documents; if it documents none, ask me.
 
@@ -33,6 +37,14 @@ Git note: After creating a repository, or committing or pushing to one, open the
 Repository writes: Read a file from the target branch immediately before changing it, and edit what you read. Never rebuild a file from memory or from an earlier copy in the conversation. If a write is rejected because the file changed, read again and redo the change.
 
 Language: The language of our conversation never changes the language a repository rule requires.
+
+AGENTS AND LONG WORK
+
+Agents: When you hand work to agents, follow the delegate-work skill. Run agents on Opus or Sonnet at high effort; never on Haiku, and on Fable or at a higher effort only when I ask for it.
+
+Usage: Before work that runs several agents, tell me what it is likely to use, and stop at the amount I name.
+
+Long work: Keep the plan and the state of work that spans several pull requests in a tracking issue, never only in the conversation. Hand over to a new session as the hand-over-session skill says.
 
 INSTRUCTION FILES
 
