@@ -13,6 +13,7 @@ env:
   SHELLCHECK_SHA256: 6c881ab0698e4e6ea235245f22832860544f17ba386442fe7e9d629f8cbedf87
   SHFMT_VERSION: v3.10.0
   SHFMT_SHA256: 1f57a384d59542f8fac5f503da1f3ea44242f46dff969569e80b524d64b71dbc
+  RUFF_VERSION: 0.16.6
 
 jobs:
   check:
@@ -38,3 +39,24 @@ jobs:
 
       - name: Lint
         run: shfmt -f . | xargs shellcheck
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.9"
+
+      - name: Install ruff
+        run: pip install "ruff==${RUFF_VERSION}"
+
+      - name: Check Python formatting
+        run: ruff format --check .
+
+      - name: Lint Python
+        run: ruff check .
+
+      - name: Run session-usage.py on a sample record
+        run: |
+          mkdir -p "$RUNNER_TEMP/records"
+          step='{"type":"assistant","requestId":"r1","timestamp":"2026-10-06T10:00:00Z","message":{"id":"m1","model":"claude-opus-5-5","usage":{"input_tokens":10,"cache_read_input_tokens":1000,"cache_creation_input_tokens":500,"output_tokens":100}}}'
+          printf '%s\n%s\n' "$step" "$step" >"$RUNNER_TEMP/records/sample.jsonl"
+          python3 session-usage.py "$RUNNER_TEMP/records/sample.jsonl" | tee "$RUNNER_TEMP/out.txt"
+          grep -E '^session +1 +10 +1,000 +500 +100 +1,510$' "$RUNNER_TEMP/out.txt"

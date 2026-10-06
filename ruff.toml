@@ -1,0 +1,24 @@
+# Formatter and linter configuration for the Python script, required by TL-6
+# and TL-8. The script supports Python 3.9 and later.
+# Rules are selected deliberately per TL-9.
+
+line-length = 100
+target-version = "py39"
+
+[format]
+quote-style = "double"
+indent-style = "space"
+
+[lint]
+select = [
+  "E",    # pycodestyle errors: the formatter cannot fix all of them
+  "W",    # pycodestyle warnings
+  "F",    # pyflakes: unused names, undefined names, shadowing
+  "I",    # import order, so it is never discussed in review per TL-7
+  "N",    # naming
+  "UP",   # syntax superseded by the target version
+  "B",    # bugbear: likely mistakes rather than style
+  "SIM",  # constructs with a simpler equivalent
+  "PTH",  # pathlib over os.path
+  "RUF",  # ruff's own checks
+]
