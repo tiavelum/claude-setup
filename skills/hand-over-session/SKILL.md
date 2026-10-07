@@ -20,10 +20,9 @@ description: Hand work that spans several pull requests over to a new session. U
 
 ## What
 
-1. Push everything that is finished, so that nothing of the task exists only in this session or its workspace.
-2. Bring the tracking issue up to date: what is done, with its pull requests; what is open; the decisions taken, with their reasons; the next step.
-3. Put a procedure the next session needs into a brief in the repository the work concerns, through a pull request, and link it from the tracking issue. Keep procedures out of the issue.
-4. Post this session's token figures from `session-usage.py` on the tracking issue.
+1. Bring the tracking issue up to date: what is done, with its pull requests; what is open; the decisions taken, with their reasons; the next step.
+2. Put a procedure the next session needs into a brief in the repository the work concerns, through a pull request, and link it from the tracking issue. Keep procedures out of the issue.
+3. Post this session's token figures from `session-usage.py` on the tracking issue.
 
 ## The start prompt
 

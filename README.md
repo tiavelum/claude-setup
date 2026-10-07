@@ -237,15 +237,11 @@ field, not its description.
 ## Working with agents
 
 The rule "Agents" in `user-instructions.md` makes Claude follow the `delegate-work`
-skill whenever it hands work to agents, so the skill has to be uploaded as in Setup,
-"Skills". In that procedure one session coordinates: it splits the work into pieces,
-starts every agent and handles the pull requests, and judges no content itself.
-Workers make the pieces on Opus; checkers, on Sonnet, check work they did not see
-being made. Before the start Claude names the agents, their models and the expected
-usage and asks for the amount to stop at; after the run it posts the effort map from
-`session-usage.py` on the tracking issue. The skill holds the sizes it starts from,
-such as the context per agent and the agents at a time; correct them there after a
-run shows better ones.
+skill whenever it hands work to agents, and the rule "Usage" decides when it may start
+them. Upload the skill as in Setup, "Skills". The roles, their models and the procedure
+are in `skills/delegate-work/SKILL.md`, together with the sizes the skill starts from,
+such as the context per agent and the agents at a time; correct them there after a run
+shows better ones.
 
 ## Memory
 
