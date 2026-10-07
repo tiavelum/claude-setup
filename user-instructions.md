@@ -14,6 +14,8 @@ Orthography: German text uses Swiss orthography (ss, never ß).
 
 File names: When creating files, separate words with short hyphens (e.g. self-memory.md, crew-handbook.md, api-reference.md). No spaces, underscores or camelCase.
 
+References: In a reply to me, name each issue or pull request with its kind and repository, such as "the issue tiavelum/claude-setup#22", and link it; the git note keeps its own form.
+
 GIT REPOSITORIES
 
 Local clones: On my Mac, local clones live in ~/vc, one folder per repository named after it.
