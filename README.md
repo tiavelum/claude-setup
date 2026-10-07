@@ -240,7 +240,7 @@ Five principles decide where things go and keep the setup from drifting:
 | Fact about one project | Durable, true for one project | That project's memory; in Claude Code, its `project-instructions.md` |
 | Decision with its reasons, raw material | Explains why, or is the source a decision rests on | Files in a repository, not memory |
 | Open work and state | Still to be done, under review, or a change note | GitHub issues, pull requests and releases |
-| How Claude itself works | Describes a Claude product's behaviour | [tiavelum/claude-mechanics](https://github.com/tiavelum/claude-mechanics) |
+| Distilled documentation of how Claude products work | Consulted occasionally, not needed in day-to-day work | [tiavelum/claude-mechanics](https://github.com/tiavelum/claude-mechanics) |
 | Instruction for this conversation only | Ends with the task | The conversation; never filed |
 
 The runtime copies of each source are in the layers table below.
@@ -255,8 +255,8 @@ To decide the kind of something new:
    yes, it is a repository rule. If no, it is a rule for Claude, filed at the
    narrowest scope that needs it.
 4. For a description: is it about you, about using a repository, about how Claude
-   works, or about work still open? That decides between memory, the README,
-   claude-mechanics and an issue.
+   products work beyond what day-to-day work needs, or about work still open? That
+   decides between memory, the README, claude-mechanics and an issue.
 
 ### Layers
 
