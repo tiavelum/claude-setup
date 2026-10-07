@@ -199,6 +199,86 @@ copy it received with the file on `main` by git blob hash: `git hash-object` on 
 copy saved as a file, against `git rev-parse origin/main:<file>`. Equal hashes mean
 the same bytes, whitespace included.
 
+## Setting up a project repository
+
+Ask Claude, in a session working in the repository, to set the repository up for
+Claude. Under the rule "Project repositories" it creates a `project-instructions.md`
+with the project's rules and a `CLAUDE.md` that imports it for Claude Code. Ask it
+later to review them; the `project-instructions` skill defines their content, see
+`skills/project-instructions/SKILL.md`.
+
+## Working with agents
+
+The rule "Agents" in `user-instructions.md` makes Claude follow the `delegate-work`
+skill whenever it hands work to agents, and the rule "Usage" decides when it may start
+them. Upload the skill as in Setup, "Skills". The roles, their models and the procedure
+are in `skills/delegate-work/SKILL.md`, together with the sizes the skill starts from,
+such as the context per agent and the agents at a time; correct them there after a run
+shows better ones.
+
+## Memory
+
+Memory is what Claude records itself, as opposed to the instructions you write:
+
+| Layer | Claude app | Claude Code |
+|---|---|---|
+| General, used in chats outside projects | Account memory | – |
+| Project, used only within that project | The claude.ai project's memory | Auto memory of that repository |
+
+When Claude should record something durable, the memory rules in
+`user-instructions.md` apply: it proposes where, and shows the exact text before
+writing. The Claude Code documentation describes no account memory, only `CLAUDE.md`
+files and auto memory, so in Claude Code the place is an instruction file:
+`user-instructions.md` for general facts, the repository's `project-instructions.md`
+for project facts.
+
+Both products also record memory automatically, outside those rules. The Claude app
+does so in your account. Claude Code keeps auto memory as files on the machine where
+it runs, under `~/.claude/projects/<repository>/memory/`.
+
+`/context` in Claude Code lists `CLAUDE.md` files under "Memory files"; in this README
+they count as instructions.
+
+## Handing over a session
+
+The rule "Long work" in `user-instructions.md` keeps the plan and state of work that
+spans several pull requests in a tracking issue, and makes Claude hand over as the
+`hand-over-session` skill says; upload it as in Setup, "Skills". When Claude hands
+over, paste the start prompt it gives you into a new session. When and how it hands
+over is in `skills/hand-over-session/SKILL.md`.
+
+## Session usage
+
+`session-usage.py` reads the records Claude Code keeps of each session under
+`~/.claude/projects/` and prints, per session and per agent, the number of steps, the
+tokens by kind and the size of the context at the last step. Each step re-reads the
+whole context, so "cache read" grows with steps times context and is usually the
+largest figure. Run it on the machine where the session runs: a cloud session's records
+exist only in its VM. Where no clone of this repository is at hand, fetch the script
+from `main`:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/tiavelum/claude-setup/main/session-usage.py -o /tmp/session-usage.py
+python3 /tmp/session-usage.py
+```
+
+Without arguments it reads the newest session. Pass session files or project folders
+to read others, `--json` for machine-readable output, and `--prices <file>` to add a
+cost column. The price file maps a model id to dollars per million tokens for `input`,
+`cache_read`, `cache_write_5m`, `cache_write_1h` and `output`; the script holds no
+prices of its own.
+
+```
+Session dc5dc589-3731-57c9-ae3a-97b436e09649
+         steps  input  cache read  cache write  output  last context
+session     68    136  17,792,220      192,102  49,335       326,749
+total       68    136  17,792,220      192,102  49,335
+Models by steps: claude-opus-5-5 (68)
+```
+
+Each agent of the session adds a row named after its record file. The record format
+is not documented; the script reads the `usage` of each request once.
+
 ## Design
 
 Five principles decide where things go and keep the setup from drifting:
@@ -280,86 +360,6 @@ The regress of "what governs the file that governs the file" ends in
 `user-instructions.md`: its "Repository rules" rule loads the standards that govern
 this README, and its instruction-file rules govern itself. That fixed point is safe because of the second principle: the
 version a session writes reaches other sessions only through deployment.
-
-## Setting up a project repository
-
-Ask Claude, in a session working in the repository, to set the repository up for
-Claude. Under the rule "Project repositories" it creates a `project-instructions.md`
-with the project's rules and a `CLAUDE.md` that imports it for Claude Code. Ask it
-later to review them; the `project-instructions` skill defines their content, see
-`skills/project-instructions/SKILL.md`.
-
-## Working with agents
-
-The rule "Agents" in `user-instructions.md` makes Claude follow the `delegate-work`
-skill whenever it hands work to agents, and the rule "Usage" decides when it may start
-them. Upload the skill as in Setup, "Skills". The roles, their models and the procedure
-are in `skills/delegate-work/SKILL.md`, together with the sizes the skill starts from,
-such as the context per agent and the agents at a time; correct them there after a run
-shows better ones.
-
-## Memory
-
-Memory is what Claude records itself, as opposed to the instructions you write:
-
-| Layer | Claude app | Claude Code |
-|---|---|---|
-| General, used in chats outside projects | Account memory | – |
-| Project, used only within that project | The claude.ai project's memory | Auto memory of that repository |
-
-When Claude should record something durable, the memory rules in
-`user-instructions.md` apply: it proposes where, and shows the exact text before
-writing. The Claude Code documentation describes no account memory, only `CLAUDE.md`
-files and auto memory, so in Claude Code the place is an instruction file:
-`user-instructions.md` for general facts, the repository's `project-instructions.md`
-for project facts.
-
-Both products also record memory automatically, outside those rules. The Claude app
-does so in your account. Claude Code keeps auto memory as files on the machine where
-it runs, under `~/.claude/projects/<repository>/memory/`.
-
-`/context` in Claude Code lists `CLAUDE.md` files under "Memory files"; in this README
-they count as instructions.
-
-## Handing over a session
-
-The rule "Long work" in `user-instructions.md` keeps the plan and state of work that
-spans several pull requests in a tracking issue, and makes Claude hand over as the
-`hand-over-session` skill says; upload it as in Setup, "Skills". When Claude hands
-over, paste the start prompt it gives you into a new session. When and how it hands
-over is in `skills/hand-over-session/SKILL.md`.
-
-## Session usage
-
-`session-usage.py` reads the records Claude Code keeps of each session under
-`~/.claude/projects/` and prints, per session and per agent, the number of steps, the
-tokens by kind and the size of the context at the last step. Each step re-reads the
-whole context, so "cache read" grows with steps times context and is usually the
-largest figure. Run it on the machine where the session runs: a cloud session's records
-exist only in its VM. Where no clone of this repository is at hand, fetch the script
-from `main`:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/tiavelum/claude-setup/main/session-usage.py -o /tmp/session-usage.py
-python3 /tmp/session-usage.py
-```
-
-Without arguments it reads the newest session. Pass session files or project folders
-to read others, `--json` for machine-readable output, and `--prices <file>` to add a
-cost column. The price file maps a model id to dollars per million tokens for `input`,
-`cache_read`, `cache_write_5m`, `cache_write_1h` and `output`; the script holds no
-prices of its own.
-
-```
-Session dc5dc589-3731-57c9-ae3a-97b436e09649
-         steps  input  cache read  cache write  output  last context
-session     68    136  17,792,220      192,102  49,335       326,749
-total       68    136  17,792,220      192,102  49,335
-Models by steps: claude-opus-5-5 (68)
-```
-
-Each agent of the session adds a row named after its record file. The record format
-is not documented; the script reads the `usage` of each request once.
 
 ## Known limits
 
