@@ -1,9 +1,10 @@
 # claude-setup
 
-User instructions for Claude, the rules for all your work, kept in a single file,
+User instructions for all of tiavelum's work with Claude, kept in a single file,
 `user-instructions.md`, and delivered from there to the Claude app and to Claude Code,
-locally and in the cloud. Also the instruction pattern every project repository
-follows, and skills that apply it.
+locally and in the cloud, together with the instruction pattern every project
+repository follows and the skills that apply it. It is for tiavelum, who maintains
+these instructions and deploys them to each place Claude runs.
 
 **Keep this repository public.** Cloud sessions download from it, so nothing private
 belongs here.
@@ -144,10 +145,12 @@ requires signing in with `/login` rather than an API key. Done once per skill.
 | `session-usage.py` | Prints a session's steps and tokens, per session and agent; see "Session usage" |
 | `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
 | `CLAUDE.md` | Imports `project-instructions.md`, then rules for Claude Code only |
+| `skills/` | One folder per skill, named after it and holding its `SKILL.md`; each is uploaded as in Setup, "Skills" |
 | `skills/delegate-work/SKILL.md` | How Claude plans, briefs, starts and checks agents; see "Working with agents" |
 | `skills/project-instructions/SKILL.md` | Guided creation and review of a repository's `project-instructions.md` |
 | `skills/readme/SKILL.md` | Guided writing and review of a repository's README against the README contract of tiavelum/engineering-standards |
 | `skills/hand-over-session/SKILL.md` | How Claude hands long work over to a new session; see "Handing over a session" |
+| `.github/` | GitHub configuration; holds only the workflow below |
 | `.github/workflows/check-scripts.yml` | Checks the setup scripts with shfmt and shellcheck, and `session-usage.py` with ruff and a sample run, on every pull request |
 | `.editorconfig`, `.shellcheckrc`, `ruff.toml` | The formatting and lint rules that check applies |
 
@@ -271,7 +274,7 @@ The layers, from a session with no parent outward:
 | claude.ai project | The same `project-instructions.md` | The project's instructions field | The paste step; the skill compares field and file |
 | Skills | `skills/<skill>/SKILL.md` | Your claude.ai account | The upload step |
 
-Memory is the other cross-cutting layer; see "Memory" below.
+Memory is the other cross-cutting layer; see "Memory".
 
 The regress of "what governs the file that governs the file" ends in
 `user-instructions.md`: its "Repository rules" rule loads the standards that govern
