@@ -38,5 +38,6 @@ If the repository has no README.md, follow "Write a new README". If it has one, 
 1. Go through every rule of readme-contract, and every rule of documentation that applies to a README, and note each rule the README breaks, by id.
 2. Count the words above the heading that the contract's word limit names: `sed -n '1,/^## <heading>/p' README.md | sed '$d' | wc -w`.
 3. Run every command in the README against the default branch and compare its output with the README.
-4. Open every relative link and confirm that its target exists.
-5. Compare every file and directory the README names with the repository, and every top-level directory with the README.
+4. List every step in the README that this session cannot carry out, such as a step in a user interface, a command that needs my machine, or any command when the session has no shell. Report each as not verified, with what I need to do to verify it, and report no rule that covers such a step as met while it stays unverified.
+5. Open every relative link and confirm that its target exists.
+6. Compare every file and directory the README names with the repository, and every top-level directory with the README.
