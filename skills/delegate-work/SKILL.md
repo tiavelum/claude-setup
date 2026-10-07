@@ -65,6 +65,7 @@ Split a large piece between several checkers so that each part stays within the 
 - Put the worker's report into the pull request's description and the checker's findings into review comments on it.
 - A checker and the worker whose work it checks exchange nothing but the work and the findings, in writing. Workers learn from each other through what is pushed; connect two workers directly only for a named question.
 - End your turn after each finished piece, so that a turn ending at a usage limit loses nothing that was not pushed.
+- After opening a pull request that later work depends on and that I merge, end your turn and continue when I write, since my merge does not reach the session on its own.
 - When a usage or spend limit is reported, stop and continue after the reset.
 
 ## Corrections
