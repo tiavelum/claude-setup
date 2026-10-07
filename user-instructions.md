@@ -42,7 +42,7 @@ Language: The language of our conversation never changes the language a reposito
 
 AGENTS AND LONG WORK
 
-Agents: When you hand work to agents, follow the delegate-work skill. Run agents on Opus or Sonnet at high effort; never on Haiku, and on Fable or at a higher effort only when I ask for it.
+Agents: When you hand work to agents, follow the delegate-work skill. Run agents on Opus or Sonnet; never on Haiku, and on Fable only when I ask for it. Run them at high effort where you can set it, and higher only when I ask for it; where you cannot set it, say so with the estimate.
 
 Usage: Before work that runs agents, tell me what it is likely to use, and start no agent until I have named the amount to stop at. Stop at that amount.
 
