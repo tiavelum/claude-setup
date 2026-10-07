@@ -7,5 +7,5 @@ Repository tiavelum/claude-setup.
   when something is unverified.
 - Before changing user-instructions.md, compare the user instructions in this
   session with the file and report any difference.
-- After a commit, remind me of the follow-up steps the README's "After changing a
-  file" table lists for the changed files.
+- With each pull request, list the follow-up steps the README's "After changing a
+  file" table gives for its changed files, to take after the merge.
