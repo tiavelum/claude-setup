@@ -1,9 +1,10 @@
 # claude-setup
 
-User instructions for Claude, the rules for all your work, kept in a single file,
+User instructions for all of tiavelum's work with Claude, kept in a single file,
 `user-instructions.md`, and delivered from there to the Claude app and to Claude Code,
-locally and in the cloud. Also the instruction pattern every project repository
-follows, and skills that apply it.
+locally and in the cloud, together with the instruction pattern every project
+repository follows and the skills that apply it. It is for tiavelum, who maintains
+these instructions and deploys them to each place Claude runs.
 
 **Keep this repository public.** Cloud sessions download from it, so nothing private
 belongs here.
@@ -144,10 +145,12 @@ requires signing in with `/login` rather than an API key. Done once per skill.
 | `session-usage.py` | Prints a session's steps and tokens, per session and agent; see "Session usage" |
 | `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
 | `CLAUDE.md` | Imports `project-instructions.md`, then rules for Claude Code only |
+| `skills/` | One folder per skill, named after it and holding its `SKILL.md`; each is uploaded as in Setup, "Skills" |
 | `skills/delegate-work/SKILL.md` | How Claude plans, briefs, starts and checks agents; see "Working with agents" |
 | `skills/project-instructions/SKILL.md` | Guided creation and review of a repository's `project-instructions.md` |
 | `skills/readme/SKILL.md` | Guided writing and review of a repository's README against the README contract of tiavelum/engineering-standards |
 | `skills/hand-over-session/SKILL.md` | How Claude hands long work over to a new session; see "Handing over a session" |
+| `.github/` | GitHub configuration; holds only the workflow below |
 | `.github/workflows/check-scripts.yml` | Checks the setup scripts with shfmt and shellcheck, and `session-usage.py` with ruff and a sample run, on every pull request |
 | `.editorconfig`, `.shellcheckrc`, `ruff.toml` | The formatting and lint rules that check applies |
 
@@ -195,88 +198,6 @@ To check that the copies match `main`, ask Claude in a new session to compare ea
 copy it received with the file on `main` by git blob hash: `git hash-object` on the
 copy saved as a file, against `git rev-parse origin/main:<file>`. Equal hashes mean
 the same bytes, whitespace included.
-
-## Design
-
-Five principles decide where things go and keep the setup from drifting:
-
-1. **One home per kind of content.** Each kind of information has one home, given in
-   "Kinds of information" below. Nothing is stated twice; a second place points to
-   the first.
-2. **Source and runtime are distinct.** Every instruction artefact has one source in
-   git and runtime copies that are snapshots of it: the Instructions for Claude
-   field, `~/.claude/CLAUDE.md`, a project's instructions field, an uploaded skill.
-   A session starts from the snapshots, and a change travels from the source through
-   the steps in "After changing a file" to the next session. This is why a session
-   can edit `user-instructions.md` under the user instructions without a cycle: the
-   new version is written under the old one and reaches other sessions only through
-   deployment.
-3. **Instructions are loaded; knowledge is read.** Instruction files arrive at
-   session start through each product's own mechanism, so they need deployment
-   steps rather than a reading rule. Knowledge, above all a repository's README, is
-   read on demand, so `user-instructions.md` says when to read it and when to read
-   it again. The repository rules are fetched on demand in the same way.
-4. **Scopes nest by addition.** User instructions, then project instructions, then
-   `CLAUDE.md` for Claude Code only. A narrower scope adds what the wider one cannot
-   know and never repeats it.
-5. **References run one way.** The instruction files may name a skill, a skill may
-   cite a standard, and nothing names or restates the layer above it, so a change
-   in one layer never has to be found in another. A skill states the major version
-   of each standard it was written for: a breaking change in the standards then
-   stops it, rather than leaving it to apply rules that have moved.
-
-### Kinds of information
-
-| Kind | How to recognise it | Home |
-|---|---|---|
-| Rule for all work with Claude | Tells Claude how to behave, in any project | `user-instructions.md` |
-| Rule for one project | Tells Claude how to behave in one repository only | That repository's `project-instructions.md` |
-| Rule only Claude Code can follow | Needs something only Claude Code has | That repository's `CLAUDE.md`, below the import |
-| Repository rule | Would also hold if the work were done by hand, without Claude | [tiavelum/engineering-standards](https://github.com/tiavelum/engineering-standards) |
-| Procedure | Several steps executed by Claude, needed only for a certain task | A skill, `skills/<name>/SKILL.md` |
-| Template or pattern for instruction files | The form such a file takes | The skill that creates the file |
-| Explanation or operating step | Describes how to use or run a repository | That repository's `README.md` |
-| Fact about you | Durable, true across projects | Account memory, kept small |
-| Fact about one project | Durable, true for one project | That project's memory; in Claude Code, its `project-instructions.md` |
-| Decision with its reasons, raw material | Explains why, or is the source a decision rests on | Files in a repository, not memory |
-| Open work and state | Still to be done, under review, or a change note | GitHub issues, pull requests and releases |
-| Distilled documentation of how Claude products work | Consulted occasionally, not needed in day-to-day work | [tiavelum/claude-mechanics](https://github.com/tiavelum/claude-mechanics) |
-| Instruction for this conversation only | Ends with the task | The conversation; never filed |
-
-The runtime copies of each source are in the layers table below.
-
-To decide the kind of something new:
-
-1. Does it still matter after this conversation? If not, it stays in the
-   conversation.
-2. Does it prescribe or describe? Prescribing makes it a rule; describing makes it
-   knowledge or a fact.
-3. For a rule: would it also hold if the work were done by hand, without Claude? If
-   yes, it is a repository rule. If no, it is a rule for Claude, filed at the
-   narrowest scope that needs it.
-4. For a description: is it about you, about using a repository, about how Claude
-   products work beyond what day-to-day work needs, or about work still open? That
-   decides between memory, the README, claude-mechanics and an issue.
-
-### Layers
-
-The layers, from a session with no parent outward:
-
-| Layer | Source | Runtime copies | Bound by |
-|---|---|---|---|
-| Session | `user-instructions.md` | Instructions for Claude field; `~/.claude/CLAUDE.md` locally and in the cloud | The products load it. It governs every layer below, including itself |
-| Repository | `README.md` | None; read on demand | The "Reading a repository" rule |
-| Repository rules | `tiavelum/engineering-standards` | None; fetched on demand | The "Repository rules" rule |
-| Repository used with Claude | `project-instructions.md`, `CLAUDE.md` | Claude Code imports `project-instructions.md` at session start | The "Project repositories" rule and the `project-instructions` skill |
-| claude.ai project | The same `project-instructions.md` | The project's instructions field | The paste step; the skill compares field and file |
-| Skills | `skills/<skill>/SKILL.md` | Your claude.ai account | The upload step |
-
-Memory is the other cross-cutting layer; see "Memory" below.
-
-The regress of "what governs the file that governs the file" ends in
-`user-instructions.md`: its "Repository rules" rule loads the standards that govern
-this README, and its instruction-file rules govern itself. That fixed point is safe because of the second principle: the
-version a session writes reaches other sessions only through deployment.
 
 ## Setting up a project repository
 
@@ -357,6 +278,88 @@ Models by steps: claude-opus-5-5 (68)
 
 Each agent of the session adds a row named after its record file. The record format
 is not documented; the script reads the `usage` of each request once.
+
+## Design
+
+Five principles decide where things go and keep the setup from drifting:
+
+1. **One home per kind of content.** Each kind of information has one home, given in
+   "Kinds of information" below. Nothing is stated twice; a second place points to
+   the first.
+2. **Source and runtime are distinct.** Every instruction artefact has one source in
+   git and runtime copies that are snapshots of it: the Instructions for Claude
+   field, `~/.claude/CLAUDE.md`, a project's instructions field, an uploaded skill.
+   A session starts from the snapshots, and a change travels from the source through
+   the steps in "After changing a file" to the next session. This is why a session
+   can edit `user-instructions.md` under the user instructions without a cycle: the
+   new version is written under the old one and reaches other sessions only through
+   deployment.
+3. **Instructions are loaded; knowledge is read.** Instruction files arrive at
+   session start through each product's own mechanism, so they need deployment
+   steps rather than a reading rule. Knowledge, above all a repository's README, is
+   read on demand, so `user-instructions.md` says when to read it and when to read
+   it again. The repository rules are fetched on demand in the same way.
+4. **Scopes nest by addition.** User instructions, then project instructions, then
+   `CLAUDE.md` for Claude Code only. A narrower scope adds what the wider one cannot
+   know and never repeats it.
+5. **References run one way.** The instruction files may name a skill, a skill may
+   cite a standard, and nothing names or restates the layer above it, so a change
+   in one layer never has to be found in another. A skill states the major version
+   of each standard it was written for: a breaking change in the standards then
+   stops it, rather than leaving it to apply rules that have moved.
+
+### Kinds of information
+
+| Kind | How to recognise it | Home |
+|---|---|---|
+| Rule for all work with Claude | Tells Claude how to behave, in any project | `user-instructions.md` |
+| Rule for one project | Tells Claude how to behave in one repository only | That repository's `project-instructions.md` |
+| Rule only Claude Code can follow | Needs something only Claude Code has | That repository's `CLAUDE.md`, below the import |
+| Repository rule | Would also hold if the work were done by hand, without Claude | [tiavelum/engineering-standards](https://github.com/tiavelum/engineering-standards) |
+| Procedure | Several steps executed by Claude, needed only for a certain task | A skill, `skills/<name>/SKILL.md` |
+| Template or pattern for instruction files | The form such a file takes | The skill that creates the file |
+| Explanation or operating step | Describes how to use or run a repository | That repository's `README.md` |
+| Fact about you | Durable, true across projects | Account memory, kept small |
+| Fact about one project | Durable, true for one project | That project's memory; in Claude Code, its `project-instructions.md` |
+| Decision with its reasons, raw material | Explains why, or is the source a decision rests on | Files in a repository, not memory |
+| Open work and state | Still to be done, under review, or a change note | GitHub issues, pull requests and releases |
+| Distilled documentation of how Claude products work | Consulted occasionally, not needed in day-to-day work | [tiavelum/claude-mechanics](https://github.com/tiavelum/claude-mechanics) |
+| Instruction for this conversation only | Ends with the task | The conversation; never filed |
+
+The runtime copies of each source are in the layers table below.
+
+To decide the kind of something new:
+
+1. Does it still matter after this conversation? If not, it stays in the
+   conversation.
+2. Does it prescribe or describe? Prescribing makes it a rule; describing makes it
+   knowledge or a fact.
+3. For a rule: would it also hold if the work were done by hand, without Claude? If
+   yes, it is a repository rule. If no, it is a rule for Claude, filed at the
+   narrowest scope that needs it.
+4. For a description: is it about you, about using a repository, about how Claude
+   products work beyond what day-to-day work needs, or about work still open? That
+   decides between memory, the README, claude-mechanics and an issue.
+
+### Layers
+
+The layers, from a session with no parent outward:
+
+| Layer | Source | Runtime copies | Bound by |
+|---|---|---|---|
+| Session | `user-instructions.md` | Instructions for Claude field; `~/.claude/CLAUDE.md` locally and in the cloud | The products load it. It governs every layer below, including itself |
+| Repository | `README.md` | None; read on demand | The "Reading a repository" rule |
+| Repository rules | `tiavelum/engineering-standards` | None; fetched on demand | The "Repository rules" rule |
+| Repository used with Claude | `project-instructions.md`, `CLAUDE.md` | Claude Code imports `project-instructions.md` at session start | The "Project repositories" rule and the `project-instructions` skill |
+| claude.ai project | The same `project-instructions.md` | The project's instructions field | The paste step; the skill compares field and file |
+| Skills | `skills/<skill>/SKILL.md` | Your claude.ai account | The upload step |
+
+Memory is the other cross-cutting layer; see "Memory".
+
+The regress of "what governs the file that governs the file" ends in
+`user-instructions.md`: its "Repository rules" rule loads the standards that govern
+this README, and its instruction-file rules govern itself. That fixed point is safe because of the second principle: the
+version a session writes reaches other sessions only through deployment.
 
 ## Known limits
 
