@@ -36,8 +36,8 @@ For a done criterion that runs a command, use this pattern: "Run X. If you canno
 2. Ask in one round only what the repository cannot answer: the project's purpose, what Claude has got wrong or must never do, when a change counts as done, and what data must stay private.
 3. Draft both files following the anatomy.
 4. Run the checks below on the draft.
-5. Show both files in full and commit only after approval.
-6. After the commit, give the follow-up below.
+5. Show both files in full.
+6. Give the follow-up below, to carry out after the merge.
 
 ## Review an existing file
 
@@ -45,8 +45,8 @@ For a done criterion that runs a command, use this pattern: "Run X. If you canno
 2. Run the checks below and report each finding with a proposed fix, most important first. Do not draft yet.
 3. Wait for my decision on each finding. Removing a rule that repeats a user instruction word for word or in substance counts as decided; list it without asking.
 4. Draft the changes I accepted. When migrating an older layout, fold any description file into the purpose and delete it, move the instructions file to the repository root, remove headers and copy markers, update the CLAUDE.md imports, and update every reference to moved or deleted files, including the README's file table and wording.
-5. Show every changed file in full, or as a diff where a long file has a small change, and list every deleted file. Commit only after approval.
-6. After the commit, give the follow-up below.
+5. Show every changed file in full, or as a diff where a long file has a small change, and list every deleted file.
+6. Give the follow-up below, to carry out after the merge.
 
 ## Checks
 
@@ -60,10 +60,10 @@ For a done criterion that runs a command, use this pattern: "Run X. If you canno
 
 ## Follow-up
 
-After a commit, tell me to:
+Tell me to do these once the change is merged:
 
 1. Paste the whole of project-instructions.md into the claude.ai project's instructions field, and create the project if it does not exist.
 2. Clear the project's description field, or reduce it to a few words.
-3. Pull the local clone before the next Claude Code session, if the commit was made outside it.
+3. Pull the local clone before the next Claude Code session.
 
 Then name any memory entries in this project that describe the old layout or a removed rule, and propose their updated text.
