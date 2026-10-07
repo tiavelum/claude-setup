@@ -72,6 +72,7 @@ jobs:
           { step r1 1 10; step r2 2 20; } >"$new.jsonl"
           step a1 3 30 >"$old/subagents/agent-old.jsonl"
           step b1 4 40 >"$new/subagents/agent-new.jsonl"
+          step a1 3 30 >"$new/subagents/agent-old.jsonl"
           touch -d '2026-10-06 10:00' "$old.jsonl"
           HOME="$RUNNER_TEMP/home" python3 session-usage.py | tee "$RUNNER_TEMP/out2.txt"
           grep -E '^Session s1$' "$RUNNER_TEMP/out2.txt"
