@@ -16,7 +16,8 @@ The Claude app reads them from your account. Claude Code reads them from
 machine and in each cloud environment.
 
 Prerequisites: a Claude account. For Claude Code on your own machine also git 2 or
-later and bash 3.2 or later; for `session-usage.py` Python 3.9 or later.
+later, bash 3.2 or later and an SSH key added to your GitHub account; for uploading
+skills zip 3.0 or later; for `session-usage.py` Python 3.9 or later.
 
 Which setup applies depends on what runs, not on the window you open:
 
@@ -35,10 +36,20 @@ uses the local setup.
 Copies the instructions into your account, which applies them to all your conversations
 with Claude.
 
-1. Open **Settings > Account > Instructions for Claude** and paste the whole of
+1. Open **Instructions for Claude** in **Settings**
+   ([help](https://support.claude.com/en/articles/10185728)) and paste the whole of
    `user-instructions.md` into that field.
 2. If you use a claude.ai project for this repository, paste `project-instructions.md`
-   into that project's instructions field.
+   into that project's instructions
+   ([help](https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects)).
+3. Verify: start a new chat, in that project if you use one, and send
+
+   ```
+   Quote your instruction "Usage" word for word, and the first line of your project instructions if you have any.
+   ```
+
+   The answer must match the paragraph "Usage" of `user-instructions.md` and, in the
+   project, the first line of `project-instructions.md`.
 
 ### Claude Code, local
 
@@ -68,7 +79,8 @@ keys in that file stay as they are, and a changed file is kept as a backup.
 
 Adds a setup script to your cloud environment that downloads `user-instructions.md`
 into every new cloud session. Done once per cloud environment in your claude.ai
-account; usually there is just one, called "Default".
+account; usually there is just one, called "Default". The screens are described in
+[Claude Code on the web](https://code.claude.com/docs/en/claude-code-on-the-web).
 
 1. In a browser, log in to claude.ai and open Claude Code:
 
@@ -110,8 +122,9 @@ requires signing in with `/login` rather than an API key. Done once per skill.
    cd ~/vc/claude-setup/skills && zip -r ~/Downloads/<skill>.zip <skill>
    ```
 
-2. In the Claude app, open **Customize > Skills**, click **+**, choose
-   **Create skill**, then **Upload a skill**, and select the ZIP.
+2. In the Claude app, open [Customize > Skills](https://claude.ai/customize/skills),
+   click **+**, choose **Create skill**, then **Upload a skill**, and select the ZIP
+   ([help](https://support.claude.com/en/articles/12512180-use-skills-in-claude)).
 
 3. Verify: start Claude Code and run
 
@@ -235,11 +248,11 @@ version a session writes reaches other sessions only through deployment.
 
 ## Setting up a project repository
 
-Every repository used with Claude gets a `project-instructions.md` with the project's
-rules and a `CLAUDE.md` that imports it for Claude Code. The `project-instructions`
-skill creates and reviews both files and defines their content; see
-`skills/project-instructions/SKILL.md`. Claude reads the project's instructions
-field, not its description.
+Ask Claude, in a session working in the repository, to set the repository up for
+Claude. Under the rule "Project repositories" it creates a `project-instructions.md`
+with the project's rules and a `CLAUDE.md` that imports it for Claude Code. Ask it
+later to review them; the `project-instructions` skill defines their content, see
+`skills/project-instructions/SKILL.md`.
 
 ## Working with agents
 
@@ -261,7 +274,8 @@ Memory is what Claude records itself, as opposed to the instructions you write:
 
 When Claude should record something durable, the memory rules in
 `user-instructions.md` apply: it proposes where, and shows the exact text before
-writing. Claude Code has no account memory, so there the place is an instruction file:
+writing. The Claude Code documentation describes no account memory, only `CLAUDE.md`
+files and auto memory, so in Claude Code the place is an instruction file:
 `user-instructions.md` for general facts, the repository's `project-instructions.md`
 for project facts.
 
@@ -276,11 +290,9 @@ they count as instructions.
 
 The rule "Long work" in `user-instructions.md` keeps the plan and state of work that
 spans several pull requests in a tracking issue, and makes Claude hand over as the
-`hand-over-session` skill says; upload it as in Setup, "Skills". At the end of a phase,
-or once the conversation has grown to the context the skill names, Claude brings the
-tracking issue up to date, posts the session's token figures, and gives you a start
-prompt of a few lines. Paste it into a new session; the old one does no further work on
-the task.
+`hand-over-session` skill says; upload it as in Setup, "Skills". When Claude hands
+over, paste the start prompt it gives you into a new session. When and how it hands
+over is in `skills/hand-over-session/SKILL.md`.
 
 ## Session usage
 
