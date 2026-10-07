@@ -178,6 +178,11 @@ cached environment expires, after roughly seven days.
 ⁴ Package and upload as in Setup, "Skills"; the upload replaces the existing
 version. Claude Code picks up the new version on its own.
 
+To check that the copies match `main`, ask Claude in a new session to compare each
+copy it received with the file on `main` by git blob hash: `git hash-object` on the
+copy saved as a file, against `git rev-parse origin/main:<file>`. Equal hashes mean
+the same bytes, whitespace included.
+
 ## Design
 
 Five principles decide where things go and keep the setup from drifting:
