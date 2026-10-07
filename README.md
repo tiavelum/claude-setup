@@ -200,12 +200,9 @@ the same bytes, whitespace included.
 
 Five principles decide where things go and keep the setup from drifting:
 
-1. **One home per kind of content.** Behaviour rules live in an instruction file at
-   the narrowest scope that needs them, procedures in skills, explanations and
-   operating steps in the repository's README, durable facts about you in memory.
-   Rules that hold for any repository, whoever works in it, live in
-   [tiavelum/engineering-standards](https://github.com/tiavelum/engineering-standards).
-   Nothing is stated twice; a second place points to the first.
+1. **One home per kind of content.** Each kind of information has one home, given in
+   "Kinds of information" below. Nothing is stated twice; a second place points to
+   the first.
 2. **Source and runtime are distinct.** Every instruction artefact has one source in
    git and runtime copies that are snapshots of it: the Instructions for Claude
    field, `~/.claude/CLAUDE.md`, a project's instructions field, an uploaded skill.
@@ -227,6 +224,41 @@ Five principles decide where things go and keep the setup from drifting:
    in one layer never has to be found in another. A skill states the major version
    of each standard it was written for: a breaking change in the standards then
    stops it, rather than leaving it to apply rules that have moved.
+
+### Kinds of information
+
+| Kind | How to recognise it | Home |
+|---|---|---|
+| Rule for all work with Claude | Tells Claude how to behave, in any project | `user-instructions.md` |
+| Rule for one project | Tells Claude how to behave in one repository only | That repository's `project-instructions.md` |
+| Rule only Claude Code can follow | Needs something only Claude Code has | That repository's `CLAUDE.md`, below the import |
+| Repository rule | Would also hold if the work were done by hand, without Claude | [tiavelum/engineering-standards](https://github.com/tiavelum/engineering-standards) |
+| Procedure | Several steps executed by Claude, needed only for a certain task | A skill, `skills/<name>/SKILL.md` |
+| Template or pattern for instruction files | The form such a file takes | The skill that creates the file |
+| Explanation or operating step | Describes how to use or run a repository | That repository's `README.md` |
+| Fact about you | Durable, true across projects | Account memory, kept small |
+| Fact about one project | Durable, true for one project | That project's memory; in Claude Code, its `project-instructions.md` |
+| Decision with its reasons, raw material | Explains why, or is the source a decision rests on | Files in a repository, not memory |
+| Open work and state | Still to be done, under review, or a change note | GitHub issues, pull requests and releases |
+| How Claude itself works | Describes a Claude product's behaviour | [tiavelum/claude-mechanics](https://github.com/tiavelum/claude-mechanics) |
+| Instruction for this conversation only | Ends with the task | The conversation; never filed |
+
+The runtime copies of each source are in the layers table below.
+
+To decide the kind of something new:
+
+1. Does it still matter after this conversation? If not, it stays in the
+   conversation.
+2. Does it prescribe or describe? Prescribing makes it a rule; describing makes it
+   knowledge or a fact.
+3. For a rule: would it also hold if the work were done by hand, without Claude? If
+   yes, it is a repository rule. If no, it is a rule for Claude, filed at the
+   narrowest scope that needs it.
+4. For a description: is it about you, about using a repository, about how Claude
+   works, or about work still open? That decides between memory, the README,
+   claude-mechanics and an issue.
+
+### Layers
 
 The layers, from a session with no parent outward:
 
