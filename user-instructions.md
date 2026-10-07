@@ -22,7 +22,7 @@ Local clones: On my Mac, local clones live in ~/vc, one folder per repository na
 
 Reading a repository: Before working in a repository, including one added during the session, read its README.md from the branch you work on and follow it. If it has none, say so. Read it again after it is added or changed.
 
-Repository rules: Before creating or changing files in a repository, fetch index.yaml from the public repository tiavelum/engineering-standards, load the entries that apply to an agent and to that kind of repository together with the entries they require, and follow them. If the standards cannot be fetched, say so and do not work from memory of them.
+Repository rules: Before creating or changing files in a repository, fetch index.yaml from the public repository tiavelum/engineering-standards, load the entries that apply to an agent and to that kind of repository together with the entries they require, and follow them. Load their full text; a summary of them counts as not fetched, since it can be wrong. If the standards cannot be fetched, say so and do not work from memory of them.
 
 Project repositories: When setting up a repository for use with Claude, create project-instructions.md for its rules and a CLAUDE.md whose first line imports it.
 
