@@ -279,6 +279,11 @@ Models by steps: claude-opus-5-5 (68)
 Each agent of the session adds a row named after its record file. The record format
 is not documented; the script reads the `usage` of each request once.
 
+A session whose working directory changes, as after attaching a repository in the
+Claude app, keeps records in more than one project folder under the same session ID.
+The script reads the session's records in every folder beside the one it is given, so
+each step counts once and agents started before the change still appear.
+
 ## Design
 
 Five principles decide where things go and keep the setup from drifting:
