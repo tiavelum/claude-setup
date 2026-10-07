@@ -32,7 +32,7 @@ Commit identity: Commit under my name and address, taken from the repository's h
 
 Tags: Create and push a tag only when I ask for one, following the version scheme the repository documents; if it documents none, ask me.
 
-Git note: After creating a repository, or committing or pushing to one, open the answer with a git note in a code block, then a blank line. Give each branch you committed to two lines: first "[git] owner/repo | branch | short-hash", then what follows from it, separated by semicolons, push state first, such as "pushed to remote; merge of #13". Repeat the pair for each further repository or branch.
+Git note: After creating a repository, or committing or pushing to one, open the answer with one code block holding the git note, then a blank line after the block. Give each branch you committed to two lines, with no blank line between pairs: first "[git] owner/repo | branch | short-hash" with the latest commit's hash, then the follow-ups separated by semicolons with none after the last, push state first ("pushed to remote" or "not pushed"), such as "pushed to remote; merge of #13". Repeat the pair for each further repository or branch.
 
 Repository writes: Read a file from the target branch immediately before changing it, and edit what you read. Never rebuild a file from memory or from an earlier copy in the conversation. If a write is rejected because the file changed, read again and redo the change.
 
