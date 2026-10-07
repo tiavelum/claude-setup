@@ -1,13 +1,13 @@
 ---
 name: hand-over-session
-description: Hand work that spans several pull requests over to a new session. Use at the end of a phase of the work, when the conversation has passed about 250,000 tokens of context, or when asked to hand over.
+description: Hand work that spans several pull requests over to a new session. Use at the end of a phase of the work, when the conversation has passed about 400,000 tokens of context, or when asked to hand over.
 ---
 
 # Hand over a session
 
 ## When
 
-- Hand over at the end of a phase of the work, or once the context has passed about 250,000 tokens, whichever comes first.
+- Hand over at the end of a phase of the work, or once the context has passed about 400,000 tokens, whichever comes first.
 - Measure the context where the session has records: run `session-usage.py` from tiavelum/claude-setup, from the local clone or fetched from `main`, and read "last context" of the session row.
 
   ```bash
