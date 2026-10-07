@@ -17,7 +17,7 @@ Follow these steps whenever you hand work to agents. The numbers are starting va
 
 1. Split the work as "Pieces" says.
 2. Estimate for each agent its steps and the context it will reach, and its tokens as steps times average context. Take the figures from the effort map of the last comparable run where the tracking issue has one.
-3. Tell me the number of agents, their models and the estimate, and ask for the amount to stop at. Start no agent before I have named it.
+3. Give me the estimate with the number of agents and their models.
 4. Put the plan into the tracking issue: the pieces, their branches, the agents and the amount.
 
 ## Pieces
@@ -55,14 +55,14 @@ Split a large piece between several checkers so that each part stays within the 
 
 ## While agents run
 
-- Start workers on Opus and checkers on Sonnet, both at high effort.
+- Start workers on Opus and checkers on Sonnet.
 - Run at most four agents at a time, and never more work in flight than you can afford to lose.
 - Let nothing be pushed that has not passed the checks the brief gives as commands.
 - Have each agent return a few lines and save its full report to a file. Read the few lines, not the whole report.
 - Before a report goes into a pull request, scan it for secrets, local paths and text copied from a source.
 - Put the worker's report into the pull request's description and the checker's findings into review comments on it.
 - A checker and the worker whose work it checks exchange nothing but the work and the findings, in writing. Workers learn from each other through what is pushed; connect two workers directly only for a named question.
-- End your turn after each merged pull request or finished piece, so that a turn ending at a usage limit loses nothing that was not pushed.
+- End your turn after each finished piece, so that a turn ending at a usage limit loses nothing that was not pushed.
 - When a usage or spend limit is reported, stop and continue after the reset.
 
 ## Corrections
