@@ -80,19 +80,21 @@ def read_steps(paths: list[Path]) -> list[tuple[str, str, dict]]:
     return sorted(steps.values(), key=lambda step: step[0])
 
 
-def records_of(session: Path) -> tuple[list[Path], list[Path]]:
-    """Return the session's files and its agents' files across all project folders.
+def records_of(session: Path) -> tuple[list[Path], dict[str, list[Path]]]:
+    """Return the session's files and, per agent, its files across all project folders.
 
     A change of working directory starts a new project folder under the same
-    session ID, and the agents started before it stay in the old one.
+    session ID, and the agents started before it stay in the old one. Only
+    sessions under PROJECTS are widened, so a copied file is read on its own.
     """
-    projects = session.parent.parent
-    files = sorted({session, *projects.glob(f"*/{session.name}")})
-    agents: dict[str, Path] = {}
+    files = [session]
+    if session.resolve().parent.parent == PROJECTS.resolve():
+        files = sorted({session, *PROJECTS.glob(f"*/{session.name}")})
+    agents: dict[str, list[Path]] = {}
     for file in files:
         for agent in sorted((file.with_suffix("") / "subagents").glob("*.jsonl")):
-            agents.setdefault(agent.name, agent)
-    return files, sorted(agents.values(), key=lambda agent: agent.stem)
+            agents.setdefault(agent.stem, []).append(agent)
+    return files, dict(sorted(agents.items()))
 
 
 def measure(name: str, paths: list[Path], prices: dict | None) -> Usage:
@@ -133,8 +135,8 @@ def sessions_in(paths: list[str]) -> list[Path]:
 def report(session: Path, prices: dict | None) -> dict:
     files, agents = records_of(session)
     rows = [measure("session", files, prices)]
-    for agent in agents:
-        rows.append(measure(agent.stem, [agent], prices))
+    for name, paths in agents.items():
+        rows.append(measure(name, paths, prices))
     total = Usage("total")
     for row in rows:
         total.steps += row.steps
