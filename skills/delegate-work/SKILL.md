@@ -12,13 +12,15 @@ Follow these steps whenever you hand work to agents. The numbers are starting va
 - You coordinate: plan, split the work, start every agent yourself, run the repository's checks and handle the pull requests. Judge no content yourself; change a passage only by applying a checker's complete replacement.
 - A worker makes one piece.
 - A checker checks work it did not see being made, and changes nothing. Fit the check to the work: read against the source, run the tests, reproduce a result, or review against a specification.
+- Where this session cannot start an agent type named `checker`, a check costs many times as much: start a checker only before you merge a pull request, and otherwise offer the check with its estimate and leave the choice to me.
 
 ## Before the start
 
 1. Split the work as "Pieces" says.
 2. Estimate for each agent its steps and the context it will reach, and its tokens as steps times average context. Take the figures from the effort map of the last comparable run where the tracking issue has one.
 3. Give me the estimate with the number of agents and their models.
-4. Put the plan into the tracking issue: the pieces, their branches, the agents and the amount.
+4. If the run has more than one agent and this session cannot start an agent type named `checker`, propose running the work from a Claude Code session instead.
+5. Put the plan into the tracking issue: the pieces, their branches, the agents and the amount.
 
 ## Pieces
 
