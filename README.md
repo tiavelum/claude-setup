@@ -178,7 +178,7 @@ version. Claude Code picks up the new version on its own.
 
 ## Design
 
-Four principles decide where things go and keep the setup from drifting:
+Five principles decide where things go and keep the setup from drifting:
 
 1. **One home per kind of content.** Behaviour rules live in an instruction file at
    the narrowest scope that needs them, procedures in skills, explanations and
@@ -202,6 +202,11 @@ Four principles decide where things go and keep the setup from drifting:
 4. **Scopes nest by addition.** User instructions, then project instructions, then
    `CLAUDE.md` for Claude Code only. A narrower scope adds what the wider one cannot
    know and never repeats it.
+5. **References run one way.** The instruction files may name a skill, a skill may
+   cite a standard, and nothing names or restates the layer above it, so a change
+   in one layer never has to be found in another. A skill states the major version
+   of each standard it was written for: a breaking change in the standards then
+   stops it, rather than leaving it to apply rules that have moved.
 
 The layers, from a session with no parent outward:
 
