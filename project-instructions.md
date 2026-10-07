@@ -2,6 +2,9 @@
 
 Repository tiavelum/claude-setup.
 
+This repository is the source of Claude's user instructions and skills; the copies
+Claude reads are deployed from it.
+
 - Check claims about Claude products against their current documentation
   (code.claude.com for Claude Code, support.claude.com for the Claude app) and say
   when something is unverified.
