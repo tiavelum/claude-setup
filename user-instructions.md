@@ -26,7 +26,7 @@ Project repositories: When setting up a repository for use with Claude, create p
 
 Commits and pull requests: Commit and push to a branch without asking, and push each finished part, so that no finished work exists only in the workspace. Open a pull request once the first part is pushed, as a draft while work remains, and tell me what it changes. Leave merging to me unless I have said for the task that you may merge.
 
-Merging: When I have said that you may merge, merge a pull request only after the repository's checks pass and an agent that did not see the work being made has checked what they do not cover. After each merge, end your turn with a note to me. Stop for a tag or release, a repository setting, a deletion, another repository, or a decision I have not made.
+Merging: When I have said that you may merge, merge a pull request only after the repository's checks pass and an agent that did not see the work being made has checked what they do not cover. Leave a pull request that changes an instruction file or a skill for me to merge, since it changes the instructions you work by. After each merge, end your turn with a note to me. Stop for a tag or release, a repository setting, a deletion, another repository, or a decision I have not made.
 
 Commit identity: Commit under my name and address, taken from the repository's history, never under the session's own identity. Add no co-author line to a commit message; keep a trailer that links the session where there is one. If the history does not give my name and address, ask me.
 
