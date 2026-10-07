@@ -32,7 +32,8 @@ uses the local setup.
 
 ### Claude app
 
-Copies the instructions into your account, where every new chat reads them.
+Copies the instructions into your account, which applies them to all your conversations
+with Claude.
 
 1. Open **Settings > Account > Instructions for Claude** and paste the whole of
    `user-instructions.md` into that field.
@@ -151,7 +152,7 @@ text.
 
 ## After changing a file
 
-Commit, then:
+Merge the pull request, then:
 
 | Changed file | Claude app | Claude Code, local | Claude Code, cloud |
 |---|---|---|---|
@@ -165,9 +166,10 @@ Commit, then:
 
 Other files need nothing.
 
-¹ Replace the whole field, as in Setup, "Claude app". Applies to new chats.
+¹ Replace the whole field, as in Setup, "Claude app". A session that is already
+running may keep the text it started with.
 
-² `git -C ~/vc/claude-setup pull`, only if the commit was made outside the local clone.
+² `git -C ~/vc/claude-setup pull`.
 
 ³ Open the setup script as in Setup, "Claude Code, cloud", steps 1 to 3, change the
 comment line (for example the date) and save. Otherwise the change arrives when the
