@@ -216,6 +216,13 @@ are in `skills/delegate-work/SKILL.md`, together with the sizes the skill starts
 such as the context per agent and the agents at a time; correct them there after a run
 shows better ones.
 
+A check by an agent is cheap only where the session can start a `checker` agent type,
+which a definition in a repository's `.claude/agents/` provides. Claude Code loads such
+definitions; Claude app sessions mostly do not, and there a check cost about 80,000
+tokens instead of about 6,000 in two runs. So in a session without `checker` the skill
+starts a check only before Claude merges, and proposes Claude Code for runs with several
+agents.
+
 ## Memory
 
 Memory is what Claude records itself, as opposed to the instructions you write:
