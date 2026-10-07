@@ -2,8 +2,9 @@
 """Print the steps and tokens of Claude Code sessions, per session and agent.
 
 Reads the session records under ~/.claude/projects/: one JSON Lines file per
-session, and the records of its agents in <session>/subagents/. Prints tokens;
-applies prices only when a price file is given.
+session, and the records of its agents in <session>/subagents/. A session whose
+working directory changed has records in more than one project folder; all of
+them are read. Prints tokens; applies prices only when a price file is given.
 """
 
 from __future__ import annotations
@@ -58,30 +59,48 @@ class Usage:
         self.cost = total
 
 
-def read_steps(path: Path) -> list[tuple[str, str, dict]]:
+def read_steps(paths: list[Path]) -> list[tuple[str, str, dict]]:
     """Return (timestamp, model, usage) per API request, once per request."""
     steps: dict[str, tuple[str, str, dict]] = {}
-    with path.open(encoding="utf-8") as f:
-        for line in f:
-            try:
-                entry = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            if entry.get("type") != "assistant":
-                continue
-            message = entry.get("message") or {}
-            usage = message.get("usage")
-            if not usage:
-                continue
-            key = entry.get("requestId") or message.get("id") or entry.get("uuid")
-            steps[key] = (entry.get("timestamp", ""), message.get("model", "?"), usage)
+    for path in paths:
+        with path.open(encoding="utf-8") as f:
+            for line in f:
+                try:
+                    entry = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                if entry.get("type") != "assistant":
+                    continue
+                message = entry.get("message") or {}
+                usage = message.get("usage")
+                if not usage:
+                    continue
+                key = entry.get("requestId") or message.get("id") or entry.get("uuid")
+                steps[key] = (entry.get("timestamp", ""), message.get("model", "?"), usage)
     return sorted(steps.values(), key=lambda step: step[0])
 
 
-def measure(name: str, path: Path, prices: dict | None) -> Usage:
+def records_of(session: Path) -> tuple[list[Path], dict[str, list[Path]]]:
+    """Return the session's files and, per agent, its files across all project folders.
+
+    A change of working directory starts a new project folder under the same
+    session ID, and the agents started before it stay in the old one. Only
+    sessions under PROJECTS are widened, so a copied file is read on its own.
+    """
+    files = [session]
+    if session.resolve().parent.parent == PROJECTS.resolve():
+        files = sorted({session, *PROJECTS.glob(f"*/{session.name}")})
+    agents: dict[str, list[Path]] = {}
+    for file in files:
+        for agent in sorted((file.with_suffix("") / "subagents").glob("*.jsonl")):
+            agents.setdefault(agent.stem, []).append(agent)
+    return files, dict(sorted(agents.items()))
+
+
+def measure(name: str, paths: list[Path], prices: dict | None) -> Usage:
     result = Usage(name)
     by_model: dict[str, dict[str, int]] = {}
-    for _, model, usage in read_steps(path):
+    for _, model, usage in read_steps(paths):
         before = dict(result.tokens)
         result.add(model, usage)
         tokens = by_model.setdefault(model, dict.fromkeys(KINDS, 0))
@@ -107,14 +126,17 @@ def sessions_in(paths: list[str]) -> list[Path]:
             found.append(path)
         else:
             sys.exit(f"Not found: {arg}")
-    return found
+    unique: dict[str, Path] = {}
+    for path in found:
+        unique.setdefault(path.stem, path)
+    return list(unique.values())
 
 
 def report(session: Path, prices: dict | None) -> dict:
-    rows = [measure("session", session, prices)]
-    agents = session.with_suffix("") / "subagents"
-    for agent in sorted(agents.glob("*.jsonl")):
-        rows.append(measure(agent.stem, agent, prices))
+    files, agents = records_of(session)
+    rows = [measure("session", files, prices)]
+    for name, paths in agents.items():
+        rows.append(measure(name, paths, prices))
     total = Usage("total")
     for row in rows:
         total.steps += row.steps
