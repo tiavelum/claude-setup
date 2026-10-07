@@ -132,6 +132,7 @@ requires signing in with `/login` rather than an API key. Done once per skill.
 | `CLAUDE.md` | Imports `project-instructions.md`, then rules for Claude Code only |
 | `skills/delegate-work/SKILL.md` | How Claude plans, briefs, starts and checks agents; see "Working with agents" |
 | `skills/project-instructions/SKILL.md` | Guided creation and review of a repository's `project-instructions.md` |
+| `skills/readme/SKILL.md` | Guided writing and review of a repository's README against the README contract of tiavelum/engineering-standards |
 | `skills/hand-over-session/SKILL.md` | How Claude hands long work over to a new session; see "Handing over a session" |
 | `.github/workflows/check-scripts.yml` | Checks the setup scripts with shfmt and shellcheck, and `session-usage.py` with ruff and a sample run, on every pull request |
 | `.editorconfig`, `.shellcheckrc`, `ruff.toml` | The formatting and lint rules that check applies |
