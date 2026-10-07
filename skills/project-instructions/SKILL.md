@@ -5,7 +5,7 @@ description: Create or review a repository's project-instructions.md and CLAUDE.
 
 # Project instructions
 
-If the repository has no project-instructions.md, follow "Create a new file". If it has one, follow "Review an existing file". Apply the INSTRUCTION FILES rules of the user instructions throughout.
+If the repository has no project-instructions.md, follow "Create a new file". If it has one, follow "Review an existing file".
 
 ## Anatomy
 
@@ -51,12 +51,10 @@ For a done criterion that runs a command, use this pattern: "Run X. If you canno
 ## Checks
 
 - The anchor is complete and the purpose is at most two sentences.
-- No rule repeats a user instruction. Also flag a rule that covers the same ground as a user instruction more strictly; keep it only if the project needs the stricter version.
-- No rule restates the README, and no content the repository already holds, such as file lists, structure or procedures; point to it instead.
-- Each rule is checkable. A reason is at most one clause and only where the purpose is not self-evident.
-- Each rule works in both the Claude app and Claude Code. A rule only Claude Code can use goes into CLAUDE.md instead.
+- Flag a rule that covers the same ground as a user instruction more strictly; keep it only if the project needs the stricter version.
+- No rule holds content the repository already holds, such as file lists, structure or procedures; point to it instead.
 - No contradictions with the README or the user instructions.
-- No notes about the file itself, no capitals or "CRITICAL" for emphasis, and no first name except where it is part of a repository name or path.
+- No capitals or "CRITICAL" for emphasis.
 - The file fits on one screen. If it does not, name what could move to the README or a skill.
 - The claude.ai instructions field matches the file.
 
