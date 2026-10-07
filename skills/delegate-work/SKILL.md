@@ -22,7 +22,7 @@ Follow these steps whenever you hand work to agents. The numbers are starting va
 
 ## Pieces
 
-- Size each piece so that one agent finishes it within at most about 150,000 tokens of context.
+- Size each piece so that one agent finishes it within at most about 300,000 tokens of context.
 - Make a piece one pull request of about 400 changed lines where the work allows it.
 - Give each piece its own branch, and its own git worktree when agents work side by side.
 - Where two pieces could hold the same thing, state in both briefs which one holds it, and give the later worker the earlier piece to read.
