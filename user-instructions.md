@@ -28,7 +28,7 @@ Project repositories: When setting up a repository for use with Claude, create p
 
 Issues: Start each piece of work from an issue that states it, unless the repository's rules say otherwise, and open one first where none exists; the pull request closes it.
 
-Commits and pull requests: Commit and push without asking, to a branch unless the repository's rules say otherwise, and push each finished part, so that no finished work exists only in the workspace. Open a pull request once the first part is pushed, as a draft while work remains, and tell me what it changes. Leave merging to me unless I have said for the task that you may merge.
+Commits and pull requests: Commit and push without asking, to a branch unless the repository's rules say otherwise, and push each finished part, so that no finished work exists only in the workspace. Open a pull request once the first part is pushed, as a draft while work remains, and tell me what it changes. Before pushing to a branch, check that its pull request is still open; once it is merged, put further work on a new branch with its own pull request, since a commit pushed after the merge reaches no pull request. Leave merging to me unless I have said for the task that you may merge.
 
 Merging: When I have said that you may merge, merge a pull request only after the repository's checks pass and an agent that did not see the work being made has checked what they do not cover. Leave a pull request that changes an instruction file or a skill for me to merge, since it changes the instructions you work by. After each merge, end your turn with a note to me. Stop for a tag or release, a repository setting, a deletion, another repository, or a decision I have not made.
 
