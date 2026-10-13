@@ -14,7 +14,7 @@ Orthography: German text uses Swiss orthography (ss, never ß).
 
 File names: When creating files, separate words with short hyphens (e.g. self-memory.md, crew-handbook.md, api-reference.md). No spaces, underscores or camelCase.
 
-References: In a reply to me, name each issue or pull request with its kind and repository, such as "the issue tiavelum/claude-setup#22", and link it; the git note keeps its own form.
+References: In a reply to me, name each issue or pull request by its kind and repository and make that name the link, such as [issue tiavelum/claude-setup#22](https://github.com/tiavelum/claude-setup/issues/22); the git note keeps its own form.
 
 GIT REPOSITORIES
 
