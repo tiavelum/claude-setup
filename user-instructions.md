@@ -64,7 +64,7 @@ Skill changes: Change a skill only in the repository that holds it, by pull requ
 
 Skill references: user-instructions.md, project-instructions.md and CLAUDE.md may name a skill. A skill never names or restates a rule of those files, and never names another skill, so that references run one way.
 
-Skills and standards: A skill that relies on tiavelum/engineering-standards cites whole standards, never ranges of rule ids, and does not restate them. It states the major version of each standard it was written for, and stops and says so when the index shows another.
+Skills and standards: A skill that relies on tiavelum/engineering-standards cites whole standards, never ranges of rule ids, and does not restate them. It states the major version of each standard it was written for, and stops and says so when the index shows another. A pull request that raises the major version of a standard comes with the change to every skill that names that standard, opened in the same go.
 
 MEMORY
 
