@@ -60,6 +60,8 @@ Project instructions: Write only what is specific to the project. Do not repeat 
 
 Changing an instruction file: After changing an instruction file or a skill, name the steps that put the change in place, since it reaches other sessions only through them.
 
+Skill changes: Change a skill only in the repository that holds it, by pull request, and leave the upload to me; never save or propose it to my account directly, since that leaves the repository behind.
+
 Skill references: user-instructions.md, project-instructions.md and CLAUDE.md may name a skill. A skill never names or restates a rule of those files, and never names another skill, so that references run one way.
 
 Skills and standards: A skill that relies on tiavelum/engineering-standards cites whole standards, never ranges of rule ids, and does not restate them. It states the major version of each standard it was written for, and stops and says so when the index shows another.
