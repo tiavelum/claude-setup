@@ -1,10 +1,9 @@
 # claude-setup
 
-User instructions for all of tiavelum's work with Claude, kept in a single file,
+User instructions for all work with Claude, kept in a single file,
 `user-instructions.md`, and delivered from there to the Claude app and to Claude Code,
 locally and in the cloud, together with the instruction pattern every project
-repository follows and the skills that apply it. It is for tiavelum, who maintains
-these instructions and deploys them to each place Claude runs.
+repository follows and the skills that apply it.
 
 **Keep this repository public.** Cloud sessions download from it, so nothing private
 belongs here.
