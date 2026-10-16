@@ -5,7 +5,7 @@ description: Write a README for a repository that has none, or review an existin
 
 # README
 
-Written for major version 5 of readme-contract and major version 7 of documentation, both in tiavelum/engineering-standards.
+Written for major version 6 of readme-contract and major version 7 of documentation, both in tiavelum/engineering-standards.
 
 If the repository has no README.md, follow "Write a new README". If it has one, follow "Review an existing README".
 
