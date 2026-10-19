@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 # Link ~/.claude/CLAUDE.md to user-instructions.md in this repository,
 # so Claude Code reads the user instructions in every session, and remove
-# an attribution.commit of false from ~/.claude/settings.json, which an
-# earlier version of this script set, so Claude Code adds its co-author
-# line to commits again.
+# an attribution.commit of false from ~/.claude/settings.json, so Claude
+# Code adds its co-author line to commits.
 # Written for a Mac; nothing in it is Mac-specific.
 set -euo pipefail
 

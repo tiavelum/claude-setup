@@ -55,9 +55,8 @@ with Claude.
 
 Links `~/.claude/CLAUDE.md` to `user-instructions.md` in a local clone, so edits there
 apply from the next session. Also removes an `attribution.commit` of `false` from
-`~/.claude/settings.json`, which earlier versions of the script set, so Claude Code
-adds its co-author line to commits again; other keys in that file stay as they are,
-and a changed file is kept as a backup.
+`~/.claude/settings.json`, so Claude Code adds its co-author line to commits; other
+keys in that file stay as they are, and a changed file is kept as a backup.
 
 1. Clone the repository and run the setup script:
 
@@ -140,7 +139,7 @@ requires signing in with `/login` rather than an API key. Done once per skill.
 | File | Purpose |
 |---|---|
 | `user-instructions.md` | User instructions for all work, everywhere. The master. Project rules and repository rules never go here |
-| `setup-local.sh` | Links `~/.claude/CLAUDE.md` to `user-instructions.md` on your own machine and removes the setting that turned off the co-author line in `~/.claude/settings.json` |
+| `setup-local.sh` | Links `~/.claude/CLAUDE.md` to `user-instructions.md` on your own machine and removes an `attribution.commit` of `false` from `~/.claude/settings.json`, so the co-author line is kept |
 | `setup-cloud.sh` | Writes `user-instructions.md` to `~/.claude/CLAUDE.md` in a cloud VM |
 | `session-usage.py` | Prints a session's steps and tokens, per session and agent; see "Session usage" |
 | `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
