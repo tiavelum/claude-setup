@@ -54,9 +54,10 @@ with Claude.
 ### Claude Code, local
 
 Links `~/.claude/CLAUDE.md` to `user-instructions.md` in a local clone, so edits there
-apply from the next session. Also sets `attribution.commit` to `false` in
-`~/.claude/settings.json`, so Claude Code adds no co-author line to commits; other
-keys in that file stay as they are, and a changed file is kept as a backup.
+apply from the next session. Also removes an `attribution.commit` of `false` from
+`~/.claude/settings.json`, which earlier versions of the script set, so Claude Code
+adds its co-author line to commits again; other keys in that file stay as they are,
+and a changed file is kept as a backup.
 
 1. Clone the repository and run the setup script:
 
@@ -65,7 +66,7 @@ keys in that file stay as they are, and a changed file is kept as a backup.
    bash ~/vc/claude-setup/setup-local.sh
    ```
 
-   On a second run the script reports `Already linked` and `Already set`.
+   On a second run the script reports `Already linked` and `Already clear`.
 
 2. Verify: start Claude Code and run
 
@@ -139,7 +140,7 @@ requires signing in with `/login` rather than an API key. Done once per skill.
 | File | Purpose |
 |---|---|
 | `user-instructions.md` | User instructions for all work, everywhere. The master. Project rules and repository rules never go here |
-| `setup-local.sh` | Links `~/.claude/CLAUDE.md` to `user-instructions.md` on your own machine and turns off the co-author line in `~/.claude/settings.json` |
+| `setup-local.sh` | Links `~/.claude/CLAUDE.md` to `user-instructions.md` on your own machine and removes the setting that turned off the co-author line in `~/.claude/settings.json` |
 | `setup-cloud.sh` | Writes `user-instructions.md` to `~/.claude/CLAUDE.md` in a cloud VM |
 | `session-usage.py` | Prints a session's steps and tokens, per session and agent; see "Session usage" |
 | `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
@@ -379,11 +380,6 @@ version a session writes reaches other sessions only through deployment.
 - Anthropic's documentation does not describe loading a `~/.claude/CLAUDE.md` written
   by a setup script. Verified on 2026-10-02; if cloud sessions stop showing the
   user instructions, repeat the check in step 5 under "Claude Code, cloud".
-- In the Claude app and in Claude Code in the cloud, only the "Commit identity" rule
-  of `user-instructions.md` keeps the co-author line out of commits. The documentation
-  says cloud sessions do not read `~/.claude/settings.json`, and the cloud setup leaves
-  it alone, since `attribution.commit` set to `false` might also drop the line that
-  links the session.
 
 ## License
 
