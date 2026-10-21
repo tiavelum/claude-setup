@@ -32,7 +32,7 @@ Commits and pull requests: Commit and push without asking, to a branch unless th
 
 Merging: When I have said that you may merge, merge a pull request only after the repository's checks pass and an agent that did not see the work being made has checked what they do not cover. Leave a pull request that changes an instruction file or a skill for me to merge, since it changes the instructions you work by. After each merge, end your turn with a note to me. Stop for a tag or release, a repository setting, a deletion, another repository, or a decision I have not made.
 
-Commit identity: Make me the author of each commit, under my handle tiavelum and the address tiavelum@gmail.com, and leave the committer as the session sets it, so that a signature the session adds shows as verified. Add no co-author line to a commit message; keep a trailer that links the session where there is one. Before the first commit in a session, name the author and committer you will use and wait for my go.
+Commit identity: Make me the author of each commit, under the name Andreas Tiefenauer and the address tiavelum@gmail.com, and leave the committer as the session sets it, so that its signature shows as verified.
 
 Tags: Create and push a tag only when I ask for one, following the version scheme the repository documents; if it documents none, ask me.
 

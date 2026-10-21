@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Link ~/.claude/CLAUDE.md to user-instructions.md in this repository,
-# so Claude Code reads the user instructions in every session, and set
-# attribution.commit to false in ~/.claude/settings.json, so Claude Code
-# adds no co-author line to commits.
+# so Claude Code reads the user instructions in every session, and remove
+# an attribution.commit of false from ~/.claude/settings.json, so Claude
+# Code adds its co-author line to commits.
 # Written for a Mac; nothing in it is Mac-specific.
 set -euo pipefail
 
@@ -32,15 +32,14 @@ link_instructions() {
   echo "Linked: $target -> $source_file"
 }
 
-set_attribution() {
+clear_attribution() {
   if [[ ! -e "$settings" ]]; then
-    printf '{\n  "attribution": {\n    "commit": false\n  }\n}\n' >"$settings"
-    echo "Created $settings with attribution.commit false"
+    echo "Already clear: no $settings"
     return
   fi
 
   if ! command -v python3 >/dev/null 2>&1; then
-    echo "python3 not found: set \"attribution\": {\"commit\": false} in $settings by hand" >&2
+    echo "python3 not found: remove \"commit\": false under \"attribution\" in $settings by hand, if it is there" >&2
     return
   fi
 
@@ -53,18 +52,17 @@ path, backup = sys.argv[1], sys.argv[2]
 with open(path, encoding="utf-8") as f:
     data = json.load(f)
 attribution = data.get("attribution")
-if not isinstance(attribution, dict):
-    attribution = {}
-if attribution.get("commit") is False:
-    print(f"Already set: attribution.commit false in {path}")
+if not isinstance(attribution, dict) or attribution.get("commit") is not False:
+    print(f"Already clear: no attribution.commit false in {path}")
     sys.exit(0)
 shutil.copy2(path, backup)
-attribution["commit"] = False
-data["attribution"] = attribution
+del attribution["commit"]
+if not attribution:
+    del data["attribution"]
 with open(path, "w", encoding="utf-8") as f:
     json.dump(data, f, indent=2)
     f.write("\n")
-print(f"Set attribution.commit false in {path}; previous file kept as {backup}")
+print(f"Removed attribution.commit false from {path}; previous file kept as {backup}")
 PY
 }
 
@@ -75,4 +73,4 @@ fi
 
 mkdir -p "$HOME/.claude"
 link_instructions
-set_attribution
+clear_attribution
