@@ -79,13 +79,14 @@ keys in that file stay as they are, and a changed file is kept as a backup.
 
    On a second run the script reports `Already linked` and `Already clear`.
 
-2. Verify: start Claude Code and run
+2. Verify: start Claude Code, in the terminal or in the desktop app's Code tab, and run
 
    ```
-   /context
+   /context all
    ```
 
-   Memory files must list `~/.claude/CLAUDE.md`.
+   Memory files must list `~/.claude/CLAUDE.md`. In the Code tab the list is in the
+   "Context window" card the command answers with; expand the card to see it.
 
 ### Claude Code, cloud
 
@@ -117,7 +118,7 @@ account; usually there is just one, called "Default". The screens are described 
 5. Verify: start a new session with **New** and run
 
    ```
-   /context
+   /context all
    ```
 
    Memory files must list `/root/.claude/CLAUDE.md`.
@@ -254,8 +255,8 @@ Both products also record memory automatically, outside those rules. The Claude 
 does so in your account. Claude Code keeps auto memory as files on the machine where
 it runs, under `~/.claude/projects/<repository>/memory/`.
 
-`/context` in Claude Code lists `CLAUDE.md` files under "Memory files"; in this README
-they count as instructions.
+`/context all` in Claude Code lists `CLAUDE.md` files under "Memory files"; in this
+README they count as instructions.
 
 ## Handing over a session
 
