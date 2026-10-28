@@ -42,14 +42,26 @@ with Claude.
 2. If you use a claude.ai project for this repository, paste `project-instructions.md`
    into that project's instructions
    ([help](https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects)).
-3. Verify: start a new chat, in that project if you use one, and send
+3. Verify: start a new chat and send
 
    ```
-   Quote your instruction "Usage" word for word, and the first line of your project instructions if you have any.
+   Answer only from what is already in your context: make no tool call, read no file, search no past chats, and do not reconstruct anything.
+   1. Do you have user-level instructions in your context (user preferences, or a user-level CLAUDE.md)? Answer yes or no, and say which.
+   2. If yes, list their section headings in the order they appear.
+   3. Quote word for word their first rule, their last rule and the rule "Usage".
+   If any part is not in your context, name that part instead of filling it in.
    ```
 
-   The answer must match the paragraph "Usage" of `user-instructions.md` and, in the
-   project, the first line of `project-instructions.md`.
+   The answer must say yes, list the headings of `user-instructions.md` in their
+   order, and match its first rule, its last rule and its rule "Usage" word for word.
+4. If you use the project, verify it too: start a new chat in that project and send
+
+   ```
+   Answer only from what is already in your context, with no tool call: quote your project instructions word for word.
+   ```
+
+   The answer must hold the text of `project-instructions.md` below its title, word
+   for word; Markdown markup and line breaks may differ.
 
 ### Claude Code, local
 
