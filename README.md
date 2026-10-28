@@ -211,6 +211,56 @@ copy it received with the file on `main` by git blob hash: `git hash-object` on 
 copy saved as a file, against `git rev-parse origin/main:<file>`. Equal hashes mean
 the same bytes, whitespace included.
 
+## Checking which instructions a session loads
+
+1. On your Mac, create an empty folder for the test sessions and check that no
+   instruction file sits in your home folder:
+
+   ```bash
+   mkdir -p ~/instructions-test
+   ls ~/CLAUDE.md ~/CLAUDE.local.md
+   ```
+
+   `ls` must report both files as missing; either would load into every session
+   started below your home folder.
+
+2. Start each session listed below as a new one and run its check where it has one.
+   Then send the prompt from Setup, "Claude app", step 3, and after its answer:
+
+   ```
+   Answer only from what is already in your context, with no tool call: for each block of standing instructions in your context, such as user preferences, a CLAUDE.md file or Cowork global instructions, give the label or path your context shows for it, and say which of them holds the rules you quoted.
+   ```
+
+   The first answer must pass as Setup, "Claude app", step 3 says. The second must
+   name the source given below for the session.
+
+   - **Claude Code in the terminal.** Start it in the test folder:
+
+     ```bash
+     cd ~/instructions-test && claude
+     ```
+
+     Check as in Setup, "Claude Code, local", step 2. Source: `~/.claude/CLAUDE.md`.
+   - **Desktop app, Code tab.** Choose the **Local** environment and the folder
+     `instructions-test`, and check as in the terminal. Source: `~/.claude/CLAUDE.md`.
+   - **Desktop app, chat.** Start a new chat outside any project and add the folder
+     `instructions-test` through **+ > Add folder**. Source: user preferences, and
+     no CLAUDE.md.
+   - **Claude Code in the cloud.** Start a session with **New** at claude.ai/code,
+     without a repository where it allows, and check as in Setup, "Claude Code,
+     cloud", step 5. Source: `/root/.claude/CLAUDE.md` and user preferences. The two
+     match only once both follow-up steps for `user-instructions.md` in "After
+     changing a file" are done; until then the session holds two versions of the
+     rules.
+   - **Claude app in the browser.** Start a new chat at claude.ai outside any
+     project. Source: user preferences, and no CLAUDE.md.
+
+3. Record each session whose answers differ from this in an issue, with the kind of
+   session, its version and both answers.
+
+Run the check after the follow-up steps for `user-instructions.md`, `setup-local.sh`
+or `setup-cloud.sh`, and whenever a session seems not to follow one of the rules.
+
 ## Setting up a project repository
 
 Ask Claude, in a session working in the repository, to set the repository up for
