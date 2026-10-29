@@ -12,9 +12,9 @@ belongs here.
 
 Setup puts the same user instructions in front of Claude everywhere you use it.
 The Claude app reads them from your account. Claude Code reads them from
-`~/.claude/CLAUDE.md`, a file that has to be put in place separately on your own
-machine and in each cloud environment, together with the agent types of `agents/`
-in `~/.claude/agents/`.
+`~/.claude/user-instructions.md`, which `~/.claude/CLAUDE.md` imports. Both files
+have to be put in place separately on your own machine and in each cloud
+environment, together with the agent types of `agents/` in `~/.claude/agents/`.
 
 Prerequisites: a Claude account. For Claude Code on your own machine also git 2 or
 later, bash 3.2 or later and an SSH key added to your GitHub account; for uploading
@@ -48,12 +48,13 @@ with Claude.
 
 ### Claude Code, local
 
-Links `~/.claude/CLAUDE.md` to `user-instructions.md`, and each agent type in
-`~/.claude/agents/` to its file in `agents/`, all in a local clone, so edits there
-apply from the next session; a file already at one of those places is moved aside as
-a backup. Also removes an `attribution.commit` of `false` from
-`~/.claude/settings.json`, so Claude Code adds its co-author line to commits; other
-keys in that file stay as they are, and a changed file is kept as a backup.
+Links `~/.claude/CLAUDE.md` to `user-claude.md`, `~/.claude/user-instructions.md` to
+`user-instructions.md`, and each agent type in `~/.claude/agents/` to its file in
+`agents/`, all in a local clone, so edits there apply from the next session; a file
+already at one of those places is moved aside as a backup. Also removes an
+`attribution.commit` of `false` from `~/.claude/settings.json`, so Claude Code adds
+its co-author line to commits; other keys in that file stay as they are, and a
+changed file is kept as a backup.
 
 1. Clone the repository and run the setup script:
 
@@ -69,10 +70,10 @@ keys in that file stay as they are, and a changed file is kept as a backup.
 
 ### Claude Code, cloud
 
-Adds a setup script to your cloud environment that downloads `user-instructions.md`
-and the agent types of `agents/` into every new cloud session. Done once per cloud
-environment in your claude.ai account; usually there is just one, called "Default".
-The screens are described in
+Adds a setup script to your cloud environment that downloads `user-claude.md`,
+`user-instructions.md` and the agent types of `agents/` into every new cloud
+session. Done once per cloud environment in your claude.ai account; usually there
+is just one, called "Default". The screens are described in
 [Claude Code on the web](https://code.claude.com/docs/en/claude-code-on-the-web).
 
 1. In a browser, log in to claude.ai and open Claude Code:
@@ -170,23 +171,26 @@ in every session; only what each one has to show differs.
      /context all
      ```
 
-     whose Memory files must list `~/.claude/CLAUDE.md`, and
+     whose Memory files must list `~/.claude/CLAUDE.md` and
+     `~/.claude/user-instructions.md`, and
 
      ```
      /skills
      ```
 
      which must list each uploaded skill under "claude.ai sync". Sources:
-     `~/.claude/CLAUDE.md`.
+     `~/.claude/user-instructions.md`, imported by `~/.claude/CLAUDE.md`.
    - **Desktop app, Code tab**, set up by "Claude Code, local". Choose the **Local**
      environment and the folder `instructions-test`. Client check: the first client
      check of the terminal; its list is in the "Context window" card the command
-     answers with, so expand the card. Sources: `~/.claude/CLAUDE.md`.
+     answers with, so expand the card. Sources: `~/.claude/user-instructions.md`,
+     imported by `~/.claude/CLAUDE.md`.
    - **Claude Code in the cloud**, set up by "Claude Code, cloud". Start a session
      with **New** at claude.ai/code, without a repository where it allows. Client
      check: the first client check of the terminal, whose Memory files must list
-     `/root/.claude/CLAUDE.md`. Sources: `/root/.claude/CLAUDE.md` and user
-     preferences. The two match only once both follow-up steps for
+     `/root/.claude/CLAUDE.md` and `/root/.claude/user-instructions.md`. Sources:
+     `/root/.claude/user-instructions.md`, imported by `/root/.claude/CLAUDE.md`,
+     and user preferences. The two match only once both follow-up steps for
      `user-instructions.md` in "After changing a file" are done; until then the
      session holds two versions of the rules.
    - **Desktop app, chat**, set up by "Claude app". Start a new chat outside any
@@ -216,8 +220,9 @@ session seems not to follow one of the rules.
 | File | Purpose |
 |---|---|
 | `user-instructions.md` | User instructions for all work, everywhere. The master. Project rules and repository rules never go here |
-| `setup-local.sh` | Links `~/.claude/CLAUDE.md` to `user-instructions.md` and each agent type in `~/.claude/agents/` to its file in `agents/` on your own machine, and removes an `attribution.commit` of `false` from `~/.claude/settings.json`, so the co-author line is kept |
-| `setup-cloud.sh` | Writes `user-instructions.md` to `~/.claude/CLAUDE.md` and the files of `agents/` to `~/.claude/agents/` in a cloud VM |
+| `user-claude.md` | The source of `~/.claude/CLAUDE.md`: imports `~/.claude/user-instructions.md`, then user rules for Claude Code only |
+| `setup-local.sh` | Links `~/.claude/CLAUDE.md` to `user-claude.md`, `~/.claude/user-instructions.md` to `user-instructions.md` and each agent type in `~/.claude/agents/` to its file in `agents/` on your own machine, and removes an `attribution.commit` of `false` from `~/.claude/settings.json`, so the co-author line is kept |
+| `setup-cloud.sh` | Writes `user-claude.md` to `~/.claude/CLAUDE.md`, `user-instructions.md` to `~/.claude/user-instructions.md` and the files of `agents/` to `~/.claude/agents/` in a cloud VM |
 | `agents/` | One file per agent type, named after it, which both Claude Code setups install at user level; its `README.md` says what a new type needs |
 | `agents/checker.md` | The `checker` type: checks work it did not see being made, on Sonnet at high effort; see "Working with agents" |
 | `agents/worker.md` | The `worker` type: makes one piece of work from a brief, on Opus at high effort |
@@ -252,6 +257,7 @@ Merge the pull request, then:
 | Changed file | Claude app | Claude Code, local | Claude Code, cloud |
 |---|---|---|---|
 | `user-instructions.md` | Paste into Instructions for Claude¹ | Pull² | Rebuild³ |
+| `user-claude.md` | – | Pull² | Rebuild³ |
 | `setup-local.sh` | – | Pull², then rerun the script | – |
 | `setup-cloud.sh` | – | – | Rebuild³ |
 | `agents/<agent>.md` | – | Pull², and for a new file rerun the script | Rebuild³ |
@@ -388,7 +394,8 @@ Five principles decide where things go and keep the setup from drifting:
    the first.
 2. **Source and runtime are distinct.** Every instruction artefact has one source in
    git and runtime copies that are snapshots of it: the Instructions for Claude
-   field, `~/.claude/CLAUDE.md`, a project's instructions field, an uploaded skill,
+   field, `~/.claude/CLAUDE.md` and `~/.claude/user-instructions.md`, a project's
+   instructions field, an uploaded skill,
    an installed agent type.
    A session starts from the snapshots, and a change travels from the source through
    the steps in "After changing a file" to the next session. This is why a session
@@ -400,9 +407,10 @@ Five principles decide where things go and keep the setup from drifting:
    steps rather than a reading rule. Knowledge, above all a repository's README, is
    read on demand, so `user-instructions.md` says when to read it and when to read
    it again. The repository rules are fetched on demand in the same way.
-4. **Scopes nest by addition.** User instructions, then project instructions, then
-   `CLAUDE.md` for Claude Code only. A narrower scope adds what the wider one cannot
-   know and never repeats it.
+4. **Scopes nest by addition.** User instructions, then project instructions, each
+   followed by a `CLAUDE.md` that imports it and adds what only Claude Code can
+   follow: `user-claude.md` at user level, a repository's `CLAUDE.md` at project
+   level. A narrower scope adds what the wider one cannot know and never repeats it.
 5. **References run one way.** The instruction files may name a skill, a skill may
    cite a standard, and nothing names or restates the layer above it, so a change
    in one layer never has to be found in another. A skill states the major version
@@ -415,7 +423,7 @@ Five principles decide where things go and keep the setup from drifting:
 |---|---|---|
 | Rule for all work with Claude | Tells Claude how to behave, in any project | `user-instructions.md` |
 | Rule for one project | Tells Claude how to behave in one repository only | That repository's `project-instructions.md` |
-| Rule only Claude Code can follow | Needs something only Claude Code has | That repository's `CLAUDE.md`, below the import |
+| Rule only Claude Code can follow | Needs something only Claude Code has | Below the import: in `user-claude.md` for all work, in that repository's `CLAUDE.md` for one project |
 | Repository rule | Would also hold if the work were done by hand, without Claude | [tiavelum/engineering-standards](https://github.com/tiavelum/engineering-standards) |
 | Procedure | Several steps executed by Claude, needed only for a certain task | A skill, `skills/<name>/SKILL.md` |
 | Agent type | Model, effort and tools of a role that agents are started in | `agents/<name>.md` |
@@ -449,7 +457,7 @@ The layers, from a session with no parent outward:
 
 | Layer | Source | Runtime copies | Bound by |
 |---|---|---|---|
-| Session | `user-instructions.md` | Instructions for Claude field; `~/.claude/CLAUDE.md` locally and in the cloud | The products load it. It governs every layer below, including itself |
+| Session | `user-instructions.md`, `user-claude.md` | Instructions for Claude field; `~/.claude/user-instructions.md`, imported by `~/.claude/CLAUDE.md` from `user-claude.md`, locally and in the cloud | The products load it. It governs every layer below, including itself |
 | Repository | `README.md` | None; read on demand | The "Reading a repository" rule |
 | Repository rules | `tiavelum/engineering-standards` | None; fetched on demand | The "Repository rules" rule |
 | Repository used with Claude | `project-instructions.md`, `CLAUDE.md` | Claude Code imports `project-instructions.md` at session start | The "Project repositories" rule and the `project-instructions` skill |
