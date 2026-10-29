@@ -1,35 +1,49 @@
 #!/usr/bin/env bash
-# Link ~/.claude/CLAUDE.md to user-instructions.md in this repository,
-# so Claude Code reads the user instructions in every session, and remove
-# an attribution.commit of false from ~/.claude/settings.json, so Claude
-# Code adds its co-author line to commits.
+# Link ~/.claude/CLAUDE.md to user-claude.md and ~/.claude/user-instructions.md
+# to user-instructions.md in this repository, so Claude Code reads the user
+# instructions through the import in user-claude.md in every session, link each
+# agent type in agents/ into ~/.claude/agents/, so every session can start
+# it in every repository, and remove an attribution.commit of false from
+# ~/.claude/settings.json, so Claude Code adds its co-author line to commits.
 # Written for a Mac; nothing in it is Mac-specific.
 set -euo pipefail
 
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source_file="$repo_dir/user-instructions.md"
-target="$HOME/.claude/CLAUDE.md"
+claude_file="$repo_dir/user-claude.md"
+instructions_file="$repo_dir/user-instructions.md"
+agents_dir="$HOME/.claude/agents"
 settings="$HOME/.claude/settings.json"
 
 backup_name() {
   echo "$1.backup-$(date +%Y%m%d-%H%M%S)"
 }
 
-link_instructions() {
-  if [[ -L "$target" && "$(readlink "$target")" == "$source_file" ]]; then
-    echo "Already linked: $target -> $source_file"
+link_file() {
+  local source="$1" link="$2"
+
+  if [[ -L "$link" && "$(readlink "$link")" == "$source" ]]; then
+    echo "Already linked: $link -> $source"
     return
   fi
 
-  if [[ -e "$target" || -L "$target" ]]; then
+  if [[ -e "$link" || -L "$link" ]]; then
     local backup
-    backup="$(backup_name "$target")"
-    mv "$target" "$backup"
+    backup="$(backup_name "$link")"
+    mv "$link" "$backup"
     echo "Existing file moved to $backup"
   fi
 
-  ln -s "$source_file" "$target"
-  echo "Linked: $target -> $source_file"
+  ln -s "$source" "$link"
+  echo "Linked: $link -> $source"
+}
+
+link_agents() {
+  mkdir -p "$agents_dir"
+  local agent
+  for agent in "$repo_dir"/agents/*.md; do
+    [[ -e "$agent" && "$(basename "$agent")" != README.md ]] || continue
+    link_file "$agent" "$agents_dir/$(basename "$agent")"
+  done
 }
 
 clear_attribution() {
@@ -66,11 +80,15 @@ print(f"Removed attribution.commit false from {path}; previous file kept as {bac
 PY
 }
 
-if [[ ! -f "$source_file" ]]; then
-  echo "Missing $source_file" >&2
-  exit 1
-fi
+for file in "$claude_file" "$instructions_file"; do
+  if [[ ! -f "$file" ]]; then
+    echo "Missing $file" >&2
+    exit 1
+  fi
+done
 
 mkdir -p "$HOME/.claude"
-link_instructions
+link_file "$claude_file" "$HOME/.claude/CLAUDE.md"
+link_file "$instructions_file" "$HOME/.claude/user-instructions.md"
+link_agents
 clear_attribution
