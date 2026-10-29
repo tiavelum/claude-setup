@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Link ~/.claude/CLAUDE.md to user-instructions.md in this repository,
-# so Claude Code reads the user instructions in every session, link each
+# Link ~/.claude/CLAUDE.md to user-claude.md and ~/.claude/user-instructions.md
+# to user-instructions.md in this repository, so Claude Code reads the user
+# instructions through the import in user-claude.md in every session, link each
 # agent type in agents/ into ~/.claude/agents/, so every session can start
 # it in every repository, and remove an attribution.commit of false from
 # ~/.claude/settings.json, so Claude Code adds its co-author line to commits.
@@ -8,8 +9,8 @@
 set -euo pipefail
 
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source_file="$repo_dir/user-instructions.md"
-target="$HOME/.claude/CLAUDE.md"
+claude_file="$repo_dir/user-claude.md"
+instructions_file="$repo_dir/user-instructions.md"
 agents_dir="$HOME/.claude/agents"
 settings="$HOME/.claude/settings.json"
 
@@ -79,12 +80,15 @@ print(f"Removed attribution.commit false from {path}; previous file kept as {bac
 PY
 }
 
-if [[ ! -f "$source_file" ]]; then
-  echo "Missing $source_file" >&2
-  exit 1
-fi
+for file in "$claude_file" "$instructions_file"; do
+  if [[ ! -f "$file" ]]; then
+    echo "Missing $file" >&2
+    exit 1
+  fi
+done
 
 mkdir -p "$HOME/.claude"
-link_file "$source_file" "$target"
+link_file "$claude_file" "$HOME/.claude/CLAUDE.md"
+link_file "$instructions_file" "$HOME/.claude/user-instructions.md"
 link_agents
 clear_attribution
