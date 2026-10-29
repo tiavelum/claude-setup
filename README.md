@@ -26,7 +26,7 @@ Which setup applies depends on what runs, not on the window you open:
 |---|---|---|---|
 | Browser | claude.ai | –¹ | claude.ai/code |
 | Mobile | Chat | –¹ | Code |
-| Desktop | Chat | Code, "Local" | Code, cloud environment |
+| Desktop | Chat | Code, "This computer" | Code, cloud environment |
 | Terminal, IDE | – | `claude` | `claude --cloud` |
 
 ¹ A local session can be operated from the browser or phone via Remote Control; it
@@ -180,11 +180,11 @@ in every session; only what each one has to show differs.
 
      which must list each uploaded skill under "claude.ai sync". Sources:
      `~/.claude/user-instructions.md`, imported by `~/.claude/CLAUDE.md`.
-   - **Desktop app, Code tab**, set up by "Claude Code, local". Choose the **Local**
-     environment and the folder `instructions-test`. Client check: the first client
-     check of the terminal; its list is in the "Context window" card the command
-     answers with, so expand the card. Sources: `~/.claude/user-instructions.md`,
-     imported by `~/.claude/CLAUDE.md`.
+   - **Desktop app, Code tab**, set up by "Claude Code, local". Choose the
+     environment **This computer** and the folder `instructions-test`. Client check:
+     the first client check of the terminal; its list is in the "Context window" card
+     the command answers with, so expand the card. Sources:
+     `~/.claude/user-instructions.md`, imported by `~/.claude/CLAUDE.md`.
    - **Claude Code in the cloud**, set up by "Claude Code, cloud". Start a session
      with **New** at claude.ai/code, without a repository where it allows. Client
      check: the first client check of the terminal, whose Memory files must list
