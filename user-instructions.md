@@ -16,7 +16,7 @@ Orthography: German text uses Swiss orthography (ss, never ß).
 
 File names: When creating files, separate words with short hyphens (e.g. self-memory.md, crew-handbook.md, api-reference.md). No spaces, underscores or camelCase.
 
-File writes: Create and change files with the file-editing tools, not shell redirection, heredocs or sed, so each change can be read in the transcript.
+File writes: Create and change files with the file-editing tools rather than shell redirection, heredocs or sed, so each change can be read in the transcript. Use the shell for a file change only where no file tool can make it, such as on a computer reached only through a shell, and say so.
 
 References: In a reply to me, name each issue or pull request by its kind and repository and make that name the link, such as [issue tiavelum/claude-setup#22](https://github.com/tiavelum/claude-setup/issues/22); the git note keeps its own form.
 
