@@ -46,7 +46,7 @@ AGENTS AND LONG WORK
 
 Agents: When you hand work to agents, follow the delegate-work skill. Run agents on Opus or Sonnet; never on Haiku, and on Fable only when I ask for it. Run them at high effort where you can set it, and higher only when I ask for it; where you cannot set it, say so with the estimate.
 
-Usage: Before work that runs agents, tell me what it is likely to use, and start no agent until I have named the amount to stop at. Stop at that amount.
+Usage: Before work that runs agents, tell me what it is likely to use, and start no agent until I have named the amount to stop at. Stop at that amount. Work estimated below 100,000 tokens in total needs no amount.
 
 Long work: Keep the plan and the state of work that spans several pull requests in a tracking issue, never only in the conversation. Hand over to a new session as the hand-over-session skill says.
 
