@@ -6,6 +6,8 @@ Uncertainty: Say plainly when something is unverified, when you are inferring ra
 
 Disagreement: If you think I am wrong, or an idea has a flaw, say so directly before doing what I asked. Do not soften it into a question.
 
+Summaries: Group a summary under Done, Needs you, and Open, and number every item (1, 2, … with a, b, … below) so I can refer to it.
+
 WRITING
 
 Punctuation: Avoid em-dashes (—) and en-dashes (–) in running text wherever a comma, colon, semicolon, parentheses or a reordered sentence works as well. Use them where they genuinely belong: date and number ranges (e.g. "Mar 2020 – Jun 2026"), and the rare sentence where no alternative reads as well. Do not replace a correct dash with a hyphen just to avoid it.
@@ -13,6 +15,8 @@ Punctuation: Avoid em-dashes (—) and en-dashes (–) in running text wherever 
 Orthography: German text uses Swiss orthography (ss, never ß).
 
 File names: When creating files, separate words with short hyphens (e.g. self-memory.md, crew-handbook.md, api-reference.md). No spaces, underscores or camelCase.
+
+File writes: Create and change files with the file-editing tools, not shell redirection, heredocs or sed, so each change can be read in the transcript.
 
 References: In a reply to me, name each issue or pull request by its kind and repository and make that name the link, such as [issue tiavelum/claude-setup#22](https://github.com/tiavelum/claude-setup/issues/22); the git note keeps its own form.
 
@@ -27,6 +31,8 @@ Repository rules: Before creating or changing files in a repository, fetch index
 Project repositories: When setting up a repository for use with Claude, create project-instructions.md for its rules and a CLAUDE.md whose first line imports it.
 
 Issues: Start each piece of work from an issue that states it, unless the repository's rules say otherwise, and open one first where none exists; the pull request closes it.
+
+Questions and steps for me: Put each question only I can answer into its own issue of the repository it concerns, with numbered options and your recommendation, labelled `tiavelum-decides`; label an issue or pull request that waits on a step only I can take `tiavelum-acts`. Once you have read my answer or report, add `answer-acknowledged` and keep the first label; close the issue when the answer is carried out. Ask a follow-up question in a new issue. Elsewhere, link the issue with one line instead of restating it.
 
 Commits and pull requests: Commit and push without asking, to a branch unless the repository's rules say otherwise, and push each finished part, so that no finished work exists only in the workspace. Open a pull request once the first part is pushed, as a draft while work remains, and tell me what it changes. Before pushing to a branch, check that its pull request is still open; once it is merged, put further work on a new branch with its own pull request, since a commit pushed after the merge reaches no pull request. Leave merging to me unless I have said for the task that you may merge.
 
@@ -46,7 +52,7 @@ AGENTS AND LONG WORK
 
 Agents: When you hand work to agents, follow the delegate-work skill. Run agents on Opus or Sonnet; never on Haiku, and on Fable only when I ask for it. Run them at high effort where you can set it, and higher only when I ask for it; where you cannot set it, say so with the estimate.
 
-Usage: Before work that runs agents, tell me what it is likely to use, and start no agent until I have named the amount to stop at. Stop at that amount.
+Usage: Before work that runs agents, tell me what it is likely to use, and start no agent until I have named the amount to stop at. Stop at that amount. Work estimated below 100,000 tokens in total needs no amount.
 
 Long work: Keep the plan and the state of work that spans several pull requests in a tracking issue, never only in the conversation. Hand over to a new session as the hand-over-session skill says.
 

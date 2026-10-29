@@ -348,6 +348,20 @@ spans several pull requests in a tracking issue, and makes Claude hand over as t
 over, paste the start prompt it gives you into a new session. When and how it hands
 over is in `skills/hand-over-session/SKILL.md`.
 
+## Finding what waits on you
+
+Claude puts each question for you into an issue labelled `tiavelum-decides`, and
+marks an issue or pull request that waits on a step of yours `tiavelum-acts`. Once
+it has read your answer or report, it adds `answer-acknowledged`; closing the issue
+means the answer is carried out. tiavelum/github-setup gives every repository these
+labels. Searches across all repositories:
+
+| Shows | Search |
+|---|---|
+| What waits on you | [`is:open user:tiavelum label:tiavelum-decides,tiavelum-acts -label:answer-acknowledged`](https://github.com/issues?q=is%3Aopen+user%3Atiavelum+label%3Atiavelum-decides%2Ctiavelum-acts+-label%3Aanswer-acknowledged) |
+| Answered and read, not yet carried out | [`is:open user:tiavelum label:answer-acknowledged`](https://github.com/issues?q=is%3Aopen+user%3Atiavelum+label%3Aanswer-acknowledged) |
+| Everything ever addressed to you | [`user:tiavelum label:tiavelum-decides,tiavelum-acts`](https://github.com/issues?q=user%3Atiavelum+label%3Atiavelum-decides%2Ctiavelum-acts) |
+
 ## Session usage
 
 `session-usage.py` reads the records Claude Code keeps of each session under
