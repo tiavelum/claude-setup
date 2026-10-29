@@ -43,36 +43,18 @@ with Claude.
 2. If you use a claude.ai project for this repository, paste `project-instructions.md`
    into that project's instructions
    ([help](https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects)).
-3. Verify: start a new chat and send
-
-   ```
-   Answer only from what is already in your context: make no tool call, read no file, search no past chats, and do not reconstruct anything.
-   1. Do you have user-level instructions in your context (user preferences, or a user-level CLAUDE.md)? Answer yes or no, and say which.
-   2. If yes, list their section headings in the order they appear.
-   3. Quote word for word their first rule, their last rule and the rule "Usage".
-   If any part is not in your context, name that part instead of filling it in.
-   ```
-
-   The answer must say yes, list the headings of `user-instructions.md` in their
-   order, and match its first rule, its last rule and its rule "Usage" word for word.
-4. If you use the project, verify it too: start a new chat in that project and send
-
-   ```
-   Answer only from what is already in your context, with no tool call: quote your project instructions word for word.
-   ```
-
-   The answer must hold the text of `project-instructions.md` below its title, word
-   for word; Markdown markup and line breaks may differ.
+3. Check a desktop or browser chat as in "Check what a session loads" below, and the
+   project too if you use one.
 
 ### Claude Code, local
 
 Links `~/.claude/CLAUDE.md` to `user-claude.md`, `~/.claude/user-instructions.md` to
 `user-instructions.md`, and each agent type in `~/.claude/agents/` to its file in
-`agents/`, all in a local clone, so edits there
-apply from the next session; a file already at one of those places is moved aside as
-a backup. Also removes an `attribution.commit` of `false` from
-`~/.claude/settings.json`, so Claude Code adds its co-author line to commits; other
-keys in that file stay as they are, and a changed file is kept as a backup.
+`agents/`, all in a local clone, so edits there apply from the next session; a file
+already at one of those places is moved aside as a backup. Also removes an
+`attribution.commit` of `false` from `~/.claude/settings.json`, so Claude Code adds
+its co-author line to commits; other keys in that file stay as they are, and a
+changed file is kept as a backup.
 
 1. Clone the repository and run the setup script:
 
@@ -83,29 +65,15 @@ keys in that file stay as they are, and a changed file is kept as a backup.
 
    On a second run the script reports `Already linked` and `Already clear`.
 
-2. Verify: start Claude Code, in the terminal or in the desktop app's Code tab, and run
-
-   ```
-   /context all
-   ```
-
-   Memory files must list `~/.claude/CLAUDE.md` and `~/.claude/user-instructions.md`.
-   In the Code tab the list is in the
-   "Context window" card the command answers with; expand the card to see it. Then
-   send
-
-   ```
-   Without starting an agent, list the agent types you can start.
-   ```
-
-   The list must include `checker` and `worker`.
+2. Check Claude Code in the terminal or in the desktop app's Code tab as in "Check
+   what a session loads" below.
 
 ### Claude Code, cloud
 
 Adds a setup script to your cloud environment that downloads `user-claude.md`,
-`user-instructions.md` and the agent types of `agents/` into every new cloud session. Done once per cloud
-environment in your claude.ai account; usually there is just one, called "Default".
-The screens are described in
+`user-instructions.md` and the agent types of `agents/` into every new cloud
+session. Done once per cloud environment in your claude.ai account; usually there
+is just one, called "Default". The screens are described in
 [Claude Code on the web](https://code.claude.com/docs/en/claude-code-on-the-web).
 
 1. In a browser, log in to claude.ai and open Claude Code:
@@ -128,16 +96,7 @@ The screens are described in
 
 4. Click **Save changes**. Changes apply to new sessions only.
 
-5. Verify: start a new session with **New** and run
-
-   ```
-   /context all
-   ```
-
-   Memory files must list `/root/.claude/CLAUDE.md` and
-   `/root/.claude/user-instructions.md`. Then send the prompt from
-   "Claude Code, local", step 2, which lists the agent types; the list must include
-   `checker` and `worker`.
+5. Check Claude Code in the cloud as in "Check what a session loads" below.
 
 ### Skills
 
@@ -155,13 +114,106 @@ requires signing in with `/login` rather than an API key. Done once per skill.
    click **+**, choose **Create skill**, then **Upload a skill**, and select the ZIP
    ([help](https://support.claude.com/en/articles/12512180-use-skills-in-claude)).
 
-3. Verify: start Claude Code and run
+3. Check as in "Check what a session loads" below that the skill is listed.
+
+### Check what a session loads
+
+Shows for each kind of session that it holds the user instructions in full, where
+they came from, and which agent types and skills it can use. The prompts are the same
+in every session; only what each one has to show differs.
+
+1. On your Mac, create an empty folder for the test sessions and check that no
+   instruction file sits in your home folder:
+
+   ```bash
+   mkdir -p ~/instructions-test
+   ls ~/CLAUDE.md ~/CLAUDE.local.md
+   ```
+
+   `ls` must report both files as missing; either would load into every session
+   started below your home folder.
+
+2. Start a new session of each kind below, run its client checks where it has them,
+   and send these three prompts, one after the other:
 
    ```
-   /skills
+   Answer only from what is already in your context: make no tool call, read no file, search no past chats, and do not reconstruct anything.
+   1. Do you have user-level instructions in your context (user preferences, or a user-level CLAUDE.md)? Answer yes or no, and say which.
+   2. If yes, list their section headings in the order they appear.
+   3. Quote word for word their first rule, their last rule and the rule "Usage".
+   If any part is not in your context, name that part instead of filling it in.
    ```
 
-   The skill must be listed under "claude.ai sync".
+   ```
+   Answer only from what is already in your context, with no tool call: for each block of standing instructions in your context, such as user preferences, a CLAUDE.md file or Cowork global instructions, give the label or path your context shows for it, and say which of them holds the rules you quoted.
+   ```
+
+   ```
+   Without starting an agent or loading a skill, list the agent types you can start and the skills you can use.
+   ```
+
+   The first answer must say yes, list the headings of `user-instructions.md` in
+   their order, and match its first rule, its last rule and its rule "Usage" word
+   for word. The second must name the sources given below for the session. The third
+   must list each skill of `skills/` that you uploaded, and in Claude Code also
+   `checker` and `worker`.
+
+   - **Claude Code in the terminal**, set up by "Claude Code, local". Start it in
+     the test folder:
+
+     ```bash
+     cd ~/instructions-test && claude
+     ```
+
+     Client checks: run
+
+     ```
+     /context all
+     ```
+
+     whose Memory files must list `~/.claude/CLAUDE.md` and
+     `~/.claude/user-instructions.md`, and
+
+     ```
+     /skills
+     ```
+
+     which must list each uploaded skill under "claude.ai sync". Sources:
+     `~/.claude/user-instructions.md`, imported by `~/.claude/CLAUDE.md`.
+   - **Desktop app, Code tab**, set up by "Claude Code, local". Choose the **Local**
+     environment and the folder `instructions-test`. Client check: the first client
+     check of the terminal; its list is in the "Context window" card the command
+     answers with, so expand the card. Sources: `~/.claude/user-instructions.md`,
+     imported by `~/.claude/CLAUDE.md`.
+   - **Claude Code in the cloud**, set up by "Claude Code, cloud". Start a session
+     with **New** at claude.ai/code, without a repository where it allows. Client
+     check: the first client check of the terminal, whose Memory files must list
+     `/root/.claude/CLAUDE.md` and `/root/.claude/user-instructions.md`. Sources:
+     `/root/.claude/user-instructions.md`, imported by `/root/.claude/CLAUDE.md`,
+     and user preferences. The two match only once both follow-up steps for
+     `user-instructions.md` in "After changing a file" are done; until then the
+     session holds two versions of the rules.
+   - **Desktop app, chat**, set up by "Claude app". Start a new chat outside any
+     project and add the folder `instructions-test` through **+ > Add folder**.
+     Sources: user preferences, and no CLAUDE.md.
+   - **Claude app in the browser**, set up by "Claude app". Start a new chat at
+     claude.ai outside any project. Sources: user preferences, and no CLAUDE.md.
+
+3. If you use a claude.ai project for this repository, start a new chat in that
+   project and send
+
+   ```
+   Answer only from what is already in your context, with no tool call: quote your project instructions word for word.
+   ```
+
+   The answer must hold the text of `project-instructions.md` below its title, word
+   for word; Markdown markup and line breaks may differ.
+
+4. Record each session whose answers differ from this in an issue, with the kind of
+   session, its version and its answers.
+
+Run the check after the follow-up steps in "After changing a file", and whenever a
+session seems not to follow one of the rules.
 
 ## Files
 
@@ -232,59 +284,6 @@ To check that the copies match `main`, ask Claude in a new session to compare ea
 copy it received with the file on `main` by git blob hash: `git hash-object` on the
 copy saved as a file, against `git rev-parse origin/main:<file>`. Equal hashes mean
 the same bytes, whitespace included.
-
-## Checking which instructions a session loads
-
-1. On your Mac, create an empty folder for the test sessions and check that no
-   instruction file sits in your home folder:
-
-   ```bash
-   mkdir -p ~/instructions-test
-   ls ~/CLAUDE.md ~/CLAUDE.local.md
-   ```
-
-   `ls` must report both files as missing; either would load into every session
-   started below your home folder.
-
-2. Start each session listed below as a new one and run its check where it has one.
-   Then send the prompt from Setup, "Claude app", step 3, and after its answer:
-
-   ```
-   Answer only from what is already in your context, with no tool call: for each block of standing instructions in your context, such as user preferences, a CLAUDE.md file or Cowork global instructions, give the label or path your context shows for it, and say which of them holds the rules you quoted.
-   ```
-
-   The first answer must pass as Setup, "Claude app", step 3 says. The second must
-   name the source given below for the session.
-
-   - **Claude Code in the terminal.** Start it in the test folder:
-
-     ```bash
-     cd ~/instructions-test && claude
-     ```
-
-     Check as in Setup, "Claude Code, local", step 2. Source:
-     `~/.claude/user-instructions.md`, imported by `~/.claude/CLAUDE.md`.
-   - **Desktop app, Code tab.** Choose the **Local** environment and the folder
-     `instructions-test`, and check as in the terminal. Source:
-     `~/.claude/user-instructions.md`, imported by `~/.claude/CLAUDE.md`.
-   - **Desktop app, chat.** Start a new chat outside any project and add the folder
-     `instructions-test` through **+ > Add folder**. Source: user preferences, and
-     no CLAUDE.md.
-   - **Claude Code in the cloud.** Start a session with **New** at claude.ai/code,
-     without a repository where it allows, and check as in Setup, "Claude Code,
-     cloud", step 5. Source: `/root/.claude/user-instructions.md`, imported by
-     `/root/.claude/CLAUDE.md`, and user preferences. The two
-     match only once both follow-up steps for `user-instructions.md` in "After
-     changing a file" are done; until then the session holds two versions of the
-     rules.
-   - **Claude app in the browser.** Start a new chat at claude.ai outside any
-     project. Source: user preferences, and no CLAUDE.md.
-
-3. Record each session whose answers differ from this in an issue, with the kind of
-   session, its version and both answers.
-
-Run the check after the follow-up steps for `user-instructions.md`, `setup-local.sh`
-or `setup-cloud.sh`, and whenever a session seems not to follow one of the rules.
 
 ## Setting up a project repository
 
@@ -493,7 +492,8 @@ version a session writes reaches other sessions only through deployment.
   week (see "After changing a file").
 - Anthropic's documentation does not describe loading a `~/.claude/CLAUDE.md` written
   by a setup script. Verified on 2026-10-02; if cloud sessions stop showing the
-  user instructions, repeat the check in step 5 under "Claude Code, cloud".
+  user instructions, repeat the check for Claude Code in the cloud in Setup, "Check
+  what a session loads".
 
 ## License
 
