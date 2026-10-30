@@ -58,7 +58,7 @@ The last prints `All checks passed. 0 warning(s).`
 - Make tiavelum the author of each commit, under the real name and address the author field takes, and leave the committer as configured:
 
   ```bash
-  git commit --author="Andreas Tiefenauer <tiavelum@gmail.com>"
+  git commit --author="Andreas Tiefenauer <tiavelum@gmail.com>" -m "<type>: <summary>" -m "<body and trailer lines>"
   ```
 
 - The first line reads `<type>: <summary>`, the form GW-6 and GW-7 set for a pull request's title, within the length WR-5 sets; the body states what and why for a reader who was not there and no process, as WR-2 and GW-25 ask of a pull request description.
