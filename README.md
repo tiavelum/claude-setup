@@ -229,6 +229,9 @@ session seems not to follow one of the rules.
 | `briefs/` | The shared part of the briefs a coordinating session gives its agents, one file per repository and role, named `<repository>-<role>.md`; the session adds what the piece needs |
 | `briefs/engineering-standards-worker.md` | The shared brief for a worker that changes tiavelum/engineering-standards |
 | `briefs/engineering-standards-checker.md` | The shared brief for a checker of a change to tiavelum/engineering-standards |
+| `briefs/engineering-standards-screener.md` | The shared brief for a checker that screens one standard of tiavelum/engineering-standards against all others |
+| `briefs/engineering-standards-fixer.md` | The shared brief for a worker that settles the screen findings of one standard, fixing what a decision covers and drafting questions for the rest |
+| `briefs/engineering-standards-fix-checker.md` | The shared brief for a checker of such a fixer's pull request and its question drafts |
 | `session-usage.py` | Prints a session's steps and tokens, per session and agent; see "Session usage" |
 | `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
 | `CLAUDE.md` | Imports `project-instructions.md`, then rules for Claude Code only |
