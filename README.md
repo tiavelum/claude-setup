@@ -230,8 +230,8 @@ session seems not to follow one of the rules.
 | `briefs/engineering-standards-worker.md` | The shared brief for a worker that changes tiavelum/engineering-standards |
 | `briefs/engineering-standards-checker.md` | The shared brief for a checker of a change to tiavelum/engineering-standards |
 | `briefs/engineering-standards-screener.md` | The shared brief for a checker that screens one standard of tiavelum/engineering-standards against all others |
-| `briefs/engineering-standards-fixer.md` | The shared brief for a worker that settles the screen findings of one standard, fixing what a decision covers and drafting questions for the rest |
-| `briefs/engineering-standards-fix-checker.md` | The shared brief for a checker of such a fixer's pull request and its question drafts |
+| `briefs/engineering-standards-fixer.md` | The shared brief for a worker that settles the screen findings of one standard, fixing what a decision or a rule already settles and drafting questions for the rest |
+| `briefs/engineering-standards-fix-checker.md` | The shared brief for a checker of the pull request of a fixer and of its question drafts |
 | `session-usage.py` | Prints a session's steps and tokens, per session and agent; see "Session usage" |
 | `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
 | `CLAUDE.md` | Imports `project-instructions.md`, then rules for Claude Code only |
