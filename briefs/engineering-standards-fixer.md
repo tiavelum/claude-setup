@@ -41,7 +41,7 @@ Group findings that one decision settles into one draft. Save each to the questi
 
 ## Branch and pull request
 
-Your branch starts from `origin/main`; before your last push, if `origin/main` moved, merge it as "The change" of the worker brief says. The proposed pull request title is `fix: settle the screen findings of <standard>`. The description follows WR-2, WR-7, WR-10, WR-11 and GW-25 as on `origin/main` and names no local path; it lists each fix with its rule id and the decision or rule that covers it, the versions under RF-18, the checks, and the questions left for decision by topic; and it ends with a `Part of #<issue>` line for the issue your brief names, or a `Closes #<issue>` line where your brief says yours is the last pull request of that issue, and a `Part of #<tracking issue>` line.
+Your branch starts from `origin/main`; before your last push, if `origin/main` moved, merge it as "The change" of the worker brief says. The proposed pull request title is `fix: settle the screen findings of <standard>`. The description follows WR-2, WR-7, WR-10, WR-11, WR-12 and GW-25 as on `origin/main` and names no local path; it lists each fix with its rule id and the decision or rule that covers it, the versions under RF-18, the checks, and the questions left for decision by topic; and its top part holds a `Part of #<issue>` line for the issue your brief names, or a `Closes #<issue>` line where your brief says yours is the last pull request of that issue, and a `Part of #<tracking issue>` line.
 
 ## Report
 
