@@ -226,9 +226,9 @@ session seems not to follow one of the rules.
 | `agents/` | One file per agent type, named after it, which both Claude Code setups install at user level; its `README.md` says what a new type needs |
 | `agents/checker.md` | The `checker` type: checks work it did not see being made, on Sonnet at high effort; see "Working with agents" |
 | `agents/worker.md` | The `worker` type: makes one piece of work from a brief, on Opus at high effort |
-| `briefs/` | The shared part of the briefs a coordinating session gives its agents for one repository, one file per role; the session adds what the piece needs |
-| `briefs/standards-worker.md` | The shared brief for a worker that changes tiavelum/engineering-standards |
-| `briefs/standards-checker.md` | The shared brief for a checker of a change to tiavelum/engineering-standards |
+| `briefs/` | The shared part of the briefs a coordinating session gives its agents, one file per repository and role, named `<repository>-<role>.md`; the session adds what the piece needs |
+| `briefs/engineering-standards-worker.md` | The shared brief for a worker that changes tiavelum/engineering-standards |
+| `briefs/engineering-standards-checker.md` | The shared brief for a checker of a change to tiavelum/engineering-standards |
 | `session-usage.py` | Prints a session's steps and tokens, per session and agent; see "Session usage" |
 | `project-instructions.md` | Rules for working on this repository; master of this claude.ai project's instructions field |
 | `CLAUDE.md` | Imports `project-instructions.md`, then rules for Claude Code only |
@@ -268,6 +268,7 @@ Merge the pull request, then:
 | `project-instructions.md` | Paste into project instructions¹ | Pull² | – |
 | `CLAUDE.md` | – | Pull² | – |
 | `skills/<skill>/SKILL.md` | Re-upload⁴ | – | – |
+| `briefs/<brief>.md` | – | Pull² | – |
 
 Other files need nothing.
 
