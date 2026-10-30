@@ -80,6 +80,6 @@ Save the full report to the path your brief gives, in at most 120 lines and with
 3. the versions, with the reason under RF-18;
 4. the open questions, each with options, consequences and a recommendation;
 5. the output of the checks;
-6. a complete pull request description: what and why, the versions, the checks, a `Closes #<n>` line for the issue, a `Part of #<n>` line for the tracking issue where your brief names one, references written as WR-7 on `main` asks.
+6. a complete pull request description: what and why, the versions, the checks, a `Closes #<n>` line for the issue, a `Part of #<n>` line for the tracking issue where your brief names one, references written as WR-7 on `main` asks, and laid out as WR-10, WR-11 and WR-12 on `main` ask, with the `Closes` and `Part of` lines in its top part.
 
 Return only five lines: the last commit hash, the result of the checks, the versions, the number of open questions, and anything else the coordinating session must act on.
