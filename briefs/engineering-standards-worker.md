@@ -21,7 +21,7 @@ This is the part of every brief that a worker changing tiavelum/engineering-stan
 ## The change
 
 - Follow "Open decisions" and "Testing a rule" in `project-instructions.md`; list each point you leave out in the report as an open question, with options, their consequences and your recommendation.
-- Every file you change follows each file listed in `index.yaml` as your branch leaves it, which RF-45 sets for a listed file you change too; your commit messages, branch name and pull request text follow each as it is on `origin/main` (RF-46). Among them, RF-13 to RF-16, RF-39, RF-41 and RF-42 apply to every rule you write, and RF-25, WR-8 and WR-9 to every file you change.
+- Every file you change follows the standards that apply to this work under `index.yaml` (CO-2, CO-3), and follows each listed file you also change as your branch leaves it (RF-45); your commit messages, branch name and pull request text follow each such file as it is on `origin/main` (RF-46). Among them, RF-13 to RF-16, RF-39, RF-41 and RF-42 apply to every rule you write, and RF-25, WR-8 and WR-9 to every file you change.
 - Set each version under RF-18 and RF-19: the front matter and the `index.yaml` entry in the same commit.
 - If `origin/main` moved, merge it into your branch and resolve the conflicts.
 
