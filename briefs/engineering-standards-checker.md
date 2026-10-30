@@ -49,7 +49,7 @@ Read issues and their comments through the public API (`https://api.github.com/r
    pip install -q -r requirements.txt && ruff format --check . && ruff check . && python3 scripts/validate-standards.py
    ```
 
-6. Each commit and the proposed pull request description meet the rules that `engineering-standards-worker.md`, beside this brief, names for them (RF-19, RF-45, RF-46, GW-6, GW-7, GW-25, WR-2, WR-5, WR-7), and each commit, a merge commit included, has the author its "Commits" names.
+6. Each commit and the proposed pull request description meet the rules that `engineering-standards-worker.md`, beside this brief, names for them (RF-19, RF-45, RF-46, GW-6, GW-7, GW-25, WR-2, WR-5, WR-7, WR-10, WR-11, WR-12), and each commit, a merge commit included, has the author its "Commits" names.
 
 ## Report
 
