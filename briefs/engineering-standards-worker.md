@@ -23,7 +23,15 @@ This is the part of every brief that a worker changing tiavelum/engineering-stan
 - Follow "Open decisions" and "Testing a rule" in `project-instructions.md`; list each point you leave out in the report as an open question, with options, their consequences and your recommendation.
 - Every file you change follows the standards that apply to this work under `index.yaml` (CO-2, CO-3), and follows each listed file you also change as your branch leaves it (RF-45); your commit messages, branch name and pull request text follow each such file as it is on `origin/main` (RF-46). Among them, RF-13 to RF-16, RF-39, RF-41 and RF-42 apply to every rule you write, and RF-25, WR-8 and WR-9 to every file you change.
 - Set each version under RF-18 and RF-19: the front matter and the `index.yaml` entry in the same commit.
-- If `origin/main` moved, merge it into your branch and resolve the conflicts.
+- If `origin/main` moved since you started, fetch it and merge it into your branch so that tiavelum stays the author of the merge commit: start the merge without committing, resolve the conflicts, then commit it with the first line, body and trailer lines "Commits" asks for, given with `-m` since no editor opens.
+
+  ```bash
+  git fetch -q origin && git merge --no-ff --no-commit origin/main
+  ```
+
+  ```bash
+  git commit --author="Andreas Tiefenauer <tiavelum@gmail.com>" -m "<type>: <summary>" -m "<body>" -m "<trailer lines>"
+  ```
 
 ## Checks before every push
 
@@ -50,7 +58,7 @@ The last prints `All checks passed. 0 warning(s).`
 - Make tiavelum the author of each commit, under the real name and address the author field takes, and leave the committer as configured:
 
   ```bash
-  git commit --author="Andreas Tiefenauer <tiavelum@gmail.com>"
+  git commit --author="Andreas Tiefenauer <tiavelum@gmail.com>" -m "<type>: <summary>" -m "<body>" -m "<trailer lines>"
   ```
 
 - The first line reads `<type>: <summary>`, the form GW-6 and GW-7 set for a pull request's title, within the length WR-5 sets; the body states what and why for a reader who was not there and no process, as WR-2 and GW-25 ask of a pull request description.
