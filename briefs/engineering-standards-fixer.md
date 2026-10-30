@@ -1,6 +1,6 @@
 # Fixer brief for tiavelum/engineering-standards
 
-This is the part of every brief that a worker settling the screen findings of one standard of tiavelum/engineering-standards follows; the coordinating session adds the standard, the screen report, the issue the work is for and whether yours is its last pull request, the tracking issue, the worktree and branch, the ledger, the question directory and the report path, and you follow that as well.
+This is the part of every brief that a worker settling the screen findings of one standard of tiavelum/engineering-standards follows; the coordinating session adds the standard, the screen report, the issue the work is for and whether yours is its last pull request, the tracking issue, the worktree and branch, the ledger, the question directory, any configuration file you may change and the report path, and you follow that as well.
 
 ## Sources
 
@@ -10,6 +10,7 @@ Read first and follow in full `engineering-standards-worker.md`, beside this bri
 - Files you change: "Sort each finding" names them, in place of a list of files in your brief.
 - Pull request text: "Branch and pull request" replaces item 6 of its "Report".
 - Report and return lines: "Report" replaces its "Report".
+- Open questions: your question drafts replace the open questions that "The change" and "Report" of the worker brief ask for; list none in the report beyond the draft file of each.
 
 Read the screen report and, for each finding, every file it names; read the ledger; and list the open questions already put to tiavelum:
 
@@ -24,11 +25,11 @@ Verify each finding yourself against the files, then give it one of these four s
 - **Fix**: a decision on an issue, a rule of the standards (such as RF-42, RF-25, RF-14, RF-16, RF-39, RF-43, WR-8, WR-9), or the rule's own reason and examples leave exactly one fix. Examples: a restatement removed in favour of a citation, a missing `requires` entry, a missing link, an example that contradicts its own rule, a reason that states something false, a broken identifier, wording that reads two ways where the reason and examples already show which way is meant. Apply it.
 - **Question**: the fix needs a choice between two requirements a reader could reasonably intend, or adds, removes or widens a requirement no decision covers. Do not change the file; draft a decision issue.
 - **No finding**: the finding does not hold when you check it. Say why in the report.
-- **Held elsewhere**: a ledger line names the finding by its id, an open `tiavelum-decides` issue already asks about it, or its fix needs a file you may not change. Leave it and name in the report the ledger line, the issue or the piece that holds that file; list a finding that needs such a file under "For other pieces", with the change it needs.
+- **Held elsewhere**: a ledger line of another piece names the same rule identifiers as the finding, an open `tiavelum-decides` issue already asks about it, or its fix needs a file you may not change. Leave it and name in the report the ledger line, the issue or the piece that holds that file; list a finding that needs such a file under "For other pieces", with the change it needs.
 
 Change only your standard's file and `index.yaml`, and a configuration file of the repository only where a fix needs it and your brief allows it.
 
-After your last push, append one line per finding to the ledger in one command, each in one of the forms `<finding id>: fix <branch>`, `<finding id>: question <draft file>`, `<finding id>: no finding` and `<finding id>: held elsewhere <ledger finding id, #<issue> or piece>`:
+After your last push, append one line per finding to the ledger in one command, each in one of the forms `<finding id> <rule identifiers>: fix <branch>`, `<finding id> <rule identifiers>: question <draft file>`, `<finding id> <rule identifiers>: no finding` and `<finding id> <rule identifiers>: held elsewhere <finding id of the ledger line, #<issue> or piece>`:
 
 ```bash
 printf '%s\n' '<line>' '<line>' >> <ledger>
