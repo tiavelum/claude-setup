@@ -118,9 +118,9 @@ requires signing in with `/login` rather than an API key. Done once per skill.
 
 ### Plugin
 
-Uploads the plugin in `plugin/`, named `tiavelum-setup`, to your claude.ai account. It
-carries the agent types of `agents/`, as `tiavelum-setup:checker` and
-`tiavelum-setup:worker`. [Use plugins in Claude](https://support.claude.com/en/articles/13837440-use-plugins-in-claude)
+Uploads the plugin in `plugin/`, named `tiavelum-claude-setup`, to your claude.ai account. It
+carries the agent types of `agents/`, as `tiavelum-claude-setup:checker` and
+`tiavelum-claude-setup:worker`. [Use plugins in Claude](https://support.claude.com/en/articles/13837440-use-plugins-in-claude)
 says that a plugin's sub-agents run in Cowork and Claude Code but not in chat, and that
 Claude Code loads the plugins of your account when you sign in with it.
 
@@ -128,13 +128,13 @@ Claude Code loads the plugins of your account when you sign in with it.
    files themselves:
 
    ```bash
-   cd ~/vc/claude-setup/plugin && zip -r ~/Downloads/tiavelum-setup.plugin .claude-plugin agents
+   cd ~/vc/claude-setup/plugin && zip -r ~/Downloads/tiavelum-claude-setup.plugin .claude-plugin agents
    ```
 
 2. In the Claude app, open **Customize** in the left sidebar, then its **Plugins** tab,
-   and upload `tiavelum-setup.plugin` as a custom plugin file
+   and upload `tiavelum-claude-setup.plugin` as a custom plugin file
    ([help](https://support.claude.com/en/articles/13837440-use-plugins-in-claude)).
-   The Plugins tab then lists `tiavelum-setup`.
+   The Plugins tab then lists `tiavelum-claude-setup`.
 
 3. Check as in "Check what a session loads" below which agent types a session lists.
 
@@ -248,7 +248,7 @@ session seems not to follow one of the rules.
 | `agents/` | One file per agent type, named after it, which both Claude Code setups install at user level and the plugin carries; its [`README.md`](agents/README.md) says what a new type needs |
 | `agents/checker.md` | The `checker` type: checks work it did not see being made, on Sonnet at high effort; see "Working with agents" |
 | `agents/worker.md` | The `worker` type: makes one piece of work from a brief, on Opus at high effort |
-| `plugin/` | The plugin `tiavelum-setup`, which carries the agent types of `agents/` to your claude.ai account; its [`README.md`](plugin/README.md) says how it is built |
+| `plugin/` | The plugin `tiavelum-claude-setup`, which carries the agent types of `agents/` to your claude.ai account; its [`README.md`](plugin/README.md) says how it is built |
 | `plugin/.claude-plugin/plugin.json` | The plugin's manifest: its name, version and description |
 | `briefs/` | The shared part of the briefs a coordinating session gives its agents, one file per repository and role, named `<repository>-<role>.md`; the session adds what the piece needs |
 | `briefs/engineering-standards-worker.md` | The shared brief for a worker that changes tiavelum/engineering-standards |
@@ -344,8 +344,8 @@ in `~/.claude/agents/`, so every Claude Code session has them in every repositor
 repository that needs its own version of a type keeps a file of the same name in its
 `.claude/agents/`, which takes precedence over the user-level one
 ([Subagents](https://code.claude.com/docs/en/sub-agents)). The plugin in `plugin/`
-carries the same two types to your claude.ai account, as `tiavelum-setup:checker` and
-`tiavelum-setup:worker`.
+carries the same two types to your claude.ai account, as `tiavelum-claude-setup:checker` and
+`tiavelum-claude-setup:worker`.
 
 A check by an agent is cheap only where the session can start `checker`. A Claude app
 session runs neither setup script, so it has the types only through the plugin, where

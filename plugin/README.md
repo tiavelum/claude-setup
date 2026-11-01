@@ -1,6 +1,6 @@
 # plugin
 
-This directory is the plugin `tiavelum-setup`, which carries the agent types of
+This directory is the plugin `tiavelum-claude-setup`, which carries the agent types of
 [`agents/`](../agents/README.md) to a claude.ai account, and this README is for whoever
 changes it.
 
