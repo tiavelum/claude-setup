@@ -354,10 +354,13 @@ session runs neither setup script, so it has the types only through the plugin, 
 it loads a plugin's sub-agents, or where the repository it works in holds them in
 `.claude/agents/`. A Claude app session in a claude.ai project listed the plugin's types
 on 2026-11-01, once its workspace had restarted after the upload
-([#144](https://github.com/tiavelum/claude-setup/issues/144)). Without the type a check
-cost about 80,000 tokens in two runs; with it, about 6,000 to 14,000. So in a session
-without a `checker` type the skill starts a check only before Claude merges, and
-proposes Claude Code for runs with several agents.
+([#144](https://github.com/tiavelum/claude-setup/issues/144)). Without the type, a
+one-line test check reached a context of about 80,000 tokens in two runs; with it,
+6,000 to 14,000. A real check reaches more: the two checks of a learning sheet in
+[#148](https://github.com/tiavelum/claude-setup/issues/148), which read page images,
+reached 65,000 and 77,000, and together processed about 1,000,000 tokens over their
+steps. So in a session without a `checker` type the skill starts a check only before
+Claude merges, and proposes Claude Code for runs with several agents.
 
 ## Memory
 
