@@ -116,6 +116,28 @@ requires signing in with `/login` rather than an API key. Done once per skill.
 
 3. Check as in "Check what a session loads" below that the skill is listed.
 
+### Plugin
+
+Uploads the plugin in `plugin/`, named `tiavelum-claude-setup`, to your claude.ai account. It
+carries the agent types of `agents/`, as `tiavelum-claude-setup:checker` and
+`tiavelum-claude-setup:worker`. [Use plugins in Claude](https://support.claude.com/en/articles/13837440-use-plugins-in-claude)
+says that a plugin's sub-agents run in Cowork and Claude Code but not in chat, and that
+Claude Code loads the plugins of your account when you sign in with it.
+
+1. Package the plugin; `zip` follows the links in `plugin/agents/` and packs the agent
+   files themselves:
+
+   ```bash
+   cd ~/vc/claude-setup/plugin && zip -r ~/Downloads/tiavelum-claude-setup.plugin .claude-plugin agents
+   ```
+
+2. In the Claude app, open **Customize** in the left sidebar, then its **Plugins** tab,
+   and upload `tiavelum-claude-setup.plugin` as a custom plugin file
+   ([help](https://support.claude.com/en/articles/13837440-use-plugins-in-claude)).
+   The Plugins tab then lists `tiavelum-claude-setup`.
+
+3. Check as in "Check what a session loads" below which agent types a session lists.
+
 ### Check what a session loads
 
 Shows for each kind of session that it holds the user instructions in full, where
@@ -223,9 +245,11 @@ session seems not to follow one of the rules.
 | `user-claude.md` | The source of `~/.claude/CLAUDE.md`: imports `~/.claude/user-instructions.md`, then user rules for Claude Code only |
 | `setup-local.sh` | Links `~/.claude/CLAUDE.md` to `user-claude.md`, `~/.claude/user-instructions.md` to `user-instructions.md` and each agent type in `~/.claude/agents/` to its file in `agents/` on your own machine, and removes an `attribution.commit` of `false` from `~/.claude/settings.json`, so the co-author line is kept |
 | `setup-cloud.sh` | Writes `user-claude.md` to `~/.claude/CLAUDE.md`, `user-instructions.md` to `~/.claude/user-instructions.md` and the files of `agents/` to `~/.claude/agents/` in a cloud VM |
-| `agents/` | One file per agent type, named after it, which both Claude Code setups install at user level; its `README.md` says what a new type needs |
+| `agents/` | One file per agent type, named after it, which both Claude Code setups install at user level and the plugin carries; its [`README.md`](agents/README.md) says what a new type needs |
 | `agents/checker.md` | The `checker` type: checks work it did not see being made, on Sonnet at high effort; see "Working with agents" |
 | `agents/worker.md` | The `worker` type: makes one piece of work from a brief, on Opus at high effort |
+| `plugin/` | The plugin `tiavelum-claude-setup`, which carries the agent types of `agents/` to your claude.ai account; its [`README.md`](plugin/README.md) says how it is built |
+| `plugin/.claude-plugin/plugin.json` | The plugin's manifest: its name, version and description |
 | `briefs/` | The shared part of the briefs a coordinating session gives its agents, one file per repository and role, named `<repository>-<role>.md`; the session adds what the piece needs |
 | `briefs/engineering-standards-worker.md` | The shared brief for a worker that changes tiavelum/engineering-standards |
 | `briefs/engineering-standards-checker.md` | The shared brief for a checker of a change to tiavelum/engineering-standards |
@@ -267,7 +291,8 @@ Merge the pull request, then:
 | `user-claude.md` | – | Pull² | Rebuild³ |
 | `setup-local.sh` | – | Pull², then rerun the script | – |
 | `setup-cloud.sh` | – | – | Rebuild³ |
-| `agents/<agent>.md` | – | Pull², and for a new file rerun the script | Rebuild³ |
+| `agents/<agent>.md` | Re-upload the plugin⁵ | Pull², and for a new file rerun the script | Rebuild³ |
+| `plugin/.claude-plugin/plugin.json` | Re-upload the plugin⁵ | – | – |
 | `session-usage.py` | – | Pull² | – |
 | `project-instructions.md` | Paste into project instructions¹ | Pull² | – |
 | `CLAUDE.md` | – | Pull² | – |
@@ -287,6 +312,8 @@ cached environment expires, after roughly seven days.
 
 ⁴ Package and upload as in Setup, "Skills"; the upload replaces the existing
 version. Claude Code picks up the new version on its own.
+
+⁵ Package and upload as in Setup, "Plugin".
 
 To check that the copies match `main`, ask Claude in a new session to compare each
 copy it received with the file on `main` by git blob hash: `git hash-object` on the
@@ -316,11 +343,14 @@ task, so the two types serve every piece of work. Both Claude Code setups instal
 in `~/.claude/agents/`, so every Claude Code session has them in every repository. A
 repository that needs its own version of a type keeps a file of the same name in its
 `.claude/agents/`, which takes precedence over the user-level one
-([Subagents](https://code.claude.com/docs/en/sub-agents)).
+([Subagents](https://code.claude.com/docs/en/sub-agents)). The plugin in `plugin/`
+carries the same two types to your claude.ai account, as `tiavelum-claude-setup:checker` and
+`tiavelum-claude-setup:worker`.
 
 A check by an agent is cheap only where the session can start `checker`. A Claude app
-session runs neither setup script, so it has the types only where the repository it
-works in holds them in `.claude/agents/`. Without the type a check cost about 80,000
+session runs neither setup script, so it has the types only through the plugin, where
+it loads a plugin's sub-agents, or where the repository it works in holds them in
+`.claude/agents/`. Without the type a check cost about 80,000
 tokens instead of about 6,000 in two runs. So in a session without `checker` the skill
 starts a check only before Claude merges, and proposes Claude Code for runs with several
 agents.
@@ -485,7 +515,7 @@ The layers, from a session with no parent outward:
 | Repository used with Claude | `project-instructions.md`, `CLAUDE.md` | Claude Code imports `project-instructions.md` at session start | The "Project repositories" rule and the `project-instructions` skill |
 | claude.ai project | The same `project-instructions.md` | The project's instructions field | The paste step; the skill compares field and file |
 | Skills | `skills/<skill>/SKILL.md` | Your claude.ai account | The upload step |
-| Agent types | `agents/<agent>.md` | `~/.claude/agents/`: linked locally, downloaded in the cloud | The setup scripts |
+| Agent types | `agents/<agent>.md` | `~/.claude/agents/`: linked locally, downloaded in the cloud; your claude.ai account, through the plugin | The setup scripts; the plugin's upload step |
 
 Memory is the other cross-cutting layer; see "Memory".
 

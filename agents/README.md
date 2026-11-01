@@ -1,7 +1,8 @@
 # agents
 
 This directory holds the agent types that both Claude Code setups install at user
-level, and this README is for whoever adds or changes one.
+level and that the plugin in [`plugin/`](../plugin/README.md) carries to a claude.ai
+account, and this README is for whoever adds or changes one.
 
 Each file defines one agent type, is named after it and holds the `name`,
 `description`, `tools`, `model` and `effort` frontmatter of the
@@ -10,4 +11,5 @@ directives only.
 
 `setup-local.sh` links every `.md` file here except this README. `setup-cloud.sh`
 downloads the files whose names its `agents` list holds, since a raw file URL serves
-no directory listing; a new file is added to that list in the same pull request.
+no directory listing; a new file is added to that list in the same pull request, and
+gets a link in `plugin/agents/` as well.
