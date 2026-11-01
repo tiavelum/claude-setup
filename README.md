@@ -177,8 +177,9 @@ in every session; only what each one has to show differs.
    The first answer must say yes, list the headings of `user-instructions.md` in
    their order, and match its first rule, its last rule and its rule "Usage" word
    for word. The second must name the sources given below for the session. The third
-   must list each skill of `skills/` that you uploaded, and in Claude Code also
-   `checker` and `worker`.
+   must list each skill of `skills/` that you uploaded; in Claude Code also `checker`
+   and `worker`; and where you uploaded the plugin, also
+   `tiavelum-claude-setup:checker` and `tiavelum-claude-setup:worker`.
 
    - **Claude Code in the terminal**, set up by "Claude Code, local". Start it in
      the test folder:
@@ -347,13 +348,16 @@ repository that needs its own version of a type keeps a file of the same name in
 carries the same two types to your claude.ai account, as `tiavelum-claude-setup:checker` and
 `tiavelum-claude-setup:worker`.
 
-A check by an agent is cheap only where the session can start `checker`. A Claude app
+A check by an agent is cheap only where the session can start the `checker` type, under
+that name or as `tiavelum-claude-setup:checker`; the skill counts both. A Claude app
 session runs neither setup script, so it has the types only through the plugin, where
 it loads a plugin's sub-agents, or where the repository it works in holds them in
-`.claude/agents/`. Without the type a check cost about 80,000
-tokens instead of about 6,000 in two runs. So in a session without `checker` the skill
-starts a check only before Claude merges, and proposes Claude Code for runs with several
-agents.
+`.claude/agents/`. A Claude app session in a claude.ai project listed the plugin's types
+on 2026-11-01, once its workspace had restarted after the upload
+([#144](https://github.com/tiavelum/claude-setup/issues/144)). Without the type a check
+cost about 80,000 tokens in two runs; with it, about 6,000 to 14,000. So in a session
+without a `checker` type the skill starts a check only before Claude merges, and
+proposes Claude Code for runs with several agents.
 
 ## Memory
 
