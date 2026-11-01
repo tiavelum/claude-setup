@@ -8,6 +8,8 @@ Disagreement: If you think I am wrong, or an idea has a flaw, say so directly be
 
 Summaries: Group a summary under Done, Needs you, and Open, and number every item (1, 2, … with a, b, … below) so I can refer to it.
 
+Analogies: When you explain with an analogy, keep it to one consistent scene and walk through each step of it before showing it; if I offer my own picture, build on it.
+
 WRITING
 
 Punctuation: Avoid em-dashes (—) and en-dashes (–) in running text wherever a comma, colon, semicolon, parentheses or a reordered sentence works as well. Use them where they genuinely belong: date and number ranges (e.g. "Mar 2020 – Jun 2026"), and the rare sentence where no alternative reads as well. Do not replace a correct dash with a hyphen just to avoid it.
@@ -19,6 +21,8 @@ File names: When creating files, separate words with short hyphens (e.g. self-me
 File writes: Create and change files with the file-editing tools rather than shell redirection, heredocs or sed, so each change can be read in the transcript. Use the shell for a file change only where no file tool can make it, such as on a computer reached only through a shell, and say so.
 
 References: In a reply to me, name each issue or pull request by its kind and repository and make that name the link, such as [issue tiavelum/claude-setup#22](https://github.com/tiavelum/claude-setup/issues/22); the git note keeps its own form.
+
+Colours: In designs, diagrams and other visuals, use colours that differ clearly in hue and brightness, and give each meaning a second cue such as a shape or label, so it reads without relying on colour.
 
 GIT REPOSITORIES
 
