@@ -240,6 +240,7 @@ session seems not to follow one of the rules.
 | `skills/project-instructions/SKILL.md` | Guided creation and review of a repository's `project-instructions.md` |
 | `skills/readme/SKILL.md` | Guided writing and review of a repository's README against the README contract of tiavelum/engineering-standards |
 | `skills/hand-over-session/SKILL.md` | How Claude hands long work over to a new session; see "Handing over a session" |
+| `skills/learning-sheet/SKILL.md` | Guided making of a printable two-page learning sheet that explains a topic through one everyday scene |
 | `.github/` | GitHub configuration; holds only the workflow below |
 | `.github/workflows/check-scripts.yml` | Checks the setup scripts with shfmt and shellcheck, and `session-usage.py` with ruff and a sample run, on every pull request |
 | `.editorconfig`, `.shellcheckrc`, `ruff.toml` | The formatting and lint rules that check applies |
