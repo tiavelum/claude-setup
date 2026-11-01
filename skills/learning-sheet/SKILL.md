@@ -23,7 +23,7 @@ description: Make a printable two-page learning sheet that explains a topic thro
 
 1. Make the sheet as a Design artifact with one artboard per page at A4, 794 × 1123 px, or at Letter, 816 × 1056 px, for a North American reader, so that each artboard prints as one page. Where no Design type is offered, make a document with the same two parts.
 2. Set all text at 12 px (9 pt) or larger, dark on a light ground, so that it reads when printed in grayscale.
-3. Budget each page's height before writing it, with at least 40 px (about 10 mm) left at every edge, since [many printers leave the outermost millimetres blank](https://support.microsoft.com/en-US/publisher/set-page-margins-for-printing-using-publisher).
+3. Budget each page's height before writing it, with at least 40 px (about 11 mm) left at every edge, since [many printers leave the outermost millimetres blank](https://support.microsoft.com/en-US/publisher/set-page-margins-for-printing-using-publisher).
 4. Page one holds the pictures: the scene as one illustration with a numbered marker for each item it draws and a legend above it that names them, a card with icon, name and sentence for each item the scene does not draw, and, where the topic has one contrast that matters most, an illustrated pair for it. Where the items are numbered, show each item's number on its marker or card.
 5. Page two holds the details: a table with one row per item of page one, under the same name, giving its icon and name, what it is, and the two or three properties on which the items differ, such as what it does, what it needs and what happens without it, grouped by the zones of page one. Below the table, give the few questions and rules to remember.
 
@@ -32,7 +32,7 @@ description: Make a printable two-page learning sheet that explains a topic thro
 1. Render each page to an image at its print size, with the sheet's own fonts, since another font moves the line breaks. Where the font service is blocked, take the fonts from a package registry.
 2. Have an agent that did not see the sheet being made check the pages for print: give it the page images, the page source, the page size, the 40 px edge minimum and the 12 px text minimum. Have it measure each page's content height against the page height and report, with page and place, text that is cut off, overlaps or is smaller than 12 px, content within 40 px of an edge, a legend number without its marker, a zone whose colour or marker shape changes from one place to another, an item whose icon differs between the pages, and a row of page two whose name or zone differs from page one.
 3. Have the same agent check every sentence written after the scene check, such as page two's details, questions and rules, against public sources, and report each one that is wrong, unclear to a learner, or contradicted by another, such as a rule that a row of the table contradicts.
-4. Apply each finding, or put it to the person with your reason for leaving it; then render again and look at what changed.
+4. Apply each finding, or put it to the person with your reason for leaving it; then render again, look at what changed, and have the same agent check each sentence you rewrote.
 
 ## Hand it over
 
