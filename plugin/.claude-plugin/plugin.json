@@ -1,0 +1,10 @@
+{
+  "name": "tiavelum-setup",
+  "version": "0.1.0",
+  "description": "The checker and worker agent types of tiavelum/claude-setup.",
+  "author": {
+    "name": "Andreas Tiefenauer"
+  },
+  "repository": "https://github.com/tiavelum/claude-setup",
+  "license": "MIT"
+}
