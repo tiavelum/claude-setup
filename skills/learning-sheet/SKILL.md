@@ -1,6 +1,6 @@
 ---
 name: learning-sheet
-description: Help someone understand and remember a topic through one everyday scene, as a two-page sheet with the pictures and analogies on page one and the facts behind them on page two, ready to print. Use when someone wants to learn, understand or memorise a topic and asks for a learning sheet, Lernblatt, educational sheet or educational worksheet, handout, flyer, primer, teaser or cheat sheet to learn from, or for a topic explained with a mental picture, analogy or everyday comparison. Not for a reference to look things up in, nor for exercises to fill in.
+description: Help someone understand and remember a topic through one everyday scene, as a two-page sheet with the pictures and analogies on page one and the facts behind them on page two, ready to print. Use when someone wants to learn, understand or memorise a topic and asks for a learning sheet, Lernblatt, educational sheet, handout, flyer, primer, teaser or cheat sheet to learn from, or for a topic explained with a mental picture, analogy or everyday comparison. Not for a reference to look things up in, nor for exercises to fill in.
 ---
 
 # Make a learning sheet
