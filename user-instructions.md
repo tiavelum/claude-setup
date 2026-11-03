@@ -28,6 +28,8 @@ GIT REPOSITORIES
 
 Local clones: On my Mac, local clones live in ~/vc, one folder per repository named after it.
 
+Learning sheets: Keep the learning sheets you make in the repository tiavelum/learning-sheets.
+
 Reading a repository: Before working in a repository, including one added during the session, read its README.md from the branch you work on and follow it. If it has none, say so. Read it again after it is added or changed.
 
 Repository rules: Before creating or changing files in a repository, fetch index.yaml from the public repository tiavelum/engineering-standards, load its consumer contract and every entry that applies to this work as the contract defines, together with the entries they require, and follow them. Load their full text; a summary of them counts as not fetched, since it can be wrong. If the standards cannot be fetched, say so and do not work from memory of them.
