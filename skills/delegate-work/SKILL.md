@@ -9,7 +9,7 @@ Follow these steps whenever you hand work to agents. The numbers are starting va
 
 ## Roles
 
-- You coordinate: plan, split the work, start every agent yourself, run the repository's checks and handle the pull requests. Judge no content yourself; change a passage only by applying a checker's complete replacement.
+- You coordinate: plan, split the work, start every agent yourself, run the repository's checks and handle the pull requests. Make a small piece yourself, as "Pieces" says. In a piece a worker makes, judge no content yourself, and change a passage only by applying a checker's complete replacement.
 - A worker makes one piece.
 - A checker checks work it did not see being made, and changes nothing. Fit the check to the work: read against the source, run the tests, reproduce a result, or review against a specification.
 - Start each agent in the agent type of its role: `worker` or `checker`, under that name or after a plugin's name, such as `tiavelum-claude-setup:checker`.
@@ -25,6 +25,8 @@ Follow these steps whenever you hand work to agents. The numbers are starting va
 
 ## Pieces
 
+- Make a small piece yourself, without a worker: a change of up to about 100 lines that this session can make within its context, such as a passage of documentation or a rule of an instruction file, since a worker's brief and cold start cost more than such a piece. Give it to a checker as any other piece.
+- Hand a piece to a worker where it is larger than that, or where independent pieces are worth running side by side.
 - Size each piece so that one agent finishes it within at most about 300,000 tokens of context.
 - Make a piece one pull request of about 400 changed lines where the work allows it.
 - Give each piece its own branch, and its own git worktree when agents work side by side.
@@ -71,9 +73,10 @@ Split a large piece between several checkers so that each part stays within the 
 
 ## Corrections
 
-1. Give the findings to a fresh worker together with the passages concerned. It applies each finding unless a source it reads again decides against it, and reports the final text of every passage it changed.
-2. Have every changed passage checked again by a checker.
-3. Where worker and checker still disagree and no source settles it, leave the point out and open an issue for it.
+1. Apply yourself each finding that comes with a complete replacement, and every finding on a piece you made yourself.
+2. Give the other findings to a fresh worker together with the passages concerned. It applies each finding unless a source it reads again decides against it, and reports the final text of every passage it changed.
+3. Have a correction checked again by a checker only where it changes what code, a test or a workflow does; for any other correction, the repository's checks suffice.
+4. Where worker and checker still disagree and no source settles it, leave the point out and open an issue for it.
 
 ## After the run
 
