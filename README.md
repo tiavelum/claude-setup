@@ -104,11 +104,16 @@ Uploads a skill from `skills/` to your claude.ai account. The Claude app, Claude
 Code in the cloud and Claude Code locally all load it from there; locally this
 requires signing in with `/login` rather than an API key. Done once per skill.
 
-1. Package the skill folder; the ZIP must contain the folder named after the skill:
+1. Package the skill folder, here `learning-sheet`; the script writes a new ZIP that
+   holds the folder named after the skill and prints its path:
 
    ```bash
-   cd ~/vc/claude-setup/skills && zip -r ~/Downloads/<skill>.zip <skill>
+   ~/vc/claude-setup/scripts/package-skill.sh learning-sheet
    ```
+
+   It prints `/Users/<you>/Downloads/learning-sheet.zip` and where to upload it. A
+   second argument names another folder for the ZIP. A name that is not a skill ends
+   with exit status 2 and a list of the skills there are.
 
 2. In the Claude app, open [Customize > Skills](https://claude.ai/customize/skills),
    click **+**, choose **Create skill**, then **Upload a skill**, and select the ZIP
@@ -266,8 +271,10 @@ session seems not to follow one of the rules.
 | `skills/readme/SKILL.md` | Guided writing and review of a repository's README against the README contract of tiavelum/engineering-standards |
 | `skills/hand-over-session/SKILL.md` | How Claude hands long work over to a new session; see "Handing over a session" |
 | `skills/learning-sheet/SKILL.md` | Guided making of a printable two-page learning sheet that explains a topic through one everyday scene |
+| `scripts/` | The scripts that package what Setup uploads to your claude.ai account |
+| `scripts/package-skill.sh` | Packages `skills/<skill>/` into `~/Downloads/<skill>.zip` for upload, as in Setup, "Skills" |
 | `.github/` | GitHub configuration; holds only the workflow below |
-| `.github/workflows/check-scripts.yml` | Checks the setup scripts with shfmt and shellcheck, and `session-usage.py` with ruff and a sample run, on every pull request |
+| `.github/workflows/check-scripts.yml` | Checks the shell scripts with shfmt and shellcheck, and `session-usage.py` with ruff and a sample run, on every pull request |
 | `.editorconfig`, `.shellcheckrc`, `ruff.toml` | The formatting and lint rules that check applies |
 
 Start here: `user-instructions.md`, then "Setup" above for the place you use Claude.
@@ -298,6 +305,7 @@ Merge the pull request, then:
 | `project-instructions.md` | Paste into project instructions¹ | Pull² | – |
 | `CLAUDE.md` | – | Pull² | – |
 | `skills/<skill>/SKILL.md` | Re-upload⁴ | – | – |
+| `scripts/<script>` | – | Pull² | – |
 | `briefs/<brief>.md` | – | Pull² | – |
 
 Other files need nothing.
