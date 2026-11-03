@@ -43,7 +43,7 @@ description: Help someone understand and remember a topic through one everyday s
 3. Where you could not see the pages as the person will, ask them to export both pages and check that nothing is cut off or overlaps.
 4. Where no agent could check the scene or the pages, tell the person that no second reader checked them.
 5. Archive the sheet where the person's instructions say learning sheets are kept, as that repository's README says, at every hand-over and again after each later change to the sheet, so that the sheet outlives its session and its artifact.
-6. Where the person's instructions name no such place, or you cannot work in it, tell the person that the sheet is not archived, and why.
+6. Where the person's instructions name no such place, or you cannot follow that repository's README for this sheet, tell the person that the sheet is not archived, and why.
 
 ## Improve this skill
 
