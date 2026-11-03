@@ -65,7 +65,7 @@ Split a large piece between several checkers so that each part stays within the 
 - Let nothing be pushed that has not passed the checks the brief gives as commands.
 - Have each agent return a few lines and save its full report to a file. Read the few lines, not the whole report.
 - Before a report goes into a pull request, scan it for secrets, local paths and text copied from a source.
-- Put the worker's report into the pull request's description and the checker's findings into review comments on it.
+- Put the worker's report, or for a piece you made yourself your own account of it, into the pull request's description and the checker's findings into review comments on it.
 - A checker and the worker whose work it checks exchange nothing but the work and the findings, in writing. Workers learn from each other through what is pushed; connect two workers directly only for a named question.
 - End your turn after each finished piece, so that a turn ending at a usage limit loses nothing that was not pushed.
 - After opening a pull request that later work depends on and that I merge, end your turn and continue when I write, since my merge does not reach the session on its own.
@@ -73,10 +73,10 @@ Split a large piece between several checkers so that each part stays within the 
 
 ## Corrections
 
-1. Apply yourself each finding that comes with a complete replacement, and every finding on a piece you made yourself.
+1. Apply yourself each finding that comes with a complete replacement. On a piece you made yourself, apply every other finding too, unless a source you read again decides against it.
 2. Give the other findings to a fresh worker together with the passages concerned. It applies each finding unless a source it reads again decides against it, and reports the final text of every passage it changed.
 3. Have a correction checked again by a checker only where it changes what code, a test or a workflow does; for any other correction, the repository's checks suffice.
-4. Where worker and checker still disagree and no source settles it, leave the point out and open an issue for it.
+4. Where the maker of a piece and its checker still disagree and no source settles it, leave the point out and open an issue for it.
 
 ## After the run
 
