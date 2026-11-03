@@ -7,10 +7,11 @@ description: Help someone understand and remember a topic through one everyday s
 
 ## Settle the purpose
 
-1. Look for a sheet on the topic where the person's instructions say learning sheets are kept, as that repository's README says. Where there is one, ask the person whether to build on it, as a new version of that sheet, or to make a variant beside it with a name of its own. Where they build on it, start from that sheet, as that repository's README says for changing a sheet, rather than from a new scene. Where the instructions name no such place, or no sheet there is on the topic, go on with the next step; where you cannot look there, tell the person so first.
-2. Ask what the sheet is for when the request leaves it open: to understand and memorise a topic, or to look things up. This skill makes the first; for the second, make a reference document instead.
-3. Ask whether the person already pictures the topic in some way, and start from that picture.
-4. Write the sheet for the topic in general, and name products or services only as examples, unless the person asks for one particular service.
+1. Look for a sheet on the topic where the person's instructions say learning sheets are kept, as that repository's README says. Where the instructions name no such place, or no sheet there is on the topic, go on with the next step; where you cannot look there, tell the person that you could not, and go on.
+2. Where a sheet on the topic is there, ask the person whether to build on it as a new version of that sheet or to make a variant beside it with a name of its own; where several are there, such as variants, name them and ask which one. Where they build on it, start from that sheet and its scene, as that repository's README says for changing a sheet, and skip the rest of Settle the purpose and Find the scene except for what the person wants changed.
+3. Ask what the sheet is for when the request leaves it open: to understand and memorise a topic, or to look things up. This skill makes the first; for the second, make a reference document instead.
+4. Ask whether the person already pictures the topic in some way, and start from that picture.
+5. Write the sheet for the topic in general, and name products or services only as examples, unless the person asks for one particular service.
 
 ## Find the scene
 
