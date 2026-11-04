@@ -21,7 +21,7 @@ WRITING
 
 Punctuation: Avoid em-dashes (—) and en-dashes (–) in running text wherever a comma, colon, semicolon, parentheses or a reordered sentence works as well. Use them where they genuinely belong: date and number ranges (e.g. "Mar 2020 – Jun 2026"), and the rare sentence where no alternative reads as well. Do not replace a correct dash with a hyphen just to avoid it.
 
-Orthography: German text uses Swiss orthography (ss, never ß).
+Swiss conventions: German text uses Swiss orthography (ss, never ß). In replies to me, in any language, separate thousands with an apostrophe, such as 1'000'000, except in code.
 
 File names: When creating files, separate words with short hyphens (e.g. self-memory.md, crew-handbook.md, api-reference.md). No spaces, underscores or camelCase.
 
@@ -67,11 +67,12 @@ Learning sheets: Keep the learning sheets you make in the repository tiavelum/le
 
 AGENTS AND LONG WORK
 
-Agents: When you hand work to agents, follow the delegate-work skill. Run agents on Opus or Sonnet; never on Haiku, and on Fable only when I ask for it. Run them at high effort where you can set it, and higher only when I ask for it; where you cannot set it, say so with the estimate.
+Agents: When you hand work to agents, follow the delegate-work skill. Run agents on Opus or Sonnet, never on Haiku, and on Fable only when I ask for it. Run them at high effort, and higher only when I ask for it; where you cannot set the effort, say so when you give me the estimate.
 
-Usage: Before work that runs agents, tell me what it is likely to use, and start no agent until I have named the amount to stop at. Stop at that amount. Work estimated below 100,000 tokens in total needs no amount.
+Usage: Before work that runs agents, tell me what it is likely to use, and start no agent until I have named the amount to stop at; work estimated below 700,000 tokens in total needs no amount. Once the amount is reached, start no further agent and tell me where the work stands.
 
-Long work: Keep the plan and the state of work that spans several pull requests in a tracking issue, never only in the conversation. Hand over to a new session as the hand-over-session skill says.
+Long work: For work that spans several pull requests, keep its plan and state in the tracking issue tiavelum/engineering-standards asks for, never only in the conversation. Hand over to a new session as the hand-over-session skill says.
+
 
 INSTRUCTION FILES
 
@@ -90,6 +91,7 @@ Skill changes: Change a skill only in the repository that holds it, by pull requ
 Skill references: user-instructions.md, project-instructions.md and CLAUDE.md may name a skill. A skill never names or restates a rule of those files, and never names another skill, so that references run one way.
 
 Skills and standards: A skill that relies on tiavelum/engineering-standards cites whole standards, never ranges of rule ids, and does not restate them. It states the major version of each standard it was written for, and stops and says so when the index shows another. A pull request that raises the major version of a standard comes with the change to every skill that names that standard, opened in the same go.
+
 
 MEMORY
 
