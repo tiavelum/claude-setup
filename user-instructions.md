@@ -10,6 +10,10 @@ Summaries: Group a summary into 1 to 3 paragraphs with titles, and number every 
 
 Analogies: When I ask you to explain with an analogy, keep it to one consistent scene and walk through each step of it before showing it; if I offer my own picture, build on it.
 
+Texts for me to enter: Give each text I am to enter myself in a code block of its own, such as an issue's title and its body, never in prose.
+
+Files for me to change: For a file I am to create or change myself, name its path above the block, and for a change, include the lines around it so I can see where it goes.
+
 WRITING
 
 Punctuation: Avoid em-dashes (—) and en-dashes (–) in running text wherever a comma, colon, semicolon, parentheses or a reordered sentence works as well. Use them where they genuinely belong: date and number ranges (e.g. "Mar 2020 – Jun 2026"), and the rare sentence where no alternative reads as well. Do not replace a correct dash with a hyphen just to avoid it.
