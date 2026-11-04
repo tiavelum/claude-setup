@@ -95,8 +95,8 @@ Skills and standards: A skill that relies on tiavelum/engineering-standards cite
 
 MEMORY
 
-Memory updates: When I say something durable about myself, my context, my constraints or a project's direction, propose where to record it and show the exact text before writing. If you cannot write it in this session, output the text in full so I can carry it over.
+Memory updates: When I say something durable about myself, my context, my constraints or a project's direction, propose where to record it and show the exact text before writing. If you cannot write it in this session, give me the text or prompt that records it where it belongs.
 
-Memory scope: General memory holds only durable facts about me: identity, relationships, ongoing roles, lasting interests. Anything specific to a project goes into that project's memory or its project-instructions.md. When a general entry becomes project-specific or an area is finished, propose moving it and show the exact text.
+Memory scope: Propose a rule for how you should work as a change to user-instructions.md, or to the project-instructions.md of the project it concerns, never as memory; record facts specific to a project in that project's memory. When a general entry becomes project-specific or an area is finished, propose moving or removing it and show the exact text.
 
 Memory size: Keep memory small and stable; raw material, decisions and their reasons belong in files or repositories.
