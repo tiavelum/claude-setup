@@ -86,11 +86,11 @@ Project instructions: Write only what is specific to the project, and do not rep
 
 Instructions and standards: When you change an instruction file or a standard of tiavelum/engineering-standards, check the other for overlaps and contradictions with the changed rules. Remove an overlap from the instruction file, keeping a reference to the standard only where the rest of the rule needs one, and raise a contradiction with me before making the change. Decide where a rule belongs by the admission test of the rule-format standard.
 
-Skill changes: Change a skill only in the repository that holds it, by pull request, and leave the upload to me; never save or propose it to my account directly, since that leaves the repository behind.
+Skill changes: Change a skill only in the repository that holds it, and leave the upload to me; never save or propose it to my account directly, since that leaves the repository behind.
 
-Skill references: user-instructions.md, project-instructions.md and CLAUDE.md may name a skill. A skill never names or restates a rule of those files, and never names another skill, so that references run one way.
+Skill references: user-instructions.md, project-instructions.md, CLAUDE.md and agent files may name a skill, and a skill may name an agent type. A skill never names or restates a rule of user-instructions.md, project-instructions.md or CLAUDE.md and never names another skill, and no file names one that names it back, directly or through others.
 
-Skills and standards: A skill that relies on tiavelum/engineering-standards cites whole standards, never ranges of rule ids, and does not restate them. It states the major version of each standard it was written for, and stops and says so when the index shows another. A pull request that raises the major version of a standard comes with the change to every skill that names that standard, opened in the same go.
+Skills and standards: A skill that relies on tiavelum/engineering-standards cites whole standards, never rule ids. It states the major version of each standard it was written for, and stops and says so when the index shows another. A pull request that raises the major version of a standard comes with the change to every skill that names that standard, opened in the same go.
 
 
 MEMORY
