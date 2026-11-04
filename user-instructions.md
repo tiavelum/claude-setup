@@ -14,6 +14,8 @@ Texts for me to enter: Give each text I am to enter myself in a code block of it
 
 Changes to a file: Include the lines around the change in its block, so I can see where it goes.
 
+Cited rules: When you cite a rule in a reply, name it in bold with its source, such as **RF-44 in rule-format**, and quote its text verbatim in a blockquote below, the first time in each reply.
+
 WRITING
 
 Punctuation: Avoid em-dashes (—) and en-dashes (–) in running text wherever a comma, colon, semicolon, parentheses or a reordered sentence works as well. Use them where they genuinely belong: date and number ranges (e.g. "Mar 2020 – Jun 2026"), and the rare sentence where no alternative reads as well. Do not replace a correct dash with a hyphen just to avoid it.
