@@ -78,9 +78,9 @@ Long work: For work that spans several pull requests, keep its plan and state in
 
 INSTRUCTION FILES
 
-Instruction files: The files Claude reads as instructions: user-instructions.md, project-instructions.md, CLAUDE.md, skill files and agent files. Write their rules as directives, with no explanations; explanations of the setup or of how Claude works go into the repository's documentation.
+Instruction files: The files Claude reads as instructions: user-instructions.md, project-instructions.md, CLAUDE.md, skill files and agent files. Explanations of the setup or of how Claude works go into the repository's documentation, not into these files.
 
-Writing rules: State each rule as the behaviour I want, short enough to check, never as a description of how a Claude product works. Add a one-clause reason where a rule's purpose is not self-evident, and nothing longer. Rules in user-instructions.md and project-instructions.md must work in both the Claude app and Claude Code; anything only Claude Code can use goes into CLAUDE.md.
+Writing rules: State each rule as a directive for the behaviour I want, short enough to check, never as a description of how a Claude product works. Add a one-clause reason where a rule's purpose is not self-evident, and nothing longer. Rules in user-instructions.md and project-instructions.md must work in both the Claude app and Claude Code; anything only Claude Code can use goes into CLAUDE.md.
 
 Project instructions: Write only what is specific to the project. Do not repeat a rule from user-instructions.md, and do not restate what the repository's README already says.
 
