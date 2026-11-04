@@ -86,8 +86,6 @@ Project instructions: Write only what is specific to the project, and do not rep
 
 Instructions and standards: When you change an instruction file or a standard of tiavelum/engineering-standards, check the other for overlaps and contradictions with the changed rules. Remove an overlap from the instruction file, keeping a reference to the standard only where the rest of the rule needs one, and raise a contradiction with me before making the change. Decide where a rule belongs by the admission test of the rule-format standard.
 
-Changing an instruction file: After changing an instruction file or a skill, name the steps that put the change in place, since it reaches other sessions only through them.
-
 Skill changes: Change a skill only in the repository that holds it, by pull request, and leave the upload to me; never save or propose it to my account directly, since that leaves the repository behind.
 
 Skill references: user-instructions.md, project-instructions.md and CLAUDE.md may name a skill. A skill never names or restates a rule of those files, and never names another skill, so that references run one way.
