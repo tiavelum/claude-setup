@@ -54,7 +54,7 @@ Repository writes: Read a file from the target branch immediately before changin
 
 Commit identity: Make me the author of each commit, under the name Andreas Tiefenauer and the address tiavelum@gmail.com, and leave the committer as the session sets it, so that its signature shows as verified.
 
-Commits and pull requests: Commit and push without asking, and push each finished part, so that no finished work exists only in the workspace. Once a pull request is open, tell me what it changes.
+Commits and pull requests: Commit and push without asking, and push each finished part, so that no finished work exists only in the workspace. Once a pull request is open, tell me what it changes and which steps it leaves for me after the merge.
 
 Merging: Leave merging to me unless I have said for the task that you may merge. When I have, merge each pull request once an agent that did not see the work being made has checked what the repository's checks do not cover, except one whose change takes effect only after a step of mine. After each merge, end your turn with a note to me.
 
@@ -82,23 +82,21 @@ Instruction files: The files Claude reads as instructions: user-instructions.md,
 
 Writing rules: State each rule as a directive for the behaviour I want, short enough to check, never as a description of how a Claude product works. Add a one-clause reason where a rule's purpose is not self-evident, and nothing longer. Rules in user-instructions.md and project-instructions.md must work in both the Claude app and Claude Code; anything only Claude Code can use goes into CLAUDE.md.
 
-Project instructions: Write only what is specific to the project. Do not repeat a rule from user-instructions.md, and do not restate what the repository's README already says.
+Project instructions: Write only what is specific to the project, and do not repeat a rule from user-instructions.md.
 
-Instructions and standards: When you change an instruction file or a standard of tiavelum/engineering-standards, check the other for overlaps and contradictions with the changed rules. Replace an overlap in an instruction file with a reference to the standard, and raise a contradiction with me before making the change. Decide where a rule belongs by the admission test of the rule-format standard.
+Instructions and standards: When you change an instruction file or a standard of tiavelum/engineering-standards, check the other for overlaps and contradictions with the changed rules. Remove an overlap from the instruction file, keeping a reference to the standard only where the rest of the rule needs one, and raise a contradiction with me before making the change. Decide where a rule belongs by the admission test of the rule-format standard.
 
-Changing an instruction file: After changing an instruction file or a skill, name the steps that put the change in place, since it reaches other sessions only through them.
+Skill changes: Change a skill only in the repository that holds it, and leave the upload to me; never save or propose it to my account directly, since that leaves the repository behind.
 
-Skill changes: Change a skill only in the repository that holds it, by pull request, and leave the upload to me; never save or propose it to my account directly, since that leaves the repository behind.
+Skill references: user-instructions.md, project-instructions.md, CLAUDE.md and agent files may name a skill, and a skill may name an agent type. A skill never names or restates a rule of user-instructions.md, project-instructions.md or CLAUDE.md and never names another skill, and no file names one that names it back, directly or through others.
 
-Skill references: user-instructions.md, project-instructions.md and CLAUDE.md may name a skill. A skill never names or restates a rule of those files, and never names another skill, so that references run one way.
-
-Skills and standards: A skill that relies on tiavelum/engineering-standards cites whole standards, never ranges of rule ids, and does not restate them. It states the major version of each standard it was written for, and stops and says so when the index shows another. A pull request that raises the major version of a standard comes with the change to every skill that names that standard, opened in the same go.
+Skills and standards: A skill that relies on tiavelum/engineering-standards cites whole standards, never rule ids. It states the major version of each standard it was written for, and stops and says so when the index shows another. A pull request that raises the major version of a standard comes with the change to every skill that names that standard, opened in the same go.
 
 
 MEMORY
 
-Memory updates: When I say something durable about myself, my context, my constraints or a project's direction, propose where to record it and show the exact text before writing. If you cannot write it in this session, output the text in full so I can carry it over.
+Memory updates: When I say something durable about myself, my context, my constraints or a project's direction, propose where to record it and show the exact text before writing. If you cannot write it in this session, give me the text or prompt that records it where it belongs.
 
-Memory scope: General memory holds only durable facts about me: identity, relationships, ongoing roles, lasting interests. Anything specific to a project goes into that project's memory or its project-instructions.md. When a general entry becomes project-specific or an area is finished, propose moving it and show the exact text.
+Memory scope: Propose a rule for how you should work as a change to user-instructions.md, or to the project-instructions.md of the project it concerns, never as memory; record facts specific to a project in that project's memory. When a general entry becomes project-specific or an area is finished, propose moving or removing it and show the exact text.
 
 Memory size: Keep memory small and stable; raw material, decisions and their reasons belong in files or repositories.
