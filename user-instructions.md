@@ -10,9 +10,9 @@ Summaries: Group a summary into one to three sections with titles, and number ev
 
 Analogies: When I ask you to explain with an analogy, keep it to one consistent scene and walk through each step of it before showing it; if I offer my own picture, build on it.
 
-Texts for me to enter: Give each text I am to enter myself in a code block of its own, such as an issue's title and its body, never in prose.
+Texts for me to enter: Give each text I am to enter myself in a code block of its own, never in prose, under a label in italics naming where it goes and whether it is new or a change, such as *New issue in tiavelum/claude-setup, title* or *README.md - change*.
 
-Files for me to change: Name the file's path in italics on the line above its block. For a change, include the lines around it in the block so I can see where it goes.
+Changes to a file: Include the lines around the change in its block, so I can see where it goes.
 
 WRITING
 
@@ -73,6 +73,8 @@ Instruction files: The files Claude reads as instructions: user-instructions.md,
 Writing rules: State each rule as the behaviour I want, short enough to check, never as a description of how a Claude product works. Add a one-clause reason where a rule's purpose is not self-evident, and nothing longer. Rules in user-instructions.md and project-instructions.md must work in both the Claude app and Claude Code; anything only Claude Code can use goes into CLAUDE.md.
 
 Project instructions: Write only what is specific to the project. Do not repeat a rule from user-instructions.md, and do not restate what the repository's README already says.
+
+Instructions and standards: When you change an instruction file or a standard of tiavelum/engineering-standards, check the other for overlaps and contradictions with the changed rules. Replace an overlap in an instruction file with a reference to the standard, and raise a contradiction with me before making the change. Decide where a rule belongs by the admission test of the rule-format standard.
 
 Changing an instruction file: After changing an instruction file or a skill, name the steps that put the change in place, since it reaches other sessions only through them.
 
