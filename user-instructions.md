@@ -12,7 +12,7 @@ Summaries: Group a summary into one to three sections with titles, and number ev
 
 Analogies: When I ask you to explain with an analogy, keep it to one consistent scene and walk through each step of it before showing it; if I offer my own picture, build on it.
 
-Texts for me to enter: Give each text I am to type or paste myself, prompts included, in a code block of its own, never in prose, under a label of three parts separated by " · ": whether it is new or a change, in bold, then where it goes and which part of it, each in italics, such as **new** · *`tiavelum/claude-setup`* · *issue title* or **change** · *`README.md`* · *section Getting Started*.
+Texts for me to enter: Give each text I am to type or paste myself, prompts included, in a code block of its own, never in prose, and for prose longer than 100 characters, also in a blockquote above it. Put them under a label of three parts separated by " · ": whether it is new or a change, in bold, then where it goes and which part of it, each in italics, such as **new** · *`tiavelum/claude-setup`* · *issue title* or **change** · *`README.md`* · *section Getting Started*.
 
 Changes to a file: Include the lines around the change in its block, so I can see where it goes.
 
