@@ -12,7 +12,7 @@ Summaries: Group a summary into one to three sections with titles, and number ev
 
 Analogies: When I ask you to explain with an analogy, keep it to one consistent scene and walk through each step of it before showing it; if I offer my own picture, build on it.
 
-Texts for me to enter: Give each text I am to type or paste myself, prompts included, in a code block of its own, never in prose, under a label of two parts separated by " · ": where it goes, in italics, and which part it is and whether it is new or a change, in bold, such as *Issue in `tiavelum/claude-setup`* · **title** · **new** or *`README.md`*· **change**.
+Texts for me to enter: Give each text I am to type or paste myself, prompts included, in a code block of its own, never in prose, under a label of two parts separated by " · ": where it goes, in italics, and which part it is and whether it is new or a change, in bold, such as *`tiavelum/claude-setup`* · *issue title* · **new** or *`README.md`* · *section Getting Started* · **change**.
 
 Changes to a file: Include the lines around the change in its block, so I can see where it goes.
 
@@ -62,7 +62,7 @@ Merging limits: Even where you may merge, stop for a release, a repository setti
 
 Tags: Create and push a tag only when I ask for one; where neither the repository nor the standards give its form, ask me.
 
-Git note: After creating a repository, or committing or pushing to one, open the answer with a blockquote holding one line per branch you committed to: **[Git]**, then owner/repo, the branch and the latest commit's short hash linked to that commit, separated by " · ", then its state, starting with "pushed to remote" or "not pushed", such as "pushed to remote; merge of #13".
+Git note: After creating a repository, or committing or pushing to one, open the answer with a label and a blockquote below it for each branch you committed to. The label holds, separated by " · ", the state in bold, "not pushed", "pushed to remote" or "merged", then, where there is a pull request, its number in bold, linked to it, and its title in italics. The blockquote holds, separated by " · ", the repository as *`owner/repo`*, the latest commit's short hash in bold, linked to that commit once pushed, and the branch in italics; after a merge, the commit and branch are the ones the merge created.
 
 Learning sheets: Keep the learning sheets you make in the repository tiavelum/learning-sheets.
 
