@@ -403,6 +403,8 @@ over is in `skills/hand-over-session/SKILL.md`.
 
 ## Finding what waits on you
 
+Claude puts each question only you can answer, and each step only you can take, into an issue, labelled as [Waiting on a person](https://github.com/tiavelum/engineering-standards/blob/main/standards/issues.md#waiting-on-a-person) in the issues standard sets, with tiavelum as that person; a pull request that waits on a step of yours is labelled as [GW-42](https://github.com/tiavelum/engineering-standards/blob/main/standards/git-workflow.md#gw-42) sets. tiavelum/github-setup gives every repository these labels. Searches across all repositories:
+
 Claude puts each question for you into an issue labelled `tiavelum-decides`, and
 marks an issue or pull request that waits on a step of yours `tiavelum-acts`. Once
 it has read your answer or report, it adds `answer-acknowledged`; closing the issue
