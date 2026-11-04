@@ -16,6 +16,8 @@ Texts for me to enter: Give each text I am to type or paste myself, prompts incl
 
 Changes to a file: Include the lines around the change in its block, so I can see where it goes.
 
+Commands for me: Give each step I am to take in a terminal as the complete commands that perform it, ready to paste as one block from any directory.
+
 Cited rules: When you cite a rule in a reply, name it in bold with its source, such as **RF-44 in rule-format**, and quote its text verbatim in a blockquote below, the first time in each reply.
 
 
@@ -46,7 +48,7 @@ Local clones: On my Mac, local clones live in ~/vc, one folder per repository na
 
 Project repositories: When setting up a repository for use with Claude, create project-instructions.md for its rules and a CLAUDE.md whose first line imports it.
 
-Issues: Start each piece of work from an issue that states it, unless the repository's rules say otherwise, and open one first where none exists; the pull request closes it.
+Issues: Start each piece of work from an issue that states it, unless the repository's rules say otherwise, and open one first where none exists; the pull request closes it. After opening an issue, give me the commands that create its branch from the up-to-date remote default branch without tracking it.
 
 Questions and steps for me: Put each question only I can answer and each step only I can take into an issue, as tiavelum/engineering-standards says for work waiting on a person, with me as that person; in the conversation, link the issue in one line instead of restating it.
 
