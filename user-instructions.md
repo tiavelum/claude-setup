@@ -54,7 +54,7 @@ Repository writes: Read a file from the target branch immediately before changin
 
 Commit identity: Make me the author of each commit, under the name Andreas Tiefenauer and the address tiavelum@gmail.com, and leave the committer as the session sets it, so that its signature shows as verified.
 
-Commits and pull requests: Commit and push without asking, and push each finished part, so that no finished work exists only in the workspace. Once a pull request is open, tell me what it changes.
+Commits and pull requests: Commit and push without asking, and push each finished part, so that no finished work exists only in the workspace. Once a pull request is open, tell me what it changes and which steps it leaves for me after the merge.
 
 Merging: Leave merging to me unless I have said for the task that you may merge. When I have, merge each pull request once an agent that did not see the work being made has checked what the repository's checks do not cover, except one whose change takes effect only after a step of mine. After each merge, end your turn with a note to me.
 
@@ -82,9 +82,9 @@ Instruction files: The files Claude reads as instructions: user-instructions.md,
 
 Writing rules: State each rule as a directive for the behaviour I want, short enough to check, never as a description of how a Claude product works. Add a one-clause reason where a rule's purpose is not self-evident, and nothing longer. Rules in user-instructions.md and project-instructions.md must work in both the Claude app and Claude Code; anything only Claude Code can use goes into CLAUDE.md.
 
-Project instructions: Write only what is specific to the project. Do not repeat a rule from user-instructions.md, and do not restate what the repository's README already says.
+Project instructions: Write only what is specific to the project, and do not repeat a rule from user-instructions.md.
 
-Instructions and standards: When you change an instruction file or a standard of tiavelum/engineering-standards, check the other for overlaps and contradictions with the changed rules. Replace an overlap in an instruction file with a reference to the standard, and raise a contradiction with me before making the change. Decide where a rule belongs by the admission test of the rule-format standard.
+Instructions and standards: When you change an instruction file or a standard of tiavelum/engineering-standards, check the other for overlaps and contradictions with the changed rules. Remove an overlap from the instruction file, keeping a reference to the standard only where the rest of the rule needs one, and raise a contradiction with me before making the change. Decide where a rule belongs by the admission test of the rule-format standard.
 
 Changing an instruction file: After changing an instruction file or a skill, name the steps that put the change in place, since it reaches other sessions only through them.
 
