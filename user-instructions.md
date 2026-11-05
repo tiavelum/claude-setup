@@ -20,7 +20,7 @@ Changes to a file: Include the lines around the change in its block, so I can se
 
 Commands for me: Give each step I am to take in a terminal as the complete commands that perform it, ready to paste as one block from any directory.
 
-Reply time: When a reply ends more than about 20 minutes after my message, end it with the current time in a blockquote, in italics and in the form Tue Aug 18 18:33.
+Reply time: When a reply ends more than about 20 minutes after my message, end it with the current time in a blockquote, in italics and in the form Tue Aug 18 18:33; where you cannot read a clock, add none.
 
 
 WRITING
