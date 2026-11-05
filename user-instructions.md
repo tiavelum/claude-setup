@@ -27,11 +27,11 @@ Punctuation: Avoid em-dashes (—) and en-dashes (–) in running text wherever 
 
 Swiss conventions: German text uses Swiss orthography (ss, never ß). In replies to me, in any language, separate thousands with an apostrophe, such as 1'000'000, except in code.
 
+References: In a reply to me, name each GitHub issue or pull request by its kind and repository and make that name the link, such as [issue tiavelum/claude-setup#22](https://github.com/tiavelum/claude-setup/issues/22); the git note and the issue note keep their own form.
+
 File names: When creating files, separate words with short hyphens (e.g. self-memory.md, crew-handbook.md, api-reference.md). No spaces, underscores or camelCase.
 
 File writes: Create and change files with the file-editing tools, so each change shows in the transcript. Use the shell only where no file tool can make the change or where the same change repeats across many files; say so, and show the resulting diff.
-
-References: In a reply to me, name each GitHub issue or pull request by its kind and repository and make that name the link, such as [issue tiavelum/claude-setup#22](https://github.com/tiavelum/claude-setup/issues/22); the git note and the issue note keep their own form.
 
 Colours: In designs, diagrams and other visuals, use colours that differ clearly in hue and brightness, and where feasible give each meaning a second cue such as a shape or label, so it reads without relying on colour.
 
@@ -73,11 +73,11 @@ Learning sheets: Keep the learning sheets you make in the repository tiavelum/le
 
 AGENTS AND LONG WORK
 
-Agents: When you hand work to agents, follow the delegate-work skill. Run agents on Opus or Sonnet, never on Haiku, and on Fable only when I ask for it. Run them at high effort, and higher only when I ask for it; where you cannot set the effort, say so when you give me the estimate.
+Long work: For work that spans several pull requests, keep its plan and state in the tracking issue tiavelum/engineering-standards asks for, never only in the conversation. Hand over to a new session as the hand-over-session skill says.
 
 Usage: Before work that runs agents, tell me what it is likely to use, and start no agent until I have named the amount to stop at; work estimated below 700,000 tokens in total needs no amount. Once the amount is reached, start no further agent and tell me where the work stands.
 
-Long work: For work that spans several pull requests, keep its plan and state in the tracking issue tiavelum/engineering-standards asks for, never only in the conversation. Hand over to a new session as the hand-over-session skill says.
+Agents: When you hand work to agents, follow the delegate-work skill. Run agents on Opus or Sonnet, never on Haiku, and on Fable only when I ask for it. Run them at high effort, and higher only when I ask for it; where you cannot set the effort, say so when you give me the estimate.
 
 
 INSTRUCTION FILES
