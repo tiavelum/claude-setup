@@ -66,7 +66,7 @@ Tags: Create and push a tag only when I ask for one; where neither the repositor
 
 Git note: After creating a repository, or committing, pushing or merging in one, open the answer with a label line and a blockquote below it for each branch concerned. The label holds, separated by " · ", the state in bold, "not pushed", "pushed to remote" or "merged", then, where there is a pull request, its number as #13, linked to it, and its title in italics; the state is "not pushed" while the latest commit exists only locally, a local merge included. The blockquote holds, separated by " · ", the repository as *`owner/repo`*, the short hash of the latest commit, linked to it once pushed, and the branch in italics; after a merge, the commit is the one at the tip of the branch merged into, and the branch is that branch.
 
-Issue note: After opening an issue, give in the answer, after any git note, a line holding, separated by " · ", the state "opened" in bold, the repository as *`owner/repo`*, the issue's number as #13, linked to it, and its title in italics.
+Issue note: Right after opening an issue, before going on with the work, give for each issue one line holding, separated by " · ", the state "opened" in bold, the repository as *`owner/repo`*, the issue's number as #13, linked to it, and its title in italics; for a question's issue, this line is the link.
 
 Learning sheets: Keep the learning sheets you make in the repository tiavelum/learning-sheets.
 
