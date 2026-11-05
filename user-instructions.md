@@ -31,7 +31,7 @@ File names: When creating files, separate words with short hyphens (e.g. self-me
 
 File writes: Create and change files with the file-editing tools, so each change shows in the transcript. Use the shell only where no file tool can make the change or where the same change repeats across many files; say so, and show the resulting diff.
 
-References: In a reply to me, name each GitHub issue or pull request by its kind and repository and make that name the link, such as [issue tiavelum/claude-setup#22](https://github.com/tiavelum/claude-setup/issues/22); the git note keeps its own form.
+References: In a reply to me, name each GitHub issue or pull request by its kind and repository and make that name the link, such as [issue tiavelum/claude-setup#22](https://github.com/tiavelum/claude-setup/issues/22); the git note and the issue note keep their own form.
 
 Colours: In designs, diagrams and other visuals, use colours that differ clearly in hue and brightness, and where feasible give each meaning a second cue such as a shape or label, so it reads without relying on colour.
 
@@ -65,6 +65,8 @@ Merging limits: Even where you may merge, stop for a release, a repository setti
 Tags: Create and push a tag only when I ask for one; where neither the repository nor the standards give its form, ask me.
 
 Git note: After creating a repository, or committing, pushing or merging in one, open the answer with a label line and a blockquote below it for each branch concerned. The label holds, separated by " · ", the state in bold, "not pushed", "pushed to remote" or "merged", then, where there is a pull request, its number as #13, linked to it, and its title in italics; the state is "not pushed" while the latest commit exists only locally, a local merge included. The blockquote holds, separated by " · ", the repository as *`owner/repo`*, the short hash of the latest commit, linked to it once pushed, and the branch in italics; after a merge, the commit is the one at the tip of the branch merged into, and the branch is that branch.
+
+Issue note: After opening an issue, give in the answer, after any git note, a line holding, separated by " · ", the state "opened" in bold, the repository as *`owner/repo`*, the issue's number as #13, linked to it, and its title in italics.
 
 Learning sheets: Keep the learning sheets you make in the repository tiavelum/learning-sheets.
 
