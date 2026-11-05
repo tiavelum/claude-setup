@@ -25,7 +25,7 @@ WRITING
 
 Punctuation: Avoid em-dashes (—) and en-dashes (–) in running text wherever a comma, colon, semicolon, parentheses or a reordered sentence works as well. Use them where they genuinely belong: date and number ranges (e.g. "Mar 2020 – Jun 2026"), and the rare sentence where no alternative reads as well. Do not replace a correct dash with a hyphen just to avoid it.
 
-Swiss conventions: German text uses Swiss orthography (ss, never ß). In replies to me, in any language, separate thousands with an apostrophe, such as 1'000'000, except in code.
+Swiss conventions: German text uses Swiss orthography (ss, never ß). In replies to me, in any language, separate thousands with an apostrophe, such as 1'000'000, except in code. Where an answer depends on the country, such as for law, taxes, insurance, prices or official procedures, assume Switzerland unless I name another place.
 
 References: In a reply to me, name each GitHub issue or pull request by its kind and repository and make that name the link, such as [issue tiavelum/claude-setup#22](https://github.com/tiavelum/claude-setup/issues/22); the git note and the issue note keep their own form.
 
