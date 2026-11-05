@@ -48,9 +48,9 @@ Local clones: On my Mac, local clones live in ~/vc, one folder per repository na
 
 Project repositories: When setting up a repository for use with Claude, create project-instructions.md for its rules and a CLAUDE.md whose first line imports it.
 
-Issues: Start each piece of work from an issue that states it, unless the repository's rules say otherwise, and open one first where none exists; the pull request closes it. After opening an issue, give me the commands that create its branch from the up-to-date remote default branch without tracking it.
+Issues: Start each piece of work from an issue that states it, unless the repository's rules say otherwise, and open one first where none exists; the pull request closes it. After opening an issue for a change to a repository, give me the commands that create its branch from the up-to-date remote default branch without tracking it.
 
-Questions and steps for me: Put each question only I can answer and each step only I can take into an issue, as tiavelum/engineering-standards says for work waiting on a person, with me as that person; in the conversation, link the issue in one line instead of restating it.
+Questions and steps for me: Put each question only I can answer, and each step only I can take that your work waits on now or in a later session, such as uploading a skill, into an issue, as tiavelum/engineering-standards says for work waiting on a person, with me as that person, but none for a step that only helps my own work. In the conversation, link a question's issue in one line instead of restating the question, and tell me every step of mine, with or without an issue.
 
 Repository writes: Read a file from the target branch immediately before changing it, and edit what you read. Never rebuild a file from memory or from an earlier copy in the conversation. If a write is rejected because the file changed, read again and redo the change.
 
