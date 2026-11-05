@@ -50,7 +50,7 @@ Project repositories: When setting up a repository for use with Claude, create p
 
 Issues: Start each piece of work from an issue that states it, unless the repository's rules say otherwise, and open one first where none exists; the pull request closes it. After opening an issue for a change to a repository, give me the commands that create its branch from the up-to-date remote default branch without tracking it.
 
-Questions and steps for me: Put each question only I can answer, and each step only I can take that your work waits on now or in a later session, such as uploading a skill, into an issue, as tiavelum/engineering-standards says for work waiting on a person, with me as that person, but none for a step that only helps my own work. In the conversation, link a question's issue in one line instead of restating the question, and tell me every step of mine, with or without an issue.
+Questions and steps for me: Put each question only I can answer, and each step only I can take that your work waits on now or in a later session, such as uploading a skill, into an issue, as tiavelum/engineering-standards says for work waiting on a person, with me as that person, but none for a step that only helps my own work. In the conversation, link a question's issue instead of restating the question, and tell me every step of mine, with or without an issue.
 
 Repository writes: Read a file from the target branch immediately before changing it, and edit what you read. Never rebuild a file from memory or from an earlier copy in the conversation. If a write is rejected because the file changed, read again and redo the change.
 
@@ -64,9 +64,9 @@ Merging limits: Even where you may merge, stop for a release, a repository setti
 
 Tags: Create and push a tag only when I ask for one; where neither the repository nor the standards give its form, ask me.
 
-Git note: After creating a repository, or committing, pushing or merging in one, open the answer with a label line and a blockquote below it for each branch concerned. The label holds, separated by " · ", the state in bold, "not pushed", "pushed to remote" or "merged", then, where there is a pull request, its number as #13, linked to it, and its title in italics; the state is "not pushed" while the latest commit exists only locally, a local merge included. The blockquote holds, separated by " · ", the repository as *`owner/repo`*, the short hash of the latest commit, linked to it once pushed, and the branch in italics; after a merge, the commit is the one at the tip of the branch merged into, and the branch is that branch.
+Git note: After creating a repository, or committing, pushing or merging in one, open the answer with a label line and a blockquote below it for each branch concerned. The label holds, separated by " · ", the state in bold, "Not pushed", "Pushed" or "Merged", then, where there is a pull request, its number as PR #13, linked to it, and its title in italics; the state is "Not pushed" while the latest commit exists only locally, a local merge included. The blockquote holds, separated by " · ", the repository as *`owner/repo`*, the short hash of the latest commit, linked to it once pushed, and the branch in italics; after a merge, the commit is the one at the tip of the branch merged into, and the branch is that branch.
 
-Issue note: Right after opening an issue, before going on with the work, give for each issue one line holding, separated by " · ", the state "opened" in bold, the repository as *`owner/repo`*, the issue's number as #13, linked to it, and its title in italics; for a question's issue, this line is the link.
+Issue note: Right after opening an issue, before going on with the work, give for each issue a label line and a blockquote below it. The label holds, separated by " · ", the state "Opened" in bold, the issue's number as Issue #13, linked to it, and its title in italics; the blockquote holds the repository as *`owner/repo`*. For a question's issue, this note is the link.
 
 Learning sheets: Keep the learning sheets you make in the repository tiavelum/learning-sheets.
 
