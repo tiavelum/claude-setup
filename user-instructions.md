@@ -86,15 +86,15 @@ Instruction files: The files Claude reads as instructions: user-instructions.md,
 
 Writing rules: State each rule as a directive for the behaviour I want, short enough to check, never as a description of how a Claude product works. Add a one-clause reason where a rule's purpose is not self-evident, and nothing longer. Rules in user-instructions.md and project-instructions.md must work in both the Claude app and Claude Code; anything only Claude Code can use goes into CLAUDE.md.
 
-Project instructions: Write only what is specific to the project, and do not repeat a rule from user-instructions.md.
-
 Instructions and standards: When you change an instruction file or a standard of tiavelum/engineering-standards, check the other for overlaps and contradictions with the changed rules. Remove an overlap from the instruction file, keeping a reference to the standard only where the rest of the rule needs one, and raise a contradiction with me before making the change. Decide where a rule belongs by the admission test of the rule-format standard.
 
-Skill changes: Change a skill only in the repository that holds it, and leave the upload to me; never save or propose it to my account directly, since that leaves the repository behind.
+Project instructions: Write only what is specific to the project, and do not repeat a rule from user-instructions.md.
 
 Skill references: user-instructions.md, project-instructions.md, CLAUDE.md and agent files may name a skill, and a skill may name an agent type. A skill never names or restates a rule of user-instructions.md, project-instructions.md or CLAUDE.md and never names another skill, and no file names one that names it back, directly or through others.
 
 Skills and standards: A skill that relies on tiavelum/engineering-standards cites whole standards, never rule ids. It states the major version of each standard it was written for, and stops and says so when the index shows another. A pull request that raises the major version of a standard comes with the change to every skill that names that standard, opened in the same go.
+
+Skill changes: Change a skill only in the repository that holds it, and leave the upload to me; never save or propose it to my account directly, since that leaves the repository behind.
 
 
 MEMORY
