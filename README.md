@@ -347,7 +347,11 @@ skill whenever it hands work to agents, and the rule "Usage" decides when it may
 them. Upload the skill as in Setup, "Skills". The roles, their models and the procedure
 are in `skills/delegate-work/SKILL.md`, together with the sizes the skill starts from,
 such as the context per agent and the agents at a time; correct them there after a run
-shows better ones.
+shows better ones. These sizes are targets for planning a run, not limits: no field of
+an agent type caps its tokens, and Claude Code offers only `maxTurns`, which caps an
+agent's steps, and `autoCompactWindow`, which makes it compact its context earlier
+([Subagents](https://code.claude.com/docs/en/sub-agents)). The types in `agents/` set
+neither.
 
 The skill's roles have agent types of the same names, `worker` and `checker` in
 `agents/`. A type fixes the model, effort and tools of a role, and the brief carries the
