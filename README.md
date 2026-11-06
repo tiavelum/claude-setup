@@ -313,7 +313,12 @@ Other files need nothing.
 ¹ Replace the whole field, as in Setup, "Claude app". A session that is already
 running may keep the text it started with.
 
-² `git -C ~/vc/claude-setup pull`.
+² Switch the clone to `main` and update it. The local setup links to the files of
+whichever branch the clone has checked out, so the clone stays on `main` afterwards:
+
+```bash
+git -C ~/vc/claude-setup checkout main && git -C ~/vc/claude-setup pull --ff-only
+```
 
 ³ Open the setup script as in Setup, "Claude Code, cloud", steps 1 to 3, change the
 comment line (for example the date) and save. Otherwise the change arrives when the
