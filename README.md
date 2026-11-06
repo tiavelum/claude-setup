@@ -477,8 +477,8 @@ Five principles decide where things go and keep the setup from drifting:
 5. **References run one way.** The instruction files may name a skill, a skill may
    cite a standard, and nothing names or restates the layer above it, so a change
    in one layer never has to be found in another. A skill states the major version
-   of each standard it was written for: a breaking change in the standards then
-   stops it, rather than leaving it to apply rules that have moved.
+   of each standard it was last checked against, so a session can say when the
+   standards have moved on since.
 
 ### Kinds of information
 

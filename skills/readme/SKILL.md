@@ -5,14 +5,14 @@ description: Write a README for a repository that has none, or review an existin
 
 # README
 
-Written for major version 10 of readme-contract, major version 16 of documentation and major version 7 of writing, all in tiavelum/engineering-standards.
+Last checked against major version 10 of readme-contract, major version 16 of documentation and major version 7 of writing, all in tiavelum/engineering-standards.
 
 If the repository has no README.md, follow "Write a new README". If it has one, follow "Review an existing README".
 
 ## Load the rules
 
 1. Fetch index.yaml from tiavelum/engineering-standards and load readme-contract, documentation and writing, with every entry they require.
-2. If any of the three has a major version other than the one named above, stop and tell me which, before writing or reviewing anything.
+2. If any of the three has a major version other than the one named above, tell me which, then go on.
 
 ## Find what the reader needs
 

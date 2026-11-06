@@ -96,7 +96,7 @@ Project instructions: Write only what is specific to the project, and do not rep
 
 Skill references: user-instructions.md, project-instructions.md, CLAUDE.md and agent files may name a skill, and a skill may name an agent type. A skill never names or restates a rule of user-instructions.md, project-instructions.md or CLAUDE.md and never names another skill, and no file names one that names it back, directly or through others.
 
-Skills and standards: A skill that relies on tiavelum/engineering-standards cites whole standards, never rule ids. It states the major version of each standard it was written for, and stops and says so when the index shows another. A pull request that raises the major version of a standard comes with the change to every skill that names that standard, opened in the same go.
+Skills and standards: A skill that relies on tiavelum/engineering-standards cites whole standards, never rule ids. It states the major version of each standard it was last checked against, and when the index shows another, says so and goes on.
 
 Skill changes: Change a skill only in the repository that holds it, and leave the upload to me; never save or propose it to my account directly, since that leaves the repository behind.
 
