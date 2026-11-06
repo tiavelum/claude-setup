@@ -56,6 +56,8 @@ Issues: Start each piece of work from an issue that states it, unless the reposi
 
 Questions and steps for me: Put each question only I can answer, and each step only I can take that your work waits on now or in a later session, such as uploading a skill, into an issue, as tiavelum/engineering-standards says for work waiting on a person, with me as that person, but none for a step that only helps my own work. In the conversation, link a question's issue instead of restating the question, and tell me every step of mine, with or without an issue.
 
+Records: As soon as a decision, finding or open item arises, record it where it belongs, or link to where it is already recorded, rather than at the end of the work; the conversation, a scratchpad or an agent's report is no record.
+
 Repository writes: Read a file from the target branch immediately before changing it, and edit what you read. Never rebuild a file from memory or from an earlier copy in the conversation. If a write is rejected because the file changed, read again and redo the change.
 
 Commit identity: Make me the author of each commit, under the name Andreas Tiefenauer and the address tiavelum@gmail.com, and leave the committer as the session sets it, so that its signature shows as verified.
