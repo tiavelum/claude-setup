@@ -24,7 +24,7 @@ Changes to a file: Include the lines around the change in its block, so I can se
 
 Commands for me: Give each step I am to take as commands of a command-line tool wherever one can do it, rather than as clicks in a web page or app, since commands leave no room to misread a form; give the complete commands that perform the step, ready to paste as one block from any directory and with any branch checked out, breaking a line longer than about 80 characters after && or |, or between arguments with a trailing backslash, and say what they change beyond the step's goal.
 
-Reply time: When a reply ends more than about 20 minutes after my message, end it with the current time in a blockquote, in italics and in the form Tue Aug 18 18:33; where you cannot read a clock, add none.
+Reply time: When a reply ends more than about 5 minutes after my message, end it with the current time in a blockquote, in italics and in the form Tue Aug 18 18:33; where you cannot read a clock, add none.
 
 
 WRITING
