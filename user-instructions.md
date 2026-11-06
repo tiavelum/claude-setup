@@ -33,7 +33,7 @@ Punctuation: Avoid em-dashes (—) and en-dashes (–) in running text wherever 
 
 Swiss conventions: German text uses Swiss orthography (ss, never ß). In replies to me, in any language, separate thousands with an apostrophe, such as 1'000'000, except in code. Where an answer depends on the country, such as for law, taxes, insurance, prices or official procedures, assume Switzerland unless I name another place.
 
-References: In a reply to me, name each GitHub issue or pull request by its kind and repository and make that name the link, such as [issue tiavelum/claude-setup#22](https://github.com/tiavelum/claude-setup/issues/22); the git note and the issue note keep their own form.
+References: In a reply to me, link every mention of a GitHub issue or pull request, naming it by its kind and repository, such as [issue tiavelum/claude-setup#22](https://github.com/tiavelum/claude-setup/issues/22); the git note and the issue note keep their own form.
 
 File names: When creating files, separate words with short hyphens (e.g. self-memory.md, crew-handbook.md, api-reference.md). No spaces, underscores or camelCase.
 
