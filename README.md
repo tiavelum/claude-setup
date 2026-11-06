@@ -313,8 +313,7 @@ Other files need nothing.
 ¹ Replace the whole field, as in Setup, "Claude app". A session that is already
 running may keep the text it started with.
 
-² Switch the clone to `main` and update it. The local setup links to the files of
-whichever branch the clone has checked out, so the clone stays on `main` afterwards:
+² Update `main`:
 
 ```bash
 git -C ~/vc/claude-setup checkout main && git -C ~/vc/claude-setup pull --ff-only
