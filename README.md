@@ -104,14 +104,14 @@ Uploads a skill from `skills/` to your claude.ai account. The Claude app, Claude
 Code in the cloud and Claude Code locally all load it from there; locally this
 requires signing in with `/login` rather than an API key. Done once per skill.
 
-1. Package the skill folder, here `learning-sheet`; the script writes a new ZIP that
+1. Package the skill folder, here `readme`; the script writes a new ZIP that
    holds the folder named after the skill and prints its path:
 
    ```bash
-   ~/vc/claude-setup/scripts/package-skill.sh learning-sheet
+   ~/vc/claude-setup/scripts/package-skill.sh readme
    ```
 
-   It prints `/Users/<you>/Downloads/learning-sheet.zip` and where to upload it. A
+   It prints `/Users/<you>/Downloads/readme.zip` and where to upload it. A
    second argument names another folder for the ZIP. A name that is not a skill ends
    with exit status 2 and a list of the skills there are.
 
@@ -270,7 +270,6 @@ session seems not to follow one of the rules.
 | `skills/project-instructions/SKILL.md` | Guided creation and review of a repository's `project-instructions.md` |
 | `skills/readme/SKILL.md` | Guided writing and review of a repository's README against the README contract of tiavelum/engineering-standards |
 | `skills/hand-over-session/SKILL.md` | How Claude hands long work over to a new session; see "Handing over a session" |
-| `skills/learning-sheet/SKILL.md` | Guided making of a printable two-page learning sheet that explains a topic through one everyday scene |
 | `scripts/` | The scripts that package what Setup uploads to your claude.ai account |
 | `scripts/package-skill.sh` | Packages `skills/<skill>/` into `~/Downloads/<skill>.zip` for upload, as in Setup, "Skills" |
 | `.github/` | GitHub configuration; holds only the workflow below |
