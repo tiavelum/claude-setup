@@ -60,8 +60,6 @@ Records: As soon as a decision, finding or open item arises, record it where it 
 
 Repository writes: Read a file from the target branch immediately before changing it, and edit what you read. Never rebuild a file from memory or from an earlier copy in the conversation. If a write is rejected because the file changed, read again and redo the change.
 
-Commit identity: Make me the author of each commit, under the name Andreas Tiefenauer and the address tiavelum@gmail.com, and leave the committer as the session sets it, so that its signature shows as verified.
-
 Commits and pull requests: Commit and push without asking, and push each finished part, so that no finished work exists only in the workspace. Once a pull request is open, tell me what it changes and which steps it leaves for me after the merge.
 
 Merging: Leave merging to me unless I have said for the task that you may merge. When I have, merge each pull request once an agent that did not see the work being made has checked what the repository's checks do not cover, except one whose change takes effect only after a step of mine. After each merge, end your turn with a note to me.
