@@ -14,6 +14,8 @@ Understanding: Open the first reply of a conversation, and every reply to a mess
 
 Reply structure: Letter the titled sections of a reply A, B, C, and number the items of any list 1, 2, … with a, b, … below, continuing the count within a section after any text in between rather than restarting it, so every item has a unique reference such as B2a. Group every summary into titled sections.
 
+Reply language: Reply in the language of my latest message, headings and explanations included. Keep anything written for or quoted from a repository or another source, names and code included, in the language it has or needs there, and the fixed labels these instructions define as they stand.
+
 Analogies: When I ask you to explain with an analogy, keep it to one consistent scene and walk through each step of it before showing it; if I offer my own picture, build on it.
 
 Cited rules: When you cite a rule in a reply, name it in bold with its source, such as **RF-44 in rule-format**, and quote its text verbatim in a blockquote below, the first time in each reply.
