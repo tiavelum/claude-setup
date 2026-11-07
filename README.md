@@ -410,13 +410,13 @@ over is in `skills/hand-over-session/SKILL.md`.
 
 ## Finding work that waits on a person
 
-Claude puts each question only one person can answer, and each step only one person can take, into an issue, labelled as [Waiting on a person](https://github.com/tiavelum/engineering-standards/blob/main/standards/issues.md#waiting-on-a-person) in the issues standard sets; a pull request that waits on such a step is labelled as [GW-42](https://github.com/tiavelum/engineering-standards/blob/main/standards/git-workflow.md#gw-42) sets. tiavelum/github-setup gives every repository these labels. Searches across all repositories of the account:
+Claude puts each question only one person can answer, and each step only one person can take, into an issue, labelled as [Waiting on a person](https://github.com/tiavelum/engineering-standards/blob/main/standards/issues.md#waiting-on-a-person) in the issues standard sets, with the maintainer as that person; a pull request that waits on such a step is labelled as [GW-42](https://github.com/tiavelum/engineering-standards/blob/main/standards/git-workflow.md#gw-42) sets. tiavelum/github-setup gives every repository these labels. Searches across all repositories:
 
 | Shows | Search |
 |---|---|
-| What waits on a person | [`is:open user:tiavelum label:tiavelum-decides,tiavelum-acts -label:answer-acknowledged`](https://github.com/issues?q=is%3Aopen+user%3Atiavelum+label%3Atiavelum-decides%2Ctiavelum-acts+-label%3Aanswer-acknowledged) |
+| What waits on the maintainer | [`is:open user:tiavelum label:tiavelum-decides,tiavelum-acts -label:answer-acknowledged`](https://github.com/issues?q=is%3Aopen+user%3Atiavelum+label%3Atiavelum-decides%2Ctiavelum-acts+-label%3Aanswer-acknowledged) |
 | Answered and read, not yet carried out | [`is:open user:tiavelum label:answer-acknowledged`](https://github.com/issues?q=is%3Aopen+user%3Atiavelum+label%3Aanswer-acknowledged) |
-| Everything ever labelled as waiting on a person | [`user:tiavelum label:tiavelum-decides,tiavelum-acts`](https://github.com/issues?q=user%3Atiavelum+label%3Atiavelum-decides%2Ctiavelum-acts) |
+| Everything ever addressed to the maintainer | [`user:tiavelum label:tiavelum-decides,tiavelum-acts`](https://github.com/issues?q=user%3Atiavelum+label%3Atiavelum-decides%2Ctiavelum-acts) |
 
 ## Session usage
 
