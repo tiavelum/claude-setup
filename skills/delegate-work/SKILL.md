@@ -27,7 +27,7 @@ Follow these steps whenever you hand work to agents. The numbers are starting va
 
 - Make a small piece yourself, without a worker: a change of up to about 100 lines that this session can make within its context, such as a passage of documentation or a rule of an instruction file, since a worker's brief and cold start cost more than such a piece. Give it to a checker as any other piece.
 - Hand a piece to a worker where it is larger than that, or where independent pieces are worth running side by side.
-- Size each piece so that one agent finishes it within at most about 300,000 tokens of context.
+- Size each piece so that one agent finishes it within at most about 400,000 tokens of context.
 - Make a piece one pull request of about 400 changed lines where the work allows it.
 - Give each piece its own branch, and its own git worktree when agents work side by side.
 - Where two pieces could hold the same thing, state in both briefs which one holds it, and give the later worker the earlier piece to read.
@@ -67,9 +67,7 @@ Split a large piece between several checkers so that each part stays within the 
 - Before a report goes into a pull request, scan it for secrets, local paths and text copied from a source.
 - Put the worker's report, or for a piece you made yourself your own account of it, into the pull request's description and the checker's findings into review comments on it.
 - A checker and the worker whose work it checks exchange nothing but the work and the findings, in writing. Workers learn from each other through what is pushed; connect two workers directly only for a named question.
-- End your turn after each finished piece, so that a turn ending at a usage limit loses nothing that was not pushed.
 - After opening a pull request that later work depends on and that I merge, end your turn and continue when I write, since my merge does not reach the session on its own.
-- When a usage or spend limit is reported, stop and continue after the reset.
 
 ## Corrections
 
