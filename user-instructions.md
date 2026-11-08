@@ -58,6 +58,8 @@ Repository rules: Before creating or changing files in a repository, load tiavel
 
 Reading a repository: Before working in a repository, including one added during the session, read its README.md from the branch you work on and follow it. If it has none, say so. Read it again after it is added or changed.
 
+Repository access: Before writing to a repository, attach it to the session with write access where the session can, so that git and gh act directly, and use a connector only where it cannot.
+
 Language: Write each text in a repository in the language its rules require, whatever language we talk in.
 
 Local clones: On my Mac, local clones live in ~/vc, one folder per repository named after it.
