@@ -552,10 +552,9 @@ version a session writes reaches other sessions only through deployment.
   what a session loads".
 - A session that reaches GitHub through Claude's cloud proxy cannot use GitHub's
   GraphQL API, so `gh` commands that use it fail with HTTP 403, such as
-  `gh issue list` and `gh issue view`, while `gh pr view` works. `gh api` with the
-  REST API worked for issues, pull requests, comments and merges once the
-  repository was attached to the session with write access. Observed on 2026-11-08
-  in a Claude app session.
+  `gh issue list` and `gh issue view`. `gh api` with the REST API worked for issues,
+  pull requests, comments and merges once the repository was attached to the
+  session with write access. Observed on 2026-11-08 in a Claude app session.
 
 ## License
 
