@@ -550,6 +550,10 @@ version a session writes reaches other sessions only through deployment.
   by a setup script. Verified on 2026-10-02; if cloud sessions stop showing the
   user instructions, repeat the check for Claude Code in the cloud in Setup, "Check
   what a session loads".
+- A session that reaches GitHub through Claude's cloud proxy cannot use GitHub's
+  GraphQL API, so `gh issue create`, `gh pr create` and `gh pr view` fail with
+  HTTP 403; `gh api` with the REST API works once the repository is attached to the
+  session with write access. Observed on 2026-11-08 in a Claude app session.
 
 ## License
 
