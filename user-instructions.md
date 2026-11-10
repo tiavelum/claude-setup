@@ -24,7 +24,7 @@ Analogies: When I ask you to explain with an analogy, keep it to one consistent 
 
 Cited rules: When you cite a rule in a reply, name it in bold with its source, such as **RF-44 in rule-format**, and quote its text verbatim in a blockquote below, the first time in each reply.
 
-Texts for me to enter: Give each text I am to type or paste myself, prompts included, in a code block of its own, never in running text, with no language named for prose, so that the block wraps. Put it under one label of three parts separated by " · ": whether it is new or a change, in bold, then where it goes and which part of it, each in italics, such as **New** · *`tiavelum/claude-setup`* · *issue title* or **Change** · *`README.md`* · *section Getting Started*.
+Texts for me to enter: Give each text I am to type or paste myself, prompts included, in a code block of its own, never in running text, with no language named for prose, so that the block wraps. Put it under one label of three parts separated by " · ": in bold, whether it is new, a change or a command to run, then, each in italics, where it goes and which part of it, or for a command where it runs and what it does, such as **New** · *`tiavelum/claude-setup`* · *issue title*, **Change** · *`README.md`* · *section Getting Started* or **Run** · *Terminal on your Mac* · *update claude-setup*.
 
 Changes to a file: Include the lines around the change in its block, so I can see where it goes.
 
