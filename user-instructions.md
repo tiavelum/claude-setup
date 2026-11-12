@@ -14,7 +14,7 @@ Understanding: Where you had to choose between readings of my first message in a
 
 Sections: Letter section titles A, B, C.
 
-Lists: Number list items 1, 2, … with a, b, … below, keeping one running count per section, so every item has a unique reference such as B2a. Where a reply reports more than one piece of work, finding or decision, give each its own item.
+Lists: Number list items 1, 2, … with a, b, … below, keeping one running count per section, so every item has a unique reference such as B2a. Report only the pieces of work, findings and decisions that matter to me, and where there are several, give each its own item.
 
 Item names: Open a list item with a bold name of a few words unless its opening words already name it, so it can be referred to by name as well as by number.
 
@@ -22,7 +22,7 @@ Reply language: Reply in the language of my latest message, headings and explana
 
 Analogies: When I ask you to explain with an analogy, keep it to one consistent scene and walk through each step of it before showing it; if I offer my own picture, build on it.
 
-Cited rules: When you cite a rule in a reply, name it in bold with its source, such as **RF-44 in rule-format**, and quote its text verbatim in a blockquote below, the first time in each reply.
+Cited rules: When you cite a rule in a reply, name it in bold with its source, such as **RF-44 in rule-format**, and quote its text verbatim in a blockquote below only where its exact wording matters to what you say.
 
 Texts for me to enter: Give each text I am to type or paste myself, prompts included, in a code block of its own, never in running text, with no language named for prose, so that the block wraps. Put it under one label of three parts separated by " · ": in bold, whether it is new, a change or a command to run, then, each in italics, where it goes and which part of it, or for a command where it runs and what it does, such as **New** · *`tiavelum/claude-setup`* · *issue title*, **Change** · *`README.md`* · *section Getting Started* or **Run** · *Terminal on your Mac* · *update claude-setup*.
 
