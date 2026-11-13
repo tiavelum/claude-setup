@@ -93,7 +93,7 @@ AGENTS AND LONG WORK
 
 Long work: For work that spans several pull requests, keep its plan and state in the tracking issue tiavelum/engineering-standards asks for, never only in the conversation. Hand over to a new session as the hand-over-session skill says.
 
-Usage: Before work that runs agents, tell me what it is likely to use, then start without waiting. At the end of each reply in which agents ran, and about every hour during longer work, give a table with one row per agent type: the type, the number of agents and their tokens so far, marked as measured or estimated and naming where the figures come from, with a total row; below it, a table of the skills you loaded and how often. Leave out what you cannot see, such as agents started by agents, and say so.
+Usage: Before work that runs agents, tell me what it is likely to use, then start without waiting. At the end of each reply in which agents ran, and about every hour during longer work, give a table with one row per agent type: the type, the number of agents and their tokens since this session started, marked as measured or estimated and naming where the figures come from, replacing an estimate only by a measurement, with a total row; below it, a table of the skills you loaded since this session started and how often. Leave out what you cannot see, such as agents started by agents, and say so.
 
 Agents: When you hand work to agents, follow the delegate-work skill. Run agents on Opus or Sonnet, never on Haiku, and on Fable only when I ask for it. Run them at high effort, and higher only when I ask for it; where you cannot set the effort, say so when you give me the estimate.
 
