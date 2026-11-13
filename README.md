@@ -343,8 +343,8 @@ later to review them; the `project-instructions` skill defines their content, se
 ## Working with agents
 
 The rule "Agents" in `user-instructions.md` makes Claude follow the `delegate-work`
-skill whenever it hands work to agents, and the rule "Usage" decides when it may start
-them. Upload the skill as in Setup, "Skills". The roles, their models and the procedure
+skill whenever it hands work to agents, and the rule "Usage" makes it report their
+tokens and the skills it loaded. Upload the skill as in Setup, "Skills". The roles, their models and the procedure
 are in `skills/delegate-work/SKILL.md`, together with the sizes the skill starts from,
 such as the context per agent and the agents at a time; correct them there after a run
 shows better ones. These sizes are targets for planning a run, not limits: no field of

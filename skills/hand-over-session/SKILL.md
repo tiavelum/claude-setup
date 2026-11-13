@@ -29,7 +29,7 @@ description: Hand work that spans several pull requests over to a new session. U
 Give me a prompt of a few lines for the new session, in a code block so that I can copy it. It names:
 
 - the tracking issue, as the handover to read first;
-- what I allowed for this work: merging or not, the models, and the amount with how much of it is left;
+- what I allowed for this work: merging or not, and the models;
 - when to stop and ask.
 
 ## After it
