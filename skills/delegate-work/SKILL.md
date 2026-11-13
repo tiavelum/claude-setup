@@ -21,7 +21,7 @@ Follow these steps whenever you hand work to agents. The numbers are starting va
 2. Estimate for each agent its steps and the context it will reach, and its tokens as steps times average context. Take the figures from the effort map of the last comparable run where the tracking issue has one.
 3. Give me the estimate with the number of agents and their models.
 4. If the run has more than one agent and this session cannot start a `checker` type, propose running the work from a Claude Code session instead.
-5. Put the plan into the tracking issue: the pieces, their branches, the agents and the amount.
+5. Put the plan into the tracking issue: the pieces, their branches, the agents and the estimate.
 
 ## Pieces
 
